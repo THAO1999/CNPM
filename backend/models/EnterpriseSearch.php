@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Enterprise;
+use backend\models\Enterprises;
 
 /**
  * EnterpriseSearch represents the model behind the search form of `backend\models\Enterprise`.
  */
-class EnterpriseSearch extends Enterprise
+class EnterpriseSearch extends Enterprises
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class EnterpriseSearch extends Enterprise
      */
     public function search($params)
     {
-        $query = Enterprise::find();
+        $query = Enterprises::find();
 
         // add conditions that should always apply here
 

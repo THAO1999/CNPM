@@ -72,7 +72,10 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-  
+    public function actionIndex()
+    {
+        return $this->render('index');
+    }
     public function actionExample()
     {
         return $this->render('example');
@@ -86,19 +89,15 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        // if (!Yii::$app->user->isGuest) {
-        //     return $this->goHome();
-        // }
-
-       //
- 
-        $this->layout = 'blank';
+        $this->layout="blank";
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
 
         $model = new LoginFormEnterprise();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-           
-            return $this->render('index');
-            
+        //    echo"ff";
+            return $this->redirect('home/index');
         } else {
             $model->password = '';
 

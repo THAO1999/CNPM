@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
 use yii\base\NotSupportedException;
@@ -25,6 +25,7 @@ use yii\web\IdentityInterface;
  * @property int $status
  * @property string|null $created_at
  * @property string|null $updated_at
+ * @property string|null $address
  *
  * @property EnterpriseRecruitmentRequestForm[] $enterpriseRecruitmentRequestForms
  */
@@ -79,6 +80,7 @@ class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'address'=>'address'
         ];
     }
 
@@ -259,5 +261,6 @@ class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
         }
         return parent::beforeSave($insert);
     }
+   
 
 }

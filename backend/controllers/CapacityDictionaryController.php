@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Enterprises;
-use app\models\EnterpriseSearch;
+use common\models\CapacityDictionary;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * EnterpriseController implements the CRUD actions for Enterprises model.
+ * CapacityDictionaryController implements the CRUD actions for CapacityDictionary model.
  */
-class EnterpriseController extends Controller
+class CapacityDictionaryController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,53 +30,53 @@ class EnterpriseController extends Controller
     }
 
     /**
-     * Lists all Enterprise models.
+     * Lists all CapacityDictionary models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new EnterpriseSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => CapacityDictionary::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
-
+   
     /**
-     * Displays a single Enterprise model.
+     * Displays a single CapacityDictionary model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-     return $this->render('view', [
+        return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Enterprise model.
+     * Creates a new CapacityDictionary model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Enterprises();
-        $time = date("Y/m/d");
-        $model->created_at = $time;
+        $model = new CapacityDictionary();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-               return $this->redirect(['view', 'id' => $model->id]);
-                      } 
+           return $this->actionIndex(); 
+        }
+
         return $this->render('create', [
-                'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
-     * Updates an existing Enterprise model.
+     * Updates an existing CapacityDictionary model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -84,9 +84,8 @@ class EnterpriseController extends Controller
      */
     public function actionUpdate($id)
     {
-            $model = $this->findModel($id);
-            $time = date("Y/m/d");
-            $model->updated_at = $time;
+        $model = $this->findModel($id);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -97,7 +96,7 @@ class EnterpriseController extends Controller
     }
 
     /**
-     * Deletes an existing Enterprise model.
+     * Deletes an existing CapacityDictionary model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -111,15 +110,15 @@ class EnterpriseController extends Controller
     }
 
     /**
-     * Finds the Enterprise model based on its primary key value.
+     * Finds the CapacityDictionary model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Enterprise the loaded model
+     * @return CapacityDictionary the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Enterprises::findOne($id)) !== null) {
+        if (($model = CapacityDictionary::findOne($id)) !== null) {
             return $model;
         }
 

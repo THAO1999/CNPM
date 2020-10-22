@@ -1,20 +1,22 @@
 <?php
 namespace enterprise\controllers;
 
-use frontend\models\ResendVerificationEmailForm;
-use frontend\models\VerifyEmailForm;
 use Yii;
-use yii\base\InvalidArgumentException;
-use yii\web\BadRequestHttpException;
+use enterprise\models\Capacity;
+use common\models\OrganizationRequestAbilities;
+use yii\web\UploadedFile;
+
+use common\models\UploadForm;
 use yii\web\Controller;
+use yii\helpers\ArrayHelper ;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-
+use common\models\OrganizationRequests;
 
 /**
  * Site controller
  */
-class RecruitmentSlipController extends Controller
+class ProfileEnterpriseController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -62,11 +64,7 @@ class RecruitmentSlipController extends Controller
             ],
         ];
     }
-
-
-
-   
-
+    
     /**
      * Displays about page.
      *

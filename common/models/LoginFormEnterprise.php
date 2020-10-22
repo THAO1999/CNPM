@@ -1,7 +1,7 @@
 <?php
 namespace common\models;
 
-use backend\models\Enterprise;
+use backend\models\Enterprises;
 use Yii;
 use yii\base\Model;
 
@@ -71,7 +71,7 @@ class LoginFormEnterprise extends Model
     protected function getUser()
     {
         if ($this->_user === null) {
-            $this->_user = Enterprise::findByUsername($this->username);
+            $this->_user = Enterprises::findByUsername($this->username);
         }
 
         return $this->_user;

@@ -19,7 +19,7 @@ return [
             'csrfParam' => '_csrf-enterprise',
         ],
         'user' => [
-            'identityClass' => 'backend\models\enterprise',
+            'identityClass' => 'backend\models\enterprises',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-enterprise', 'httpOnly' => true],
         ],

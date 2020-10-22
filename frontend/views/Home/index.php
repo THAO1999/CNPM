@@ -1,4 +1,6 @@
-
+<?php
+use common\models\Enterprise;
+?>
     <h1 class="slogan">
     1,317 Việc Làm IT Chất Cho Sinh Viên
     </h1>
@@ -53,13 +55,14 @@
     <!-- Last updated: "2020-10-05 14:41:51 +0700"-->
     <a class="top-company" data-controller="utm-tracking" rel="nofollow" data-method="put" href="#">
       <div class="top-company__logo text-center">
-      <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" class=" ls-is-cached lazyloaded" data-src="" src="<?= '/uploads'.'/'.$value->imageFile ?>">
+      <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" class=" ls-is-cached lazyloaded" data-src="" src="<?=   Enterprise::getImageEnterprise($value->id)?>">
     </div>
-    <div class="top-company__name text-center">Toshiba Software Development (Viet Nam) Co, Ltd</div>
+    <div class="top-company__name text-center"><?=$value->subject?> </div>
+  
     <footer class="top-company__footer text-center">
     <span class="top-company__footer-jobs">
     <span class="red link">
-        <?=$value->amount?>Việc làm
+        <?=$value->amount?> Slots
     </span>
     <span>&nbsp;-&nbsp;</span>
     </span>
@@ -83,7 +86,7 @@
     <div class="blog-list__content">
     <!-- Last updated: "2020-09-16 08:38:32 +0700"-->
     <div class="blog">
-    <a class="blog__image-link" href="#"><img class=" ls-is-cached lazyloaded" data-src="img/react-native.png" width="100%" src="img/react-native.png">
+    <a class="blog__image-link" href="#"><img class=" ls-is-cached lazyloaded" data-src="img/react-native.png" width="100%" src="<?= yii\helpers\Url::base(true). '/../../uploads/react-native.png'?>"
     </a><div class="blog__description">
     <h4 class="blog__description-title">
     <a target="_blank" href="#">React Native là gì? 20+ Tài liệu học React Native từ cơ bản đến nâng cao</a>
@@ -99,7 +102,7 @@
     </div>
     <!-- Last updated: "2020-08-20 18:28:32 +0700"-->
     <div class="blog">
-    <a class="blog__image-link" href="#"><img class=" ls-is-cached lazyloaded" data-src="img/user.png" width="100%" src="img/user.png">
+    <a class="blog__image-link" href="#"><img class=" ls-is-cached lazyloaded" data-src="img/user.png" width="100%" src="<?= yii\helpers\Url::base(true). '/../../uploads/user.png' ?>"
     </a><div class="blog__description">
     <h4 class="blog__description-title">
     <a target="_blank" href="#">Docker là gì? Vì sao DevOps Engineer nên biết?</a>

@@ -6,7 +6,8 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-
+use common\models\OrganizationRequests;
+use yii\helpers\Url;
 /**
  * This is the model class for table "enterprise".
  *
@@ -261,6 +262,20 @@ class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
         }
         return parent::beforeSave($insert);
     }
-   
+
+    public function getImageEnterprise($id)
+    {
+          // lay organization_id doanh nghiep
+        $organizationRequests= OrganizationRequests::findOne($id);
+       $id= $organizationRequests->organization_id; // 
+
+       $enterprise= Enterprise::findOne($id);
+
+       return Url::base(true). '/../../uploads/'.$enterprise->img; // getpathImg
+       
+      
+    }
 
 }
+
+?>

@@ -89,12 +89,10 @@ public function actionUpload()
         $model = new OrganizationRequests();  // đã từng lỗ ở đây
         $fileUpload = UploadedFile::getInstance($model, 'imageFile');
         if(isset($fileUpload->size)){
-            $fileUpload->saveAs(Yii::getAlias('@uploads') . $fileUpload->baseName . '.' . $fileUpload->extension);
+            $fileUpload->saveAs(Yii::getAlias('@uploads/') . $fileUpload->baseName . '.' . $fileUpload->extension);
             return  $fileUpload->baseName. '.'.$fileUpload->extension;
           
-        }
-
-       
+        }       
     }
     /**
      * Displays about page.

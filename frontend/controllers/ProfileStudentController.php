@@ -1,20 +1,19 @@
 <?php
-namespace enterprise\controllers;
+namespace frontend\controllers;
 
-use frontend\models\ResendVerificationEmailForm;
-use frontend\models\VerifyEmailForm;
+
 use Yii;
-use yii\base\InvalidArgumentException;
-use yii\web\BadRequestHttpException;
+
 use yii\web\Controller;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-
-
+use common\models\CapacityDictionary;
+use yii\data\ActiveDataProvider;
+use common\models\OrganizationRequests;
+use yii\filters\VerbFilter;
 /**
  * Site controller
  */
-class RecruitmentSlipController extends Controller
+class ProfileStudentController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -74,7 +73,9 @@ class RecruitmentSlipController extends Controller
      */
     public function actionIndex()
     {
+     
         return $this->render('index');
+     
     }
 
  

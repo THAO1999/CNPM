@@ -68,25 +68,10 @@ class HomeController extends Controller
             ],
         ];
     }
-
-
-
-   
-
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
     public function actionIndex()
     {
         $capacity=CapacityDictionary::find()->all();
-        $organization_requests=OrganizationRequests::find()->all();
-
-//         foreach($Capacity as $value){
-//  echo $value->ability_name;
-//         }
-     
+        $organization_requests=OrganizationRequests::find()->all();  
         return $this->render('index', [
             'capacity' => $capacity,
             'organization_requests'=>$organization_requests,

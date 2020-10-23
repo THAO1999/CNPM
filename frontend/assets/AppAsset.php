@@ -14,6 +14,8 @@ class AppAsset extends AssetBundle
     public $css = [
         //login
         'css/style.css',
+       'css/styleChiTiet2.css',
+        'css/styleChiTiet.css',
        
     ];
     public $js = [
@@ -27,6 +29,6 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        //'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapAsset',
     ];
 }

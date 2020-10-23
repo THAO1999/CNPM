@@ -18,7 +18,7 @@ class EnterpriseSearch extends Enterprises
     {
         return [
             [['id', 'employee_count', 'gross_revenue', 'status'], 'integer'],
-            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'date_establish', 'img', 'cover_img', 'description', 'created_at', 'updated_at'], 'safe'],
+            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'date_establish', 'cover_img', 'description', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -72,7 +72,6 @@ class EnterpriseSearch extends Enterprises
             ->andFilterWhere(['like', 'password_hash', $this->password_hash])
             ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'img', $this->img])
             ->andFilterWhere(['like', 'cover_img', $this->cover_img])
             ->andFilterWhere(['like', 'description', $this->description]);
 

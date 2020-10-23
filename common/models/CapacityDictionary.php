@@ -1,7 +1,6 @@
 <?php
 
 namespace common\models;
-
 use Yii;
 
 /**
@@ -58,5 +57,10 @@ class CapacityDictionary extends \yii\db\ActiveRecord
     public function getStudentSkillProfiles()
     {
         return $this->hasMany(StudentSkillProfile::className(), ['ability_id' => 'id']);
+    }
+    public function getCapacity($skill){
+        $cap=$skill->ability; // lay nang luc theo ability (relation) hasOne()
+        return $cap->ability_name;
+        
     }
 }

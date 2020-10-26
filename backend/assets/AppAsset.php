@@ -15,6 +15,7 @@ class AppAsset extends AssetBundle
         //  'css/site.css',
         'vendor/fontawesome-free/css/all.min.css',
         'css/sb-admin-2.min.css',
+        
 
     ];
     public $js = [

@@ -1,5 +1,5 @@
 <?php
-
+use yii\helpers\Html;
 use yii\helpers\Url;
 use common\models\Enterprise;
 ?>
@@ -55,7 +55,8 @@ use common\models\Enterprise;
     <?php foreach ($organization_requests as $value): ?>
     <div class="col-md-4 col-xs-12">
     <!-- Last updated: "2020-10-05 14:41:51 +0700"-->
-    <a class="top-company"href="<?php echo Url::home() . "detail-request-enterprise" ?>" data-controller="utm-tracking" rel="nofollow" data-method="put" href="#">
+    
+    <a class="top-company"href="<?php echo Url::home() . "detail-request-enterprise " ?>  " data-controller="utm-tracking" rel="nofollow" data-method="put" href="#">
       <div class="top-company__logo text-center">
       <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" class=" ls-is-cached lazyloaded" data-src="" src="<?=   Enterprise::getImageEnterprise($value->id)?>">
     </div>

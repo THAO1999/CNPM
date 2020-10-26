@@ -2,6 +2,7 @@
 
 namespace enterprise\models;
 use common\models\Enterprise;
+use yii\web\IdentityInterface;  
 use Yii;
 use yii\helpers\Url;
 

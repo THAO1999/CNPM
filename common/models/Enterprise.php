@@ -29,8 +29,11 @@ use yii\helpers\Url;
  * @property string|null $updated_at
  * @property string|null $address
  */
-class Enterprise extends \yii\db\ActiveRecord
+class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
 {
+    const STATUS_DELETED = 0;
+    const STATUS_INACTIVE = 9;
+    const STATUS_ACTIVE = 10;
     /**
      * {@inheritdoc}
      */
@@ -45,7 +48,7 @@ class Enterprise extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password_hash', 'email'], 'required'],
+            [['username', 'password_hash'], 'required'],
             [['date_establish', 'created_at', 'updated_at'], 'safe'],
             [['employee_count', 'gross_revenue', 'status'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'imageFile', 'cover_img', 'description'], 'string', 'max' => 255],
@@ -88,7 +91,9 @@ class Enterprise extends \yii\db\ActiveRecord
     
     public static function findIdentity($id)
     {
+     
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+      
     }
 
     /**

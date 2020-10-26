@@ -8,6 +8,7 @@ use yii\filters\AccessControl;
 use common\models\CapacityDictionary;
 use yii\data\ActiveDataProvider;
 use common\models\OrganizationRequests;
+use frontend\models\Enterprises;
 /**
  * Site controller
  */
@@ -61,11 +62,16 @@ class DetailRequestEnterpriseController extends Controller
     }
     public function actionIndex()
     {
+        $id=183;
+
         $capacity=CapacityDictionary::find()->all();
-        $organization_requests=OrganizationRequests::find()->all();  
+        $organization_requests=OrganizationRequests::findOne($id);  
+        $enterprise=Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
+       // phpinfo();
         return $this->render('index', [
-            'capacity' => $capacity,
-            //'organization_requests'=>$organization_requests,
+            //'capacity' => $capacity,
+            'organization_requests'=>$organization_requests,
+            'enterprise'=>$enterprise,
         ]);
      
     }

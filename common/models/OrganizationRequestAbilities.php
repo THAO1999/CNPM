@@ -3,7 +3,7 @@
 namespace common\models;
 use common\models\OrganizationRequests;
 use Yii;
-
+use common\models\CapacityDictionary;
 /**
  * This is the model class for table "organization_request_abilities".
  *
@@ -95,4 +95,10 @@ class OrganizationRequestAbilities extends \yii\db\ActiveRecord
 }
 
     }
+
+ 
+    public function getSkill($model){
+        return  $skill=$model->organizationRequestAbilities; // get  OrganizationRequestAbilities
+            }
+        
 }

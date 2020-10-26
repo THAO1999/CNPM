@@ -9,6 +9,7 @@ use common\models\CapacityDictionary;
 use yii\data\ActiveDataProvider;
 use common\models\OrganizationRequests;
 use frontend\models\Enterprises;
+use  common\models\OrganizationRequestAbilities;
 /**
  * Site controller
  */
@@ -67,11 +68,13 @@ class DetailRequestEnterpriseController extends Controller
         $capacity=CapacityDictionary::find()->all();
         $organization_requests=OrganizationRequests::findOne($id);  
         $enterprise=Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
+        $lisSkill=OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
        // phpinfo();
         return $this->render('index', [
             //'capacity' => $capacity,
             'organization_requests'=>$organization_requests,
             'enterprise'=>$enterprise,
+            'lisSkill'=>$lisSkill,
         ]);
      
     }

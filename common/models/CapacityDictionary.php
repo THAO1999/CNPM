@@ -12,6 +12,9 @@ use Yii;
  * @property string $ability_note
  *
  * @property StudentSkillProfile[] $studentSkillProfiles
+ * 
+ * 
+ * @property OrganizationRequestAbilities[] $OrganizationRequestAbilities
  */
 class CapacityDictionary extends \yii\db\ActiveRecord
 {
@@ -57,6 +60,10 @@ class CapacityDictionary extends \yii\db\ActiveRecord
     public function getStudentSkillProfiles()
     {
         return $this->hasMany(StudentSkillProfile::className(), ['ability_id' => 'id']);
+    }
+    public function getOrganizationRequestAbilities()
+    {
+        return $this->hasMany(OrganizationRequestAbilities::className(), ['ability_id' => 'id']);
     }
     public function getCapacity($skill){
         $cap=$skill->ability; // lay nang luc theo ability (relation) hasOne()

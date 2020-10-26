@@ -1,5 +1,6 @@
 <?php
 use frontend\models\Enterprises;
+use common\models\CapacityDictionary;
 ?>
 </div>
 
@@ -100,9 +101,10 @@ Address: <?=$enterprise->address?>
 </div>
 <h3 class="panel-title"></h3>
 <ul class="employer-skills">
-<li class="employer-skills__item"><a target="_blank" data-controller="utm-tracking" href="/viec-lam-it/nodejs">NodeJS</a></li>
-<li class="employer-skills__item"><a target="_blank" data-controller="utm-tracking" href="/viec-lam-it/java">Java</a></li>
-<li class="employer-skills__item"><a target="_blank" data-controller="utm-tracking" href="/viec-lam-it/agile">Agile</a></li>
+<?php foreach ($lisSkill as $skill): ?>
+               
+<li class="employer-skills__item"><a target="_blank" data-controller="utm-tracking" href="/viec-lam-it/nodejs"><?= CapacityDictionary::getCapacity($skill)?></a></li>
+<?php endforeach; ?>
 </ul>
 <div class="paragraph">
 <p></p>

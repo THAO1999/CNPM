@@ -53,7 +53,7 @@ AppAsset::register($this);
 </a>
 <ul class="dropdown-menu" role="menu" style="display: none;">
 <li class="dropdown-menu__item--desktop">
-<a class="dropdown-menu__link--desktop" data-controller="utm-tracking" href="/profile"><span class="dropdown-menu__icon">
+<a class="dropdown-menu__link--desktop" data-controller="utm-tracking" href="<?php echo Url::home() . "profile-student" ?>"><span class="dropdown-menu__icon">
 <div class="dropdown-menu__icon-user"></div>
 </span>
 <span>My Account</span>

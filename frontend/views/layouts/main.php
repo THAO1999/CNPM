@@ -16,7 +16,7 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="vi-VN" xml:lang="vi-VN" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+
     <style>
       .preload_image { display: none; }
     </style>
@@ -42,6 +42,8 @@ AppAsset::register($this);
     <div class="pageMenu__body collapse" id="pageMenuToggle">
       
     <ul class="pageMenu__itemList pageMenu__itemList--right pageMenu__not_signed_in">
+  
+
     <li class="pageMenu__item">
 <a href="<?php echo Url::home() . "home" ?>">Home</a>
 </li>

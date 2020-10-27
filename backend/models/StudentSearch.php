@@ -18,7 +18,7 @@ class StudentSearch extends Student
     {
         return [
             [['id', 'status'], 'integer'],
-            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'date_of_birth', 'class_name', 'img', 'created_at', 'updated_at'], 'safe'],
+            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'date_of_birth', 'class_name', 'created_at', 'updated_at',], 'safe'],
         ];
     }
 
@@ -70,9 +70,8 @@ class StudentSearch extends Student
             ->andFilterWhere(['like', 'password_hash', $this->password_hash])
             ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'class_name', $this->class_name])
-            ->andFilterWhere(['like', 'img', $this->img]);
-
+            ->andFilterWhere(['like', 'class_name', $this->class_name]);
+         
         return $dataProvider;
     }
 }

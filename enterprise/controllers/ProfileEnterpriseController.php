@@ -2,7 +2,7 @@
 namespace enterprise\controllers;
 
 use Yii;
-use enterprise\models\Capacity;
+use enterprise\models\Enterprises;
 use common\models\OrganizationRequestAbilities;
 use yii\web\UploadedFile;
 
@@ -72,7 +72,20 @@ class ProfileEnterpriseController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+
+         $model = new Enterprises();
+        $id=Yii::$app->user->identity->id; // id Enterprises
+        $model=$model->getEnterprisesProfiles($id);
+        $model->imageFile=UploadForm::Upload($model);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->render('index', [
+                'model' => $model,
+            ]);
+        }
+
+        return $this->render('index', [
+            'model' => $model,
+        ]);
     }
 
  

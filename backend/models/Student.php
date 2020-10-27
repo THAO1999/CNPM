@@ -6,7 +6,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-
+use frontend\models\StudentSkillProfile;
 /**
  * This is the model class for table "student".
  *
@@ -18,11 +18,12 @@ use yii\web\IdentityInterface;
  * @property string $email
  * @property string|null $date_of_birth
  * @property string|null $class_name
- * @property string|null $img
+ * @property string|null $imageFile
  * @property int $status
  * @property string|null $created_at
  * @property string|null $updated_at
- *
+ *  @property string|null $address
+ * @property int|null $phone
  * @property StudentRegistration[] $studentRegistrations
  * @property EnterpriseRecruitmentRequestForm[] $requests
  * @property StudentSkillProfile[] $studentSkillProfiles
@@ -50,7 +51,7 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
             [['username', 'password_hash', 'email'], 'required'],
             // [['date_of_birth', 'created_at', 'updated_at'], 'safe'],
             [['status'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email', 'class_name', 'img'], 'string', 'max' => 255],
+            [['username', 'password_hash', 'password_reset_token', 'email', 'phone','class_name','address',], 'string', 'max' => 255], // da tung loi day ,"adress,phone"
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
             [['email'], 'unique'],
@@ -72,10 +73,12 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
             'email' => 'Email',
             'date_of_birth' => 'Date Of Birth',
             'class_name' => 'Class Name',
-            'img' => 'Img',
+            'imageFile' => 'imageFile',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'address'=> 'address',
+            'phone'=>'phone'
         ];
     }
 
@@ -87,7 +90,11 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
     public function getStudentRegistrations()
     {
         return $this->hasMany(StudentRegistration::className(), ['student_id' => 'id']);
-    }
+    } 
+
+
+    // relaton sll
+
 
     /**
      * Gets query for [[Requests]].
@@ -276,8 +283,11 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
             $this->generatePasswordResetToken();
             $this->setPassword($this->password_hash);
         } else {
-            // update teacher
-            $old_user = teachers::findOne(($this->id));
+            // update Student
+            $old_user = Student::findOne(($this->id));
+            if ($old_user->password_hash != $this->password_hash) { // neu != password old thi ma hoa password dc update
+                
+            }
             if ($old_user->password_hash != $this->password_hash) { // neu != password old thi ma hoa password dc update
                 $this->generateAuthKey();
                 $this->generatePasswordResetToken();
@@ -287,4 +297,5 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
         return parent::beforeSave($insert);
     }
 
+    
 }

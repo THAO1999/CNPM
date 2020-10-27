@@ -2,21 +2,18 @@
 namespace frontend\controllers;
 
 
-use Yii;
-use common\models\UploadForm;
 use yii\web\Controller;
+use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use frontend\models\Students;
+use common\models\CapacityDictionary;
 use yii\data\ActiveDataProvider;
 use common\models\OrganizationRequests;
-use yii\filters\VerbFilter;
-use frontend\models\StudentSkillProfile;
-
-use common\models\CapacityDictionary;
+use frontend\models\Enterprises;
+use  common\models\OrganizationRequestAbilities;
 /**
  * Site controller
  */
-class ProfileStudentController extends Controller
+class DetailRequestEnterpriseController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -64,36 +61,23 @@ class ProfileStudentController extends Controller
             ],
         ];
     }
-
-
-
-   
-
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
     public function actionIndex()
     {
-        $model = new Students();
-        $id=Yii::$app->user->identity->id; // id student
-        $model=$model->getStudentProfiles($id);
-        $model->imageFile=UploadForm::Upload($model); // lay duong dan 
+        $id=183;
 
-            $list_StudentSkill=StudentSkillProfile::getSkill($model->getStudent($id)); // lay list skill student
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->render('index', [
-                'model' => $model,
-                'list_StudentSkill'=>$list_StudentSkill,
-            ]);
-        }
-
+        $capacity=CapacityDictionary::find()->all();
+        $organization_requests=OrganizationRequests::findOne($id);  
+        $enterprise=Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
+        $lisSkill=OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
+       // phpinfo();
         return $this->render('index', [
-            'model' => $model,
-            'list_StudentSkill'=>$list_StudentSkill,
+            //'capacity' => $capacity,
+            'organization_requests'=>$organization_requests,
+            'enterprise'=>$enterprise,
+            'lisSkill'=>$lisSkill,
         ]);
+     
     }
-  
 
+ 
 }

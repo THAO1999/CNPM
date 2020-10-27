@@ -88,20 +88,22 @@ class SiteController extends Controller
      * @return mixed
      */
     public function actionLogin()
-    {
+    {    
+      
         $this->layout="blank";
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
+        // if (!Yii::$app->user->isGuest) {
+        //     return $this->goHome();
+        // }
+        //phpinfo();
         $model = new LoginFormEnterprise();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
         //    echo"ff";
             return $this->redirect('home/index');
         } else {
             $model->password = '';
-
+          
             return $this->render('login', [
+                
                 'model' => $model,
             ]);
         }

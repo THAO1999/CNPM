@@ -1,4 +1,6 @@
 <?php
+use yii\helpers\Html;
+use yii\helpers\Url;
 use common\models\Enterprise;
 ?>
     <h1 class="slogan">
@@ -53,7 +55,8 @@ use common\models\Enterprise;
     <?php foreach ($organization_requests as $value): ?>
     <div class="col-md-4 col-xs-12">
     <!-- Last updated: "2020-10-05 14:41:51 +0700"-->
-    <a class="top-company" data-controller="utm-tracking" rel="nofollow" data-method="put" href="#">
+    
+    <a class="top-company"href="<?php echo Url::home() . "detail-request-enterprise " ?>  " data-controller="utm-tracking" rel="nofollow" data-method="put" href="#">
       <div class="top-company__logo text-center">
       <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" class=" ls-is-cached lazyloaded" data-src="" src="<?=   Enterprise::getImageEnterprise($value->id)?>">
     </div>
@@ -120,3 +123,134 @@ use common\models\Enterprise;
     </div>
     </div>
     
+    <div id="footer">
+    <div class="content show-extras">
+    <div class="tags hidden-xs">
+    <div class="col-sm-3">
+    <h3 class="no-margin job-list-title">Việc làm IT theo kỹ năng</h3>
+    <ul>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Java</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">PHP</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">.NET</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Tester</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Android</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">iOS</a></li>
+    </ul>
+    <a class="link-primary link-primary--underlined" data-controller="utm-tracking" href="#">Xem tất cả
+    </a></div>
+    <div class="col-sm-3">
+    <h3 class="no-margin job-list-title">Việc làm IT theo cấp bậc</h3>
+    <ul>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Lập trình viên Back End</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Lập trình viên PHP</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Lập trình viên NodeJS</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Lập trình viên iOS</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Lập trình viên Android</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Lập trình viên Ruby on rails</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Lập trình viên Java</a></li>
+    </ul>
+    <a class="link-primary link-primary--underlined" data-controller="utm-tracking" href="#">Xem tất cả
+    </a></div>
+    <div class="col-sm-3">
+    <h3 class="no-margin job-list-title">Việc làm IT theo công ty</h3>
+    <ul>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Techcombank</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">FPT Software</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">DatVietVAC</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">NFQ Asia (8bit Rockstars)</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Robert Bosch Engineering And Business Solutions</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Dirox</a></li>
+    </ul>
+    <a class="link-primary link-primary--underlined" data-controller="utm-tracking" href="#">Xem tất cả
+    </a></div>
+    <div class="col-sm-3">
+    <h3 class="no-margin job-list-title">Việc làm IT theo thành phố</h3>
+    <ul>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Ho Chi Minh</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Ha Noi</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Da Nang</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="#">Others</a></li>
+    </ul>
+    </div>
+    <div class="clearfix"></div>
+    
+    </div>
+    <div class="mobile-tags visible-xs">
+    <div class="mobile-tags__skill less">
+    <div class="mobile-tags__skill--title">
+    <h3 class="no-margin job-list-title">Việc làm IT theo kỹ năng</h3>
+    <span>+</span>
+    </div>
+    <ul class="mobile-tags__skill--list">
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/java">Java</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/php">PHP</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/.net">.NET</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/tester">Tester</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/android">Android</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/ios">iOS</a></li>
+    <a class="link-primary link-primary--underlined" data-controller="utm-tracking" href="/tim-viec-lam-it">Xem tất cả
+    </a></ul>
+    </div>
+    <div class="mobile-tags__title less">
+    <div class="mobile-tags__title--title">
+    <h3 class="no-margin job-list-title">Việc làm IT theo cấp bậc</h3>
+    <span>+</span>
+    </div>
+    <ul class="mobile-tags__title--list">
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/lap-trinh-vien-back-end">Lập trình viên Back End</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/lap-trinh-vien-php">Lập trình viên PHP</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/lap-trinh-vien-nodejs">Lập trình viên NodeJS</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/lap-trinh-vien-ios">Lập trình viên iOS</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/lap-trinh-vien-android">Lập trình viên Android</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/lap-trinh-vien-ruby-on-rails">Lập trình viên Ruby on rails</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/lap-trinh-vien-java">Lập trình viên Java</a></li>
+    <a class="link-primary link-primary--underlined" data-controller="utm-tracking" href="/viec-lam-it-theo-cap-bac">Xem tất cả
+    </a></ul>
+    </div>
+    <div class="mobile-tags__company less">
+    <div class="mobile-tags__company--title">
+    <h3 class="no-margin job-list-title">Việc làm IT theo công ty</h3>
+    <span>+</span>
+    </div>
+    <ul class="mobile-tags__company--list">
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/nha-tuyen-dung/techcombank">Techcombank</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/nha-tuyen-dung/fpt-software">FPT Software</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/nha-tuyen-dung/datvietvac">DatVietVAC</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/nha-tuyen-dung/nfq-asia-8bit-rockstars">NFQ Asia (8bit Rockstars)</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/nha-tuyen-dung/robert-bosch-engineering-and-business-solutions">Robert Bosch Engineering And Business Solutions</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/nha-tuyen-dung/dirox">Dirox</a></li>
+    <a class="link-primary link-primary--underlined" data-controller="utm-tracking" href="/viec-lam-it-theo-ten-cong-ty">Xem tất cả
+    </a></ul>
+    </div>
+    <div class="mobile-tags__city less">
+    <div class="mobile-tags__city--title">
+    <h3 class="no-margin job-list-title">Việc làm IT theo thành phố</h3>
+    <span>+</span>
+    </div>
+    <ul class="mobile-tags__city--list">
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/ho-chi-minh-hcm">Ho Chi Minh</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/ha-noi">Ha Noi</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/da-nang">Da Nang</a></li>
+    <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/others">Others</a></li>
+    </ul>
+    </div>
+    
+    <div class="mobile-tags__footer less">
+    <div class="mobile-tags__footer--title">
+    <h3 class="no-margin job-list-title">Về ITviec</h3>
+    <span>+</span>
+    </div>
+    <ul class="mobile-tags__footer--list">
+    <li class="tag"><a target="_blank" data-controller="utm-tracking" href="/ve-itviec">Về ITviec.com</a></li>
+    <li class="tag"><a target="_blank" data-controller="utm-tracking" href="/lien-he">Liên Hệ</a></li>
+    <li class="tag"><a target="_blank" href="https://itviec.com/blog/chinh-sach-bao-mat/">Quy định bảo mật</a></li>
+    <li class="tag"><a target="_blank" href="https://itviec.com/blog/terms-and-conditions/">Thoả thuận sử dụng</a></li>
+    <li class="tag"><a target="_blank" href="https://itviec.com/blog/quy-che-hoat-dong-cua-itviec/">Quy chế hoạt động</a></li>
+    <li class="tag"><a target="_blank" href="https://itviec.com/blog/chinh-sach-giai-quyet-khieu-nai/">Chính sách giải quyết khiếu nại</a></li>
+    <li class="tag"><a target="_blank" href="https://itviec.com/blog/press/">Thông cáo báo chí</a></li>
+    <li class="tag"><a target="_blank" href="https://itviec.com/blog/faq-cac-cau-hoi-thuong-gap/">Câu hỏi thường gặp</a></li>
+    </ul>
+    </div>
+    
+    </div>
+    </div>

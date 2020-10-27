@@ -8,6 +8,7 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use common\models\OrganizationRequests;
 use yii\helpers\Url;
+
 /**
  * This is the model class for table "enterprise".
  *
@@ -19,7 +20,7 @@ use yii\helpers\Url;
  * @property string $email
  * @property string|null $date_establish
  * @property int|null $employee_count
- * @property string|null $img
+ * @property string|null $imageFile
  * @property string|null $cover_img
  * @property string|null $description
  * @property int|null $gross_revenue
@@ -27,8 +28,6 @@ use yii\helpers\Url;
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property string|null $address
- *
- * @property EnterpriseRecruitmentRequestForm[] $enterpriseRecruitmentRequestForms
  */
 class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
 {
@@ -49,11 +48,12 @@ class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'password_hash', 'email'], 'required'],
+            [['username', 'password_hash'], 'required'],
             [['date_establish', 'created_at', 'updated_at'], 'safe'],
             [['employee_count', 'gross_revenue', 'status'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email', 'img', 'cover_img', 'description'], 'string', 'max' => 255],
+            [['username', 'password_hash', 'password_reset_token', 'email', 'imageFile', 'cover_img', 'description'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
+            [['address'], 'string', 'max' => 50],
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
@@ -74,22 +74,16 @@ class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
             'email' => 'Email',
             'date_establish' => 'Date Establish',
             'employee_count' => 'Employee Count',
-            'img' => 'Img',
+            'imageFile' => 'Image File',
             'cover_img' => 'Cover Img',
             'description' => 'Description',
             'gross_revenue' => 'Gross Revenue',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'address'=>'address'
+            'address' => 'Address',
         ];
     }
-
-    /**
-     * Gets query for [[EnterpriseRecruitmentRequestForms]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getEnterpriseRecruitmentRequestForms()
     {
         return $this->hasMany(EnterpriseRecruitmentRequestForm::className(), ['organization_id' => 'id']);
@@ -97,7 +91,9 @@ class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
     
     public static function findIdentity($id)
     {
+     
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+      
     }
 
     /**
@@ -253,7 +249,7 @@ class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
             $this->setPassword($this->password_hash);
         } else {
             // update teacher
-            $old_user = teachers::findOne(($this->id));
+            $old_user = Enterprise::findOne(($this->id));
             if ($old_user->password_hash != $this->password_hash) { // neu != password old thi ma hoa password dc update
                 $this->generateAuthKey();
                 $this->generatePasswordResetToken();
@@ -271,11 +267,8 @@ class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
 
        $enterprise= Enterprise::findOne($id);
 
-       return Url::base(true). '/../../uploads/'.$enterprise->img; // getpathImg
+       return Url::base(true). '/../../uploads/'.$enterprise->imageFile; // getpathImg
        
       
     }
-
 }
-
-?>

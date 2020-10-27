@@ -70,9 +70,9 @@ class HomeController extends Controller
         $capacity = new Capacity();
         $organizationRequestAbilities=new OrganizationRequestAbilities();  
         $model->organization_id= Yii::$app->user->identity->id ;
-        $model->status=2;  
-       $model->imageFile=$this->actionUpload(); 
-     //  phpinfo();
+        $model->status=2; 
+        $model->imageFile=UploadForm::Upload($model);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) { 
             if($organizationRequestAbilities->luu($model->id) ){
           return $this->redirect(['view', 'id' => $model->id]);
@@ -84,16 +84,7 @@ class HomeController extends Controller
         'capacity'=>$capacity,
 ]);
 }
-public function actionUpload()
-    {
-        $model = new OrganizationRequests();  // đã từng lỗ ở đây
-        $fileUpload = UploadedFile::getInstance($model, 'imageFile');
-        if(isset($fileUpload->size)){
-            $fileUpload->saveAs(Yii::getAlias('@uploads/') . $fileUpload->baseName . '.' . $fileUpload->extension);
-            return  $fileUpload->baseName. '.'.$fileUpload->extension;
-          
-        }       
-    }
+
     /**
      * Displays about page.
      *

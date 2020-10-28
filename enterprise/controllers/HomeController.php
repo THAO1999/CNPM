@@ -1,17 +1,14 @@
 <?php
 namespace enterprise\controllers;
 
-use Yii;
-use enterprise\models\Capacity;
 use common\models\OrganizationRequestAbilities;
-use yii\web\UploadedFile;
-
-use common\models\UploadForm;
-use yii\web\Controller;
-use yii\helpers\ArrayHelper ;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use common\models\OrganizationRequests;
+use common\models\UploadForm;
+use enterprise\models\Capacity;
+use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
 
 /**
  * Site controller
@@ -68,22 +65,22 @@ class HomeController extends Controller
     {
         $model = new OrganizationRequests();
         $capacity = new Capacity();
-        $organizationRequestAbilities=new OrganizationRequestAbilities();  
-        $model->organization_id= Yii::$app->user->identity->id ;
-        $model->status=2; 
-        $model->imageFile=UploadForm::Upload($model);
+        $organizationRequestAbilities = new OrganizationRequestAbilities();
+        $model->organization_id = Yii::$app->user->identity->id;
+        $model->status = 2;
+        $model->imageFile = UploadForm::Upload($model);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) { 
-            if($organizationRequestAbilities->luu($model->id) ){
-          return $this->redirect(['view', 'id' => $model->id]);
-                      } 
-     
-   }
-    return $this->render('create', [
-        'model' => $model,
-        'capacity'=>$capacity,
-]);
-}
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($organizationRequestAbilities->luu($model->id)) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
+        }
+        return $this->render('create', [
+            'model' => $model,
+            'capacity' => $capacity,
+        ]);
+    }
 
     /**
      * Displays about page.
@@ -92,8 +89,12 @@ class HomeController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $id = Yii::$app->user->identity->id; // id Enterprises
+        $listOrganization_requests = OrganizationRequests::find()->where(['organization_id' => $id])->all();
+        return $this->render('index', [
+            //  'capacity' => $capacity,
+            'listOrganization_requests' => $listOrganization_requests,
+        ]);
     }
 
- 
 }

@@ -7,7 +7,7 @@ use yii\helpers\Url;
 ?>
 
 
-    <div class="top-companies">
+    <div class="top-companies" >
     <div class="title">Phiếu Tuyển Dụng</div>
     <div class="row">
     <!-- Last updated: "2020-10-05 15:09:37 +0700"-->

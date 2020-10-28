@@ -1,6 +1,8 @@
 <?php
-use frontend\models\Enterprises;
 use common\models\CapacityDictionary;
+use common\models\OrganizationRequestAbilities;
+use frontend\models\Enterprises;
+use yii\helpers\Url;
 ?>
 </div>
 
@@ -14,14 +16,14 @@ use common\models\CapacityDictionary;
 <!-- Headline Photo -->
 <div class="cover-images-desktop cover-images-cropped aspect-ratio-box">
 <div class="aspect-ratio-box-inside">
-<img width="100%" alt="Home Credit Vietnam  tuyển dụng việc làm IT"src="<?=  Enterprises::getCoverImage($enterprise->id)?>">
+<img width="100%" alt="Home Credit Vietnam  tuyển dụng việc làm IT"src="<?=Enterprises::getCoverImage($enterprise->id)?>">
 </div>
 </div>
 <!-- Header Information -->
 <div class="headers hidden-xs">
 <div class="logo-container">
 <div class="has-overtime logo">
-<img alt="Home Credit Vietnam  Vietnam Big Logo" class=" ls-is-cached lazyloaded" data-src="https://cdn.itviec.com/employers/home-credit-vietnam/logo/w170/dFAsZ8oiQpLPyUr8Yi5jUWdj/home-credit-vietnam-ppf-logo.png" src="<?=  Enterprises::getImageEnterprise($enterprise->id)?>">
+<img alt="Home Credit Vietnam  Vietnam Big Logo" class=" ls-is-cached lazyloaded" data-src="https://cdn.itviec.com/employers/home-credit-vietnam/logo/w170/dFAsZ8oiQpLPyUr8Yi5jUWdj/home-credit-vietnam-ppf-logo.png" src="<?=Enterprises::getImageEnterprise($enterprise->id)?>">
 </div>
 </div>
 <div class="name-and-info">
@@ -67,7 +69,7 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 <!-- Navigation -->
 <ul class="navigation">
 <li class="active navigation__item">
-<a data-controller="utm-tracking" href="/nha-tuyen-dung/home-credit-vietnam">Giới thiệu công ty</a>
+<a data-controller="utm-tracking" href="#">Giới thiệu công ty</a>
 <div class="corner-bottom-right-overlay"></div>
 <div class="corner-bottom-right-curve"></div>
 </li>
@@ -94,7 +96,7 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 
 <div class="panel-body">
 <div class="paragraph">
-<h3 style="color:red">
+<h3 style="color:red;margin-bottom:10px">
 Address: <?=$enterprise->address?>
 </h3>
 <p><?=$enterprise->description?></p>
@@ -102,9 +104,9 @@ Address: <?=$enterprise->address?>
 <h3 class="panel-title"></h3>
 <ul class="employer-skills">
 <?php foreach ($lisSkill as $skill): ?>
-               
-<li class="employer-skills__item"><a target="_blank" data-controller="utm-tracking" href="/viec-lam-it/nodejs"><?= CapacityDictionary::getCapacity($skill)?></a></li>
-<?php endforeach; ?>
+
+<li class="employer-skills__item"><a  data-controller="utm-tracking" href="#"><?=CapacityDictionary::getCapacity($skill)?></a></li>
+<?php endforeach;?>
 </ul>
 <div class="paragraph">
 <p></p>
@@ -157,9 +159,11 @@ Address: <?=$enterprise->address?>
 <!-- Last updated: "2020-10-22 14:42:31 +0700"-->
 <div class="job-list">
 <!-- Last updated: "2020-10-21 10:28:38 +0700"-->
+<?php foreach ($listOrganization_requests as $rq): ?>
+
 <div class="job">
 <h2 class="name">
-<a data-controller="utm-tracking" href="/it-jobs/technical-lead-java-home-credit-vietnam-2440?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email&amp;lab_feature=review_job">Technical Lead (Java)</a>
+<a data-controller="utm-tracking" href="<?php echo Url::home() . "detail-request-enterprise " ?>  "><?=$rq->subject?></a>
 </h2>
 <div class="salary">
 <span class="salary-icon-stack">
@@ -171,157 +175,23 @@ Address: <?=$enterprise->address?>
 You'll love it
 </span>
 </div>
+<div class="address" style="margin-bottom:5px">
+Deadline:<?=$rq->date_submitted?>
 
-
-<div class="address">
-Ho Chi Minh
 </div>
 <div class="tag-list">
-<a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/java?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-Java
-</span>
-</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/team-leader?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-Team Leader
-</span>
-</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/cloud?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-Cloud
+<?php $lisSkill = OrganizationRequestAbilities::getSkill($rq);?>
+
+<?php foreach ($lisSkill as $skill): ?>
+</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="#"><span>
+<?=CapacityDictionary::getCapacity($skill)?>
 </span>
 </a>
+<?php endforeach;?>
 </div>
 </div>
 <hr>
-<!-- Last updated: "2020-10-22 14:42:31 +0700"-->
-<div class="job">
-<h2 class="name">
-<a data-controller="utm-tracking" href="/it-jobs/senior-java-developer-home-credit-vietnam-3712?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email&amp;lab_feature=review_job">Senior Java Developer</a>
-</h2>
-<div class="salary">
-<span class="salary-icon-stack">
-<i class="ion-ios-circle-outline"></i>
-<i class="ion-social-usd"></i>
-</span>
-
-<span class="salary-text">
-You'll love it
-</span>
-</div>
-
-
-<div class="address">
-Ho Chi Minh
-</div>
-<div class="tag-list">
-<a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/java?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-Java
-</span>
-</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/spring?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-Spring
-</span>
-</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/cloud?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-Cloud
-</span>
-</a>
-</div>
-</div>
-<!-- Last updated: "2020-10-22 14:42:31 +0700"-->
-<div class="job">
-<h2 class="name">
-<a data-controller="utm-tracking" href="/it-jobs/android-developer-home-credit-vietnam-3634?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email&amp;lab_feature=review_job">Android Developer </a>
-</h2>
-<div class="salary">
-<span class="salary-icon-stack">
-<i class="ion-ios-circle-outline"></i>
-<i class="ion-social-usd"></i>
-</span>
-
-<span class="salary-text">
-You'll love it
-</span>
-</div>
-
-
-<div class="address">
-Ho Chi Minh
-</div>
-<div class="tag-list">
-<a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/android?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-Android
-</span>
-</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/english?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-English
-</span>
-</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/java?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-Java
-</span>
-</a>
-</div>
-</div>
-<!-- Last updated: "2020-10-21 10:28:38 +0700"-->
-<div class="job">
-<h2 class="name">
-<a data-controller="utm-tracking" href="/it-jobs/application-support-home-credit-vietnam-2223?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email&amp;lab_feature=review_job">Application Support </a>
-</h2>
-<div class="salary">
-<span class="salary-icon-stack">
-<i class="ion-ios-circle-outline"></i>
-<i class="ion-social-usd"></i>
-</span>
-
-<span class="salary-text">
-You'll love it
-</span>
-</div>
-
-
-<div class="address">
-Ho Chi Minh
-</div>
-<div class="tag-list">
-<a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/sql?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-SQL
-</span>
-</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/english?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-English
-</span>
-</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/it-support?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-IT Support
-</span>
-</a>
-</div>
-</div>
-<!-- Last updated: "2020-10-22 05:17:21 +0700"-->
-<div class="job">
-<h2 class="name">
-<a data-controller="utm-tracking" href="/it-jobs/senior-frontend-developer-reactjs-home-credit-vietnam-2438?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email&amp;lab_feature=review_job">Frontend Developer (ReactJS)</a>
-</h2>
-<div class="salary">
-<span class="salary-icon-stack">
-<i class="ion-ios-circle-outline"></i>
-<i class="ion-social-usd"></i>
-</span>
-
-<span class="salary-text">
-You'll love it
-</span>
-</div>
-
-
-<div class="address">
-Ho Chi Minh
-</div>
-<div class="tag-list">
-<a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/reactjs?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-ReactJS
-</span>
-</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/nodejs?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-NodeJS
-</span>
-</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="/it-jobs/php?utm_campaign=signup&amp;utm_medium=confirm&amp;utm_source=email"><span>
-PHP
-</span>
-</a>
-</div>
-<br>
+<?php endforeach;?>
 <a class="button ibutton full-width ibutton-red big add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" href="">Viết review</a>
 </div>
 </div>

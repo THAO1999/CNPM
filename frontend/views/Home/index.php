@@ -1,7 +1,6 @@
 <?php
-use yii\helpers\Html;
-use yii\helpers\Url;
 use common\models\Enterprise;
+use yii\helpers\Url;
 ?>
     <h1 class="slogan">
     1,317 Việc Làm IT Chất Cho Sinh Viên
@@ -11,7 +10,7 @@ use common\models\Enterprise;
     <div class="search_section_wrapper no_header">
     <div class="search_text_wrapper">
     <!-- <div class="fas fa-search"></div> -->
-    
+
     <div class="search_field_wrapper">
     <input type="text" name="query" id="search_text" value="" class="" style="display: none;">
     <ul class="tagit ui-widget ui-widget-content ui-corner-all">
@@ -23,30 +22,30 @@ use common\models\Enterprise;
     </div>
     </div>
     </div>
-    
+
     <div class="search_button_wrapper">
     <input type="submit" name="commit" value="Tìm Kiếm" class="search_button button-red left" data-disable-with="Tìm Kiếm">
     </div>
     </form>
-    
+
     </div>
-    
-    
+
+
     <div class="visible-xs">
-    
-    
+
+
     </div>
     <div class="page-header__tag-list hidden-xs">
     <?php foreach ($capacity as $value): ?>
     <a class="head no-border ilabel popular-keyword" data-controller="utm-tracking" href="#"><?=$value->ability_name?></a>
-    <?php endforeach; ?>
+    <?php endforeach;?>
     </div>
 
     </div>
     <div class="hidden-xs" id="scrolltop" style="display: block;">
     <div class="top-arrow"></div>
     </div>
-    
+
     <div class="top-companies">
     <div class="title">Nhà Tuyển Dụng</div>
     <div class="row">
@@ -55,13 +54,13 @@ use common\models\Enterprise;
     <?php foreach ($organization_requests as $value): ?>
     <div class="col-md-4 col-xs-12">
     <!-- Last updated: "2020-10-05 14:41:51 +0700"-->
-    
-    <a class="top-company"href="<?php echo Url::home() . "detail-request-enterprise " ?>  " data-controller="utm-tracking" rel="nofollow" data-method="put" href="#">
+
+    <a class="top-company"href="<?=Url::home() . "detail-request-enterprise?id=" . $value->id?>  " data-controller="utm-tracking" rel="nofollow" data-method="put" href="#">
       <div class="top-company__logo text-center">
-      <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" class=" ls-is-cached lazyloaded" data-src="" src="<?=   Enterprise::getImageEnterprise($value->id)?>">
+      <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" class=" ls-is-cached lazyloaded" data-src="" src="<?=Enterprise::getImageEnterprise($value->id)?>">
     </div>
     <div class="top-company__name text-center"><?=$value->subject?> </div>
-  
+
     <footer class="top-company__footer text-center">
     <span class="top-company__footer-jobs">
     <span class="red link">
@@ -72,11 +71,11 @@ use common\models\Enterprise;
     <span class="top-company__footer-city">Ha Noi</span>
     </footer>
     </a></div>
-    <?php endforeach; ?>
-    
+    <?php endforeach;?>
+
     </div>
     </div>
-    
+
     <div class="clearfix"></div>
     <div class="blog-list">
     <div class="blog-list__header">
@@ -89,7 +88,7 @@ use common\models\Enterprise;
     <div class="blog-list__content">
     <!-- Last updated: "2020-09-16 08:38:32 +0700"-->
     <div class="blog">
-    <a class="blog__image-link" href="#"><img class=" ls-is-cached lazyloaded" data-src="img/react-native.png" width="100%" src="<?= yii\helpers\Url::base(true). '/../../uploads/react-native.png'?>"
+    <a class="blog__image-link" href="#"><img class=" ls-is-cached lazyloaded" data-src="img/react-native.png" width="100%" src="<?=yii\helpers\Url::base(true) . '/../../uploads/react-native.png'?>"
     </a><div class="blog__description">
     <h4 class="blog__description-title">
     <a target="_blank" href="#">React Native là gì? 20+ Tài liệu học React Native từ cơ bản đến nâng cao</a>
@@ -105,7 +104,7 @@ use common\models\Enterprise;
     </div>
     <!-- Last updated: "2020-08-20 18:28:32 +0700"-->
     <div class="blog">
-    <a class="blog__image-link" href="#"><img class=" ls-is-cached lazyloaded" data-src="img/user.png" width="100%" src="<?= yii\helpers\Url::base(true). '/../../uploads/user.png' ?>"
+    <a class="blog__image-link" href="#"><img class=" ls-is-cached lazyloaded" data-src="img/user.png" width="100%" src="<?=yii\helpers\Url::base(true) . '/../../uploads/user.png'?>"
     </a><div class="blog__description">
     <h4 class="blog__description-title">
     <a target="_blank" href="#">Docker là gì? Vì sao DevOps Engineer nên biết?</a>
@@ -119,10 +118,10 @@ use common\models\Enterprise;
     </a></div>
     </div>
     </div>
-    
+
     </div>
     </div>
-    
+
     <div id="footer">
     <div class="content show-extras">
     <div class="tags hidden-xs">
@@ -173,7 +172,7 @@ use common\models\Enterprise;
     </ul>
     </div>
     <div class="clearfix"></div>
-    
+
     </div>
     <div class="mobile-tags visible-xs">
     <div class="mobile-tags__skill less">
@@ -234,7 +233,7 @@ use common\models\Enterprise;
     <li class="tag"><a class="mkt-track skill-tag__link" data-controller="utm-tracking" href="/viec-lam-it/others">Others</a></li>
     </ul>
     </div>
-    
+
     <div class="mobile-tags__footer less">
     <div class="mobile-tags__footer--title">
     <h3 class="no-margin job-list-title">Về ITviec</h3>
@@ -251,6 +250,6 @@ use common\models\Enterprise;
     <li class="tag"><a target="_blank" href="https://itviec.com/blog/faq-cac-cau-hoi-thuong-gap/">Câu hỏi thường gặp</a></li>
     </ul>
     </div>
-    
+
     </div>
     </div>

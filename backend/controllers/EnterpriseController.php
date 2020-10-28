@@ -2,12 +2,12 @@
 
 namespace backend\controllers;
 
-use Yii;
-use backend\models\Enterprises;
 use app\models\EnterpriseSearch;
+use backend\models\Enterprises;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * EnterpriseController implements the CRUD actions for Enterprises model.
@@ -37,7 +37,6 @@ class EnterpriseController extends Controller
     {
         $searchModel = new EnterpriseSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -52,7 +51,7 @@ class EnterpriseController extends Controller
      */
     public function actionView($id)
     {
-     return $this->render('view', [
+        return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -68,10 +67,10 @@ class EnterpriseController extends Controller
         $time = date("Y/m/d");
         $model->created_at = $time;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-               return $this->redirect(['view', 'id' => $model->id]);
-                      } 
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
         return $this->render('create', [
-                'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -84,9 +83,9 @@ class EnterpriseController extends Controller
      */
     public function actionUpdate($id)
     {
-            $model = $this->findModel($id);
-            $time = date("Y/m/d");
-            $model->updated_at = $time;
+        $model = $this->findModel($id);
+        $time = date("Y/m/d");
+        $model->updated_at = $time;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

@@ -2,12 +2,12 @@
 
 namespace common\models;
 
+use common\models\OrganizationRequests;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
-use yii\web\IdentityInterface;
-use common\models\OrganizationRequests;
 use yii\helpers\Url;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "enterprise".
@@ -29,7 +29,7 @@ use yii\helpers\Url;
  * @property string|null $updated_at
  * @property string|null $address
  */
-class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
+class Enterprise extends \yii\db\ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
@@ -88,12 +88,12 @@ class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
     {
         return $this->hasMany(EnterpriseRecruitmentRequestForm::className(), ['organization_id' => 'id']);
     }
-    
+
     public static function findIdentity($id)
     {
-     
+
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
-      
+
     }
 
     /**
@@ -261,14 +261,13 @@ class Enterprise extends \yii\db\ActiveRecord  implements IdentityInterface
 
     public function getImageEnterprise($id)
     {
-          // lay organization_id doanh nghiep
-        $organizationRequests= OrganizationRequests::findOne($id);
-       $id= $organizationRequests->organization_id; // 
+        // lay organization_id doanh nghiep
+        $organizationRequests = OrganizationRequests::findOne($id);
+        $id = $organizationRequests->organization_id; //
 
-       $enterprise= Enterprise::findOne($id);
+        $enterprise = Enterprise::findOne($id);
 
-       return Url::base(true). '/../../uploads/'.$enterprise->imageFile; // getpathImg
-       
-      
+        return Url::base(true) . '/../../uploads/' . $enterprise->imageFile; // getpathImg
+
     }
 }

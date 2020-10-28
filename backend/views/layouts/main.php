@@ -9,6 +9,7 @@ use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 AppAsset::register($this);
 ?>
+
 <?php $this->beginPage()?>
 <!DOCTYPE html>
 <html lang="<?=Yii::$app->language?>">
@@ -17,7 +18,11 @@ AppAsset::register($this);
     <meta charset="<?=Yii::$app->charset?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $this->registerCsrfMetaTags()?>
+    <?php $this->registerCsrfMetaTags();
+// $this->registerCssFile('fontawesome-free/css/all.min.css');
+// $this->registerCssFile('@web/css/sb-admin-2.min.css');
+
+?>
     <title><?=Html::encode($this->title)?></title>
     <?php $this->head()?>
 </head>
@@ -45,7 +50,7 @@ AppAsset::register($this);
             </li>
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo  Url::home() . "student" ?>"> Sinh Viên</a>
+                <a class="nav-link collapsed" href="<?php echo Url::home() . "student" ?>"> Sinh Viên</a>
             </li>
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
@@ -67,9 +72,9 @@ AppAsset::register($this);
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Danh Sách Phiếu</h6>
-                        <a class="collapse-item" href="utilities-color.html">Đã xác nhận</a>
-                        <a class="collapse-item" href="utilities-border.html">Chưa xác nhận</a>
-                        <a class="collapse-item" href="utilities-animation.html">Bi hủy</a>
+                        <a class="collapse-item" href="<?php echo Yii::$app->homeUrl . "organization-request?status=10" ?>">Đã xác nhận</a>
+                        <a class="collapse-item" href="<?php echo Yii::$app->homeUrl . "organization-request?status=9" ?>">Chưa xác nhận</a>
+                        <a class="collapse-item" href="<?php echo Yii::$app->homeUrl . "organization-request?status=0" ?>">Bi hủy</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>

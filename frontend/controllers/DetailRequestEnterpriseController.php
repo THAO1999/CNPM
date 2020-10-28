@@ -1,15 +1,13 @@
 <?php
 namespace frontend\controllers;
 
-
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use common\models\CapacityDictionary;
-use yii\data\ActiveDataProvider;
+use common\models\OrganizationRequestAbilities;
 use common\models\OrganizationRequests;
 use frontend\models\Enterprises;
-use  common\models\OrganizationRequestAbilities;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
+
 /**
  * Site controller
  */
@@ -61,23 +59,26 @@ class DetailRequestEnterpriseController extends Controller
             ],
         ];
     }
-    public function actionIndex()
+    public function actionIndex($id)
     {
-        $id=183;
+        //$id = 183; //pheu
 
-        $capacity=CapacityDictionary::find()->all();
-        $organization_requests=OrganizationRequests::findOne($id);  
-        $enterprise=Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
-        $lisSkill=OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
-       // phpinfo();
+        $organization_requests = OrganizationRequests::findOne($id); // lay thong tin phieu theo id
+
+        $enterprise = Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
+
+        $listOrganization_requests = OrganizationRequests::find()->limit(5)->all();
+
+        $lisSkill = OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
+        // phpinfo();
         return $this->render('index', [
             //'capacity' => $capacity,
-            'organization_requests'=>$organization_requests,
-            'enterprise'=>$enterprise,
-            'lisSkill'=>$lisSkill,
+            'organization_requests' => $organization_requests,
+            'enterprise' => $enterprise,
+            'lisSkill' => $lisSkill,
+            'listOrganization_requests' => $listOrganization_requests,
         ]);
-     
+
     }
 
- 
 }

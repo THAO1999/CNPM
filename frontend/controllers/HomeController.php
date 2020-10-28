@@ -1,22 +1,12 @@
 <?php
 namespace frontend\controllers;
 
-use frontend\models\ResendVerificationEmailForm;
-use frontend\models\VerifyEmailForm;
-use Yii;
-use yii\base\InvalidArgumentException;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use common\models\LoginFormStudent;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
-use frontend\models\ContactForm;
 use common\models\CapacityDictionary;
-use yii\data\ActiveDataProvider;
 use common\models\OrganizationRequests;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
+
 /**
  * Site controller
  */
@@ -70,14 +60,13 @@ class HomeController extends Controller
     }
     public function actionIndex()
     {
-        $capacity=CapacityDictionary::find()->all();
-        $organization_requests=OrganizationRequests::find()->all();  
+        $capacity = CapacityDictionary::find()->limit(12)->all();
+        $organization_requests = OrganizationRequests::find()->all();
         return $this->render('index', [
             'capacity' => $capacity,
-            'organization_requests'=>$organization_requests,
+            'organization_requests' => $organization_requests,
         ]);
-     
+
     }
 
- 
 }

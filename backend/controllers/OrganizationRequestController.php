@@ -4,8 +4,13 @@ namespace backend\controllers;
 
 use backend\models\OrganizationRequest;
 use common\models\CapacityDictionary;
+use common\models\OrganizationRequestAbilities;
+use common\models\OrganizationRequests;
+use frontend\models\Enterprises;
+use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 /**
  * CapacityDictionaryController implements the CRUD actions for CapacityDictionary model.
@@ -39,13 +44,55 @@ class OrganizationRequestController extends Controller
         // confirm
 
         $listOrganizationRequest = $this->checkStatus($status);
-        // foreach ($listOrganizationRequest as $value) {
-        //     echo $value->status;
-        //     phpinfo();
-        // }
+
         return $this->render('index', [
             'listOrganizationRequest' => $listOrganizationRequest,
 
+        ]);
+
+    }
+    public function actionConfirm($id)
+    {
+        $organization_requests = OrganizationRequests::findOne($id); // lay thong tin phieu theo id
+        $organization_requests->status = OrganizationRequest::confirm; // chuyển thành phếu đã xác nhận
+        $organization_requests->save();
+        return $this->actionIndex($organization_requests->status);
+
+    }
+
+    public function actionCreate($id)
+    {
+
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->status = OrganizationRequest::cancel;
+            $model->save();
+            return $this->actionIndex($model->status);
+        }
+
+        return $this->render('create',
+            ['model' => $model]);
+
+    }
+    public function actionView($id)
+    {
+        //$id = 183; //pheu
+
+        $organization_requests = OrganizationRequests::findOne($id); // lay thong tin phieu theo id
+
+        $enterprise = Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
+
+        $listOrganization_requests = OrganizationRequests::find()->limit(5)->all(); //lay list
+
+        $lisSkill = OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
+        // phpinfo();
+        return $this->render('view', [
+            //'capacity' => $capacity,
+            'organization_requests' => $organization_requests,
+            'enterprise' => $enterprise,
+            'lisSkill' => $lisSkill,
+            'listOrganization_requests' => $listOrganization_requests,
         ]);
 
     }
@@ -72,5 +119,14 @@ class OrganizationRequestController extends Controller
     public function getListOrganizationRequestCancel()
     {
         return OrganizationRequest::find()->where(['status' => OrganizationRequest::cancel])->all();
+    }
+
+    protected function findModel($id)
+    {
+        if (($model = OrganizationRequests::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

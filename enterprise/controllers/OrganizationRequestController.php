@@ -4,6 +4,9 @@ namespace enterprise\controllers;
 
 use backend\models\OrganizationRequest;
 use common\models\CapacityDictionary;
+use common\models\OrganizationRequestAbilities;
+use common\models\OrganizationRequests;
+use frontend\models\Enterprises;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 
@@ -39,17 +42,34 @@ class OrganizationRequestController extends Controller
         // confirm
 
         $listOrganizationRequest = $this->checkStatus($status);
-        // foreach ($listOrganizationRequest as $value) {
-        //     echo $value->status;
-        //     phpinfo();
-        // }
+
         return $this->render('index', [
             'listOrganizationRequest' => $listOrganizationRequest,
 
         ]);
 
     }
+    public function actionView($id)
+    {
+        //$id = 183; //pheu
 
+        $organization_requests = OrganizationRequests::findOne($id); // lay thong tin phieu theo id
+
+        $enterprise = Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
+
+        $listOrganization_requests = OrganizationRequests::find()->limit(5)->all(); //lay list
+
+        $lisSkill = OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
+        // phpinfo();
+        return $this->render('view', [
+            //'capacity' => $capacity,
+            'organization_requests' => $organization_requests,
+            'enterprise' => $enterprise,
+            'lisSkill' => $lisSkill,
+            'listOrganization_requests' => $listOrganization_requests,
+        ]);
+
+    }
     public function checkStatus($status)
     {
         if ($status == OrganizationRequest::confirm) {

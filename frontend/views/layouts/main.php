@@ -2,17 +2,14 @@
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-use frontend\models\Students;
-use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use frontend\assets\AppAsset;
+use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\Breadcrumbs;
 AppAsset::register($this);
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage()?>
 <!DOCTYPE html>
 <html lang="vi-VN" xml:lang="vi-VN" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -20,12 +17,13 @@ AppAsset::register($this);
     <style>
       .preload_image { display: none; }
     </style>
-    <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
+    <?php $this->registerCsrfMetaTags()?>
+    <?=Html::csrfMetaTags();?>
+    <title><?=Html::encode($this->title)?></title>
+    <?php $this->head()?>
 </head>
 <body>
-<?php $this->beginBody() ?>
+<?php $this->beginBody()?>
     <body class="jobs_index" data-controller="" data-env="production" >
     <div id="container">
     <div class="pageHeader shrink">
@@ -33,16 +31,16 @@ AppAsset::register($this);
     <nav class="pageMenu default-navbar">
       <div class="container-fluid">
         <div class="pageMenu__header">
-        
+
           <a class="pageMenu__logo" data-controller="utm-tracking" href="#">
-              <img class="logo-itviec" alt="itviec" src="<?= yii\helpers\Url::base(true). '/../../uploads/logo.png'?>"width="108" height="42">
+              <img class="logo-itviec" alt="itviec" src="<?=yii\helpers\Url::base(true) . '/../../uploads/logo.png'?>"width="108" height="42">
           </a>
-    
+
         </div>
     <div class="pageMenu__body collapse" id="pageMenuToggle">
-      
+
     <ul class="pageMenu__itemList pageMenu__itemList--right pageMenu__not_signed_in">
-  
+
 
     <li class="pageMenu__item">
 <a href="<?php echo Url::home() . "home" ?>">Home</a>
@@ -87,10 +85,10 @@ AppAsset::register($this);
 
 </ul>
 </li>
-    </ul>  
+    </ul>
     </div>
     </div>
-    </nav>  
+    </nav>
     </div>
     <?=Breadcrumbs::widget([
     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -146,8 +144,8 @@ AppAsset::register($this);
 </div>
 </div>
 </div>
-    <?php $this->endBody() ?>
+    <?php $this->endBody()?>
 </body>
 
 </html>
-<?php $this->endPage() ?>
+<?php $this->endPage()?>

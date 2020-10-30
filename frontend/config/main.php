@@ -1,5 +1,4 @@
 <?php
-use \yii\web\Request;
 //$baseUrl = str_replace('/web', '', (new Request)->getBaseUrl());
 //echo $baseUrl;
 $params = array_merge(
@@ -17,6 +16,7 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+
         ],
         'user' => [
             'identityClass' => 'backend\models\Student',
@@ -41,7 +41,7 @@ return [
         ],
 
         'urlManager' => [
-           //'baseUrl' => $baseUrl,
+            //'baseUrl' => $baseUrl,
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
@@ -50,5 +50,5 @@ return [
 
     ],
     'params' => $params,
-    
+
 ];

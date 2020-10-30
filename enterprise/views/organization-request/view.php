@@ -1,10 +1,14 @@
 <?php
+use backend\models\Enterprises;
+use backend\models\OrganizationRequest;
 use common\models\CapacityDictionary;
 use common\models\OrganizationRequestAbilities;
-use frontend\models\Enterprises;
 use yii\helpers\Url;
+$this->registerCssFile("@web/css/css/styleDetail.css");
 ?>
-</div>
+<hr>
+<hr>
+<hr>
 
 <!-- start body -->
 <div class="hidden-xs" id="scrolltop" style="display: none;">
@@ -14,16 +18,12 @@ use yii\helpers\Url;
 <div class="company-content">
 <div class="company-page">
 <!-- Headline Photo -->
-<div class="cover-images-desktop cover-images-cropped aspect-ratio-box">
-<div class="aspect-ratio-box-inside">
-<img width="100%" alt="Home Credit Vietnam  tuyển dụng việc làm IT"src="<?=Enterprises::getCoverImage($enterprise->id)?>">
-</div>
-</div>
+
 <!-- Header Information -->
 <div class="headers hidden-xs">
 <div class="logo-container">
 <div class="has-overtime logo">
-<img alt="Home Credit Vietnam  Vietnam Big Logo" class=" ls-is-cached lazyloaded" data-src="https://cdn.itviec.com/employers/home-credit-vietnam/logo/w170/dFAsZ8oiQpLPyUr8Yi5jUWdj/home-credit-vietnam-ppf-logo.png" src="<?=Enterprises::getImageEnterprise($enterprise->id)?>">
+<img alt="Home Credit Vietnam  Vietnam Big Logo" class=" ls-is-cached lazyloaded" data-src="https://cdn.itviec.com/employers/home-credit-vietnam/logo/w170/dFAsZ8oiQpLPyUr8Yi5jUWdj/home-credit-vietnam-ppf-logo.png" src="<?=Enterprises::getImageEnterpriseView($enterprise->id)?>">
 </div>
 </div>
 <div class="name-and-info">
@@ -32,7 +32,7 @@ use yii\helpers\Url;
 </h1>
 <span>
 <i class="fa fa-map-marker"></i>
-Trạng Thái: Trong Thời Gian Đăng ki?
+Trạng Thái: <?=OrganizationRequest::checkStatus($organization_requests->status)?>
 </span>
 <!-- Last updated: "2020-10-14 21:37:42 +0700"-->
 
@@ -59,7 +59,10 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 </div>
 
 <div class="headers__actions text-right">
-<button class="btn btn-success" onclick="studentRegister(<?=$organization_requests->id?>,<?=Yii::$app->user->identity->id?>)"> Đăng ki</button>
+<?php if (OrganizationRequest::checkS($organization_requests->status)): ?>
+<a href="<?=Url::home() . 'organization-request/confirm?id=' . $organization_requests->id?>  "><button class="btn btn-success "> Chấp Nhận</button></a>
+<a href="<?=Url::home() . 'organization-request/create?id=' . $organization_requests->id?>  "><button class="btn btn-danger "> Hủy</button></a>
+                    <?php endif;?>
 
 </div>
 </div>
@@ -69,7 +72,7 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 <!-- Navigation -->
 <ul class="navigation">
 <li class="active navigation__item">
-<a data-controller="utm-tracking" href="#">Giới thiệu công ty</a>
+<a data-controller="utm-tracking" href="#">Chi Tiết Phiếu</a>
 <div class="corner-bottom-right-overlay"></div>
 <div class="corner-bottom-right-curve"></div>
 </li>
@@ -87,17 +90,11 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 <!-- Description - Tech stack -->
 <!-- Last updated: "2020-10-14 21:37:42 +0700"-->
 <div class="panel panel-default">
-<div class="panel-heading">
-<h2 class="panel-title headline">
-<?=$enterprise->username?>
-</h2>
 
-</div>
 
 <div class="panel-body">
 <div class="paragraph">
 <h3 style="color:red;margin-bottom:10px">
-Address: <?=$enterprise->address?>
 </h3>
 <p><?=$enterprise->description?></p>
 </div>
@@ -117,31 +114,8 @@ Address: <?=$enterprise->address?>
 
 <!-- Last Updated at: 2020-10-14 21:37:43 +0700 -->
 <div class="panel panel-default">
-<div class="panel-heading">
-<h3 class="panel-title">Tại Sao Bạn Sẽ Yêu Thích Làm Việc Tại Đây</h3>
-</div>
-<div class="panel-body">
-<ul class="reasons numbered list">
-<li class="item">
-<span class="number">1</span>
-<span class="content paragraph">Attractive salary, with 13th month and KPI Bonus</span>
-</li>
-<li class="item">
-<span class="number">2</span>
-<span class="content paragraph">Chances to work with Expats and train Oversea</span>
-</li>
-<li class="item">
-<span class="number">3</span>
-<span class="content paragraph">Latest financial technology applied</span>
-</li>
 
-</ul>
-<!-- Slider Photos -->
 
-<div class="paragraph">
-<p></p><ul><li>Latest financial technology applied</li><li>Various bonuses and awards for employees</li><li>Professional and transparent working environment.</li><li>Health, social and accidental insurance</li><li>15 Annual Leaves</li><li>Team-building activities</li><li>Open sharing culture</li></ul><p></p>
-</div>
-</div>
 </div>
 <!-- Our People -->
 <!-- Location -->
@@ -192,7 +166,7 @@ Deadline:<?=$rq->date_submitted?>
 </div>
 <hr>
 <?php endforeach;?>
-<a class="button ibutton full-width ibutton-red big add-review-when-not-sign-in" rel="nofollow" href="comment/index">Viết review</a>
+<a class="button ibutton full-width ibutton-red big add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" href="">Viết review</a>
 </div>
 </div>
 </div>

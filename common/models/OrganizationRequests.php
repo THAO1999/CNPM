@@ -15,11 +15,12 @@ use Yii;
  * @property string|null $date_submitted
  * @property int $status
  * @property string $imageFile
+ * @property string $cancel
  *
  * @property AssignedTable[] $assignedTables
  * @property OrganizationRequestAbilities[] $organizationRequestAbilities
  */
-    class OrganizationRequests extends \yii\db\ActiveRecord
+class OrganizationRequests extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -35,7 +36,7 @@ use Yii;
     public function rules()
     {
         return [
-            [['organization_id', 'subject', 'short_description', 'amount' ], 'required'],
+            [['organization_id', 'subject', 'short_description', 'amount'], 'required'],
             [['organization_id', 'amount', 'status'], 'integer'],
             [['date_submitted'], 'safe'],
             [['subject', 'short_description'], 'string', 'max' => 40],
@@ -57,6 +58,7 @@ use Yii;
             'date_submitted' => 'ngày hết hạn',
             'status' => 'Trạng thái',
             'imageFile' => 'Image File',
+            'cancel' => " Li do hủy Phiếu",
         ];
     }
 

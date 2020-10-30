@@ -1,9 +1,11 @@
 <?php
 namespace frontend\controllers;
 
+use backend\models\StudentRegistration;
 use common\models\OrganizationRequestAbilities;
 use common\models\OrganizationRequests;
 use frontend\models\Enterprises;
+use yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -13,6 +15,7 @@ use yii\web\Controller;
  */
 class DetailRequestEnterpriseController extends Controller
 {
+    public $enableCsrfValidation = false;
     /**
      * {@inheritdoc}
      */
@@ -22,18 +25,7 @@ class DetailRequestEnterpriseController extends Controller
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['logout', 'signup'],
-                'rules' => [
-                    [
-                        'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
+
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -59,6 +51,7 @@ class DetailRequestEnterpriseController extends Controller
             ],
         ];
     }
+
     public function actionIndex($id)
     {
         //$id = 183; //pheu
@@ -79,6 +72,24 @@ class DetailRequestEnterpriseController extends Controller
             'listOrganization_requests' => $listOrganization_requests,
         ]);
 
+    }
+
+    public function actionStudentRegister()
+    {
+        $studentID = Yii::$app->request->post('studentID');
+        $requestID = Yii::$app->request->post('requestID');
+        $model = new StudentRegistration();
+
+        $model->student_id = $studentID;
+        $model->request_id = $requestID;
+
+        if ($model->save()) {
+            return true;
+        } else {
+            return false;
+        }
+
+        // return StudentRegistrations::saveStudentRegistrations($studentID, $requestID);
     }
 
 }

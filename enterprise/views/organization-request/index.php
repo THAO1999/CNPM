@@ -16,7 +16,7 @@ use yii\helpers\Url;
     <div class="col-md-4 col-xs-12">
     <!-- Last updated: "2020-10-05 14:41:51 +0700"-->
 
-    <a class="top-company"href="<?=Url::home() . "detail-request-enterprise?id=" . $value->id?>  " data-controller="utm-tracking" rel="nofollow" data-method="put" href="#">
+    <a class="top-company"href="<?=Url::home() . "organization-request/view?id=" . $value->id?>  " data-controller="utm-tracking" rel="nofollow" data-method="put" href="#">
       <div class="top-company__logo text-center">
       <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" class=" ls-is-cached lazyloaded" data-src="" src="<?=Enterprises::getImageEnterprise($value->id)?>">
     </div>

@@ -19,4 +19,13 @@ class Enterprises extends Enterprise
         return Url::base(true) . '/../uploads/' . $enterprise->imageFile; // getpathImg
 
     }
+
+    public function getImageEnterpriseView($id)
+    {
+        // lay organization_id doanh nghiep
+        $enterprises = Enterprises::findOne($id);
+
+        return Url::base(true) . '/../uploads/' . $enterprises->imageFile; // getpathImg
+
+    }
 }

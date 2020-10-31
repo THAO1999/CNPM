@@ -62,6 +62,8 @@ class DetailRequestEnterpriseController extends Controller
 
         $listOrganization_requests = OrganizationRequests::find()->limit(5)->all();
 
+        $count = StudentRegistration::getCount($id);
+
         $lisSkill = OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
         // phpinfo();
         return $this->render('index', [
@@ -70,6 +72,7 @@ class DetailRequestEnterpriseController extends Controller
             'enterprise' => $enterprise,
             'lisSkill' => $lisSkill,
             'listOrganization_requests' => $listOrganization_requests,
+            'count' => $count,
         ]);
 
     }

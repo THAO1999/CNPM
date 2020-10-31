@@ -52,7 +52,7 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 <div class="overtime">
 <i class="fa fa-clock-o"></i>
 <span>
- Sinh Viên Đã Đăng ki: 10 Sinh Viên?
+ Sinh Viên Đã Đăng ki:<?=$count?>
 </span>
 </div>
 
@@ -163,7 +163,7 @@ Address: <?=$enterprise->address?>
 
 <div class="job">
 <h2 class="name">
-<a data-controller="utm-tracking" href="<?php echo Url::home() . "detail-request-enterprise " ?>  "><?=$rq->subject?></a>
+<a data-controller="utm-tracking"href="<?=Url::home() . "detail-request-enterprise?id=" . $rq->id?>  " ><?=$rq->subject?></a>
 </h2>
 <div class="salary">
 <span class="salary-icon-stack">
@@ -192,7 +192,7 @@ Deadline:<?=$rq->date_submitted?>
 </div>
 <hr>
 <?php endforeach;?>
-<a class="button ibutton full-width ibutton-red big add-review-when-not-sign-in" rel="nofollow" href="comment/index">Viết review</a>
+<a class="button ibutton full-width ibutton-red big add-review-when-not-sign-in" rel="nofollow" href="<?=Url::home() . "comment/index?id=" . $rq->id?>  ">Viết review</a>
 </div>
 </div>
 </div>

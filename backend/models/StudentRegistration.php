@@ -65,4 +65,11 @@ class StudentRegistration extends \yii\db\ActiveRecord
     {
         return $this->hasOne(OrganizationRequest::className(), ['id' => 'request_id']);
     }
+
+    public function getCount($id)
+    {
+        return StudentRegistration::find()
+            ->where(['request_id' => $id])
+            ->count();
+    }
 }

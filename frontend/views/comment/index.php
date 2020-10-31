@@ -1,5 +1,6 @@
 
 <?php
+use frontend\models\Enterprises;
 use frontend\models\Students;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -25,10 +26,10 @@ use yii\widgets\ActiveForm;
 <h2 class="panel-title review-title hidden-xs hidden-sm">
 <div class="title">
 <div class="text">Đánh giá</div>
-<div class="company-name">Home Credit Vietnam </div>
+<div class="company-name">  <?=$enterprises->username?>   </div>
 </div>
 <div class="logo">
-<img src="https://cdn.itviec.com/employers/home-credit-vietnam/logo/w170/dFAsZ8oiQpLPyUr8Yi5jUWdj/home-credit-vietnam-ppf-logo.png">
+<img src="<?=Enterprises::getImageEnterprise($enterprises->id)?>">
 </div>
 </h2>
 <h2 class="panel-title text-center visible-xs visible-sm">

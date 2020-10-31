@@ -1,15 +1,18 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\OrganizationRequests;
 use frontend\models\Comment;
+use frontend\models\Enterprises;
 use yii;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 
 /**
  * Site controller
  */
+use yii\filters\VerbFilter;
+use yii\web\Controller;
+
 class CommentController extends Controller
 {
 
@@ -63,11 +66,15 @@ class CommentController extends Controller
     {
         //  phpinfo();
         $model = new Comment();
+        $organization_requests = OrganizationRequests::findOne($id);
+        $enterprises = Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
+
         $listComment = Comment::find()->where(['request_id' => $id])->limit(4)->all();
         return $this->render('index', [
             'model' => $model,
             'id' => $id,
             'listComment' => $listComment,
+            'enterprises' => $enterprises,
         ]);
 
     }

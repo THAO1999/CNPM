@@ -1,6 +1,7 @@
 <?php
 
 namespace common\models;
+
 use Yii;
 
 /**
@@ -12,8 +13,8 @@ use Yii;
  * @property string $ability_note
  *
  * @property StudentSkillProfile[] $studentSkillProfiles
- * 
- * 
+ *
+ *
  * @property OrganizationRequestAbilities[] $OrganizationRequestAbilities
  */
 class CapacityDictionary extends \yii\db\ActiveRecord
@@ -32,9 +33,9 @@ class CapacityDictionary extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [[ 'ability_name', ], 'required'],
-           // [['id'], 'integer'],
-            [['ability_name', 'aibility_type', 'ability_note'], 'string', 'max' => 20],
+            [['ability_name'], 'required'],
+            // [['id'], 'integer'],
+            // [['ability_name', 'aibility_type', 'ability_note'], 'string', 'max' => 20],
             [['id'], 'unique'],
         ];
     }
@@ -65,9 +66,10 @@ class CapacityDictionary extends \yii\db\ActiveRecord
     {
         return $this->hasMany(OrganizationRequestAbilities::className(), ['ability_id' => 'id']);
     }
-    public function getCapacity($skill){
-        $cap=$skill->ability; // lay nang luc theo ability (relation) hasOne()
+    public function getCapacity($skill)
+    {
+        $cap = $skill->ability; // lay nang luc theo ability (relation) hasOne()
         return $cap->ability_name;
-        
+
     }
 }

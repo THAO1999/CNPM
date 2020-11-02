@@ -67,7 +67,7 @@ class HomeController extends Controller
         $capacity = new Capacity();
         $organizationRequestAbilities = new OrganizationRequestAbilities();
         $model->organization_id = Yii::$app->user->identity->id;
-        $model->status = 2;
+        $model->status = 9;
         $model->imageFile = UploadForm::Upload($model);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

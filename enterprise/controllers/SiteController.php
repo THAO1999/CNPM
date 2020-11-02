@@ -1,19 +1,12 @@
 <?php
 namespace enterprise\controllers;
 
-use frontend\models\ResendVerificationEmailForm;
-use frontend\models\VerifyEmailForm;
-use Yii;
-use yii\base\InvalidArgumentException;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use common\models\LoginFormEnterprise;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
 
 /**
  * Site controller
@@ -80,7 +73,6 @@ class SiteController extends Controller
     {
         return $this->render('example');
     }
-    
 
     /**
      * Logs in a user.
@@ -88,22 +80,23 @@ class SiteController extends Controller
      * @return mixed
      */
     public function actionLogin()
-    {    
-      
-        $this->layout="blank";
+    {
+
+        $this->layout = "blank";
         // if (!Yii::$app->user->isGuest) {
         //     return $this->goHome();
         // }
-        //phpinfo();
+
         $model = new LoginFormEnterprise();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-        //    echo"ff";
+            //    echo"ff";
+            // phpinfo();
             return $this->redirect('home/index');
         } else {
             $model->password = '';
-          
+
             return $this->render('login', [
-                
+
                 'model' => $model,
             ]);
         }
@@ -120,7 +113,6 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
- 
 
     /**
      * Displays contact page.

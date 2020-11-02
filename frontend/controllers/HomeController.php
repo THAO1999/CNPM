@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use backend\models\OrganizationRequest;
 use common\models\CapacityDictionary;
 use common\models\OrganizationRequests;
 use yii\filters\AccessControl;
@@ -61,7 +62,7 @@ class HomeController extends Controller
     public function actionIndex()
     {
         $capacity = CapacityDictionary::find()->limit(12)->all();
-        $organization_requests = OrganizationRequests::find()->all();
+        $organization_requests = OrganizationRequests::find()->where(['status' => OrganizationRequest::confirm])->all();
         return $this->render('index', [
             'capacity' => $capacity,
             'organization_requests' => $organization_requests,

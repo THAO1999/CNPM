@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use backend\models\OrganizationRequest;
 use backend\models\StudentRegistration;
 use common\models\OrganizationRequestAbilities;
 use common\models\OrganizationRequests;
@@ -60,7 +61,7 @@ class DetailRequestEnterpriseController extends Controller
 
         $enterprise = Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
 
-        $listOrganization_requests = OrganizationRequests::find()->limit(5)->all();
+        $listOrganization_requests = OrganizationRequests::find()->where(['status' => OrganizationRequest::confirm])->limit(5)->all();
 
         $count = StudentRegistration::getCount($id);
 

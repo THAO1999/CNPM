@@ -101,7 +101,10 @@ Address: <?=$enterprise->address?>
 </h3>
 <p><?=$enterprise->description?></p>
 </div>
-<h3 class="panel-title"></h3>
+<h3 class="panel-title">
+Skills we need:
+</h3>
+<br>
 <ul class="employer-skills">
 <?php foreach ($lisSkill as $skill): ?>
 

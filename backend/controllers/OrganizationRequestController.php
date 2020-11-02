@@ -3,9 +3,11 @@
 namespace backend\controllers;
 
 use backend\models\OrganizationRequest;
+use backend\models\StudentRegistration;
 use common\models\CapacityDictionary;
 use common\models\OrganizationRequestAbilities;
 use common\models\OrganizationRequests;
+use frontend\models\Comment;
 use frontend\models\Enterprises;
 use Yii;
 use yii\filters\VerbFilter;
@@ -60,17 +62,19 @@ class OrganizationRequestController extends Controller
 
     }
 
-    public function actionCreate($id)
-    {
+    public function actionCreate($id) // hủy Phiếu
 
+    {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
+
+            echo Yii::$app->request->post("cancel");
+            // phpinfo();
             $model->status = OrganizationRequest::cancel;
             $model->save();
             return $this->actionIndex($model->status);
         }
-
         return $this->render('create',
             ['model' => $model]);
 
@@ -83,16 +87,19 @@ class OrganizationRequestController extends Controller
 
         $enterprise = Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
 
-        $listOrganization_requests = OrganizationRequests::find()->limit(5)->all(); //lay list
-
+        // $listOrganization_requests = OrganizationRequests::find()->limit(5)->all(); //lay list
+        $count = StudentRegistration::getCount($id);
         $lisSkill = OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
+        $listComment = Comment::find()->where(['request_id' => $organization_requests->id])->limit(4)->all();
+
         // phpinfo();
         return $this->render('view', [
-            //'capacity' => $capacity,
             'organization_requests' => $organization_requests,
             'enterprise' => $enterprise,
             'lisSkill' => $lisSkill,
-            'listOrganization_requests' => $listOrganization_requests,
+            //   'listOrganization_requests' => $listOrganization_requests,
+            'count' => $count,
+            'listComment' => $listComment,
         ]);
 
     }

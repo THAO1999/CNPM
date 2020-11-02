@@ -30,6 +30,16 @@ class OrganizationRequest extends OrganizationRequests
         }
 
     }
+    public function checkCancel($status)
+    {
+        if ($status == self::cancel) {
+
+            return self::cancel;
+        } else {
+            return false;
+        }
+
+    }
     public function checkConfirm($status)
     {
         if ($status == self::confirm) {

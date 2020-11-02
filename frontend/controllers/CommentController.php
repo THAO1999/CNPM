@@ -85,10 +85,7 @@ class CommentController extends Controller
             $model->student_id = Yii::$app->user->identity->id;
             $model->request_id = $request_id;
             $model->save();
-            return $this->render('index', [
-                'model' => $model,
-                'id' => $request_id,
-            ]);
+            return $this->actionIndex($request_id);
         }
     }
 

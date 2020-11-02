@@ -2,11 +2,13 @@
 
 namespace backend\models;
 
+use frontend\models\StudentSkillProfile;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
+use yii\helpers\Url;
 use yii\web\IdentityInterface;
-use frontend\models\StudentSkillProfile;
+
 /**
  * This is the model class for table "student".
  *
@@ -51,7 +53,7 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
             [['username', 'password_hash', 'email'], 'required'],
             // [['date_of_birth', 'created_at', 'updated_at'], 'safe'],
             [['status'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email', 'phone','class_name','address',], 'string', 'max' => 255], // da tung loi day ,"adress,phone"
+            [['username', 'password_hash', 'password_reset_token', 'email', 'phone', 'class_name', 'address'], 'string', 'max' => 255], // da tung loi day ,"adress,phone"
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
             [['email'], 'unique'],
@@ -77,8 +79,8 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'address'=> 'address',
-            'phone'=>'phone'
+            'address' => 'address',
+            'phone' => 'phone',
         ];
     }
 
@@ -90,11 +92,9 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
     public function getStudentRegistrations()
     {
         return $this->hasMany(StudentRegistration::className(), ['student_id' => 'id']);
-    } 
-
+    }
 
     // relaton sll
-
 
     /**
      * Gets query for [[Requests]].
@@ -286,7 +286,7 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
             // update Student
             $old_user = Student::findOne(($this->id));
             if ($old_user->password_hash != $this->password_hash) { // neu != password old thi ma hoa password dc update
-                
+
             }
             if ($old_user->password_hash != $this->password_hash) { // neu != password old thi ma hoa password dc update
                 $this->generateAuthKey();
@@ -296,6 +296,13 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
         }
         return parent::beforeSave($insert);
     }
+    public function getImageStudent($id)
+    {
+        // lay organization_id doanh nghiep
+        $student = Student::findOne($id);
 
-    
+        return Url::base(true) . '/../uploads/' . $student->imageFile; // getpathImg
+
+    }
+
 }

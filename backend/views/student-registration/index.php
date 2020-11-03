@@ -17,8 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
     'dataProvider' => $dataProvider,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
-
-        'id',
         'student.username',
         'organizationRequest.subject',
         'submit_date',

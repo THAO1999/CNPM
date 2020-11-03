@@ -32,7 +32,7 @@ class StudentRegistration extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'student_id', 'request_id'], 'integer'],
+            [['student_id', 'request_id'], 'integer'],
             [['submit_date'], 'safe'],
             [['student_id', 'request_id'], 'unique', 'targetAttribute' => ['student_id', 'request_id']],
             [['student_id'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['student_id' => 'id']],
@@ -45,7 +45,7 @@ class StudentRegistration extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+
             'student_id' => 'Student ID',
             'request_id' => 'Request ID',
             'submit_date' => 'Submit Date',

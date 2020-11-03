@@ -12,15 +12,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="assigned-table-index">
 
     <h1><?=Html::encode($this->title)?></h1>
-
-
-
     <?=GridView::widget([
     'dataProvider' => $dataProvider,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
-
-        'id',
         'organizationRequest.subject',
         'student.username',
         'start_date',

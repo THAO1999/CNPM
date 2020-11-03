@@ -7,7 +7,6 @@ use Yii;
 /**
  * This is the model class for table "assigned_table".
  *
- * @property int $id
  * @property int $organization_request_id
  * @property int $student_id
  * @property string $start_date
@@ -34,9 +33,8 @@ class AssignedTable extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'organization_request_id', 'student_id', 'status'], 'integer'],
+            [['organization_request_id', 'student_id', 'status'], 'integer'],
             [['start_date', 'end_date', 'create_date'], 'safe'],
-            [['id'], 'unique'],
             [['student_id'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['student_id' => 'id']],
             // [['organization_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => OrganizationRequests::className(), 'targetAttribute' => ['organization_request_id' => 'id']],
         ];
@@ -48,7 +46,6 @@ class AssignedTable extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
             'organization_request_id' => 'Organization Request ID',
             'student_id' => 'Student ID',
             'start_date' => 'Start Date',

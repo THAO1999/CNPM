@@ -304,5 +304,6 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
         return Url::base(true) . '/../uploads/' . $student->imageFile; // getpathImg
 
     }
+  
 
 }

@@ -4,6 +4,9 @@ namespace backend\controllers;
 
 use backend\models\AssignedTable;
 use backend\models\StudentRegistration;
+use common\models\UploadForm;
+use frontend\models\Students;
+use frontend\models\StudentSkillProfile;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
@@ -54,8 +57,22 @@ class StudentRegistrationController extends Controller
      */
     public function actionView($student_id, $request_id)
     {
+        $model = new Students();
+        $id = Yii::$app->user->identity->id; // id student
+        $model = $model->getStudentProfiles($id);
+        $model->imageFile = UploadForm::Upload($model); // lay duong dan
+
+        $list_StudentSkill = StudentSkillProfile::getSkill($model->getStudent($id)); // lay list skill student
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->render('view', [
+                'model' => $model,
+                'list_StudentSkill' => $list_StudentSkill,
+            ]);
+        }
+
         return $this->render('view', [
-            'model' => $this->findModel($student_id, $request_id),
+            'model' => $model,
+            'list_StudentSkill' => $list_StudentSkill,
         ]);
     }
 

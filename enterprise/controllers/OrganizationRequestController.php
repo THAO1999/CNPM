@@ -3,9 +3,11 @@
 namespace enterprise\controllers;
 
 use backend\models\OrganizationRequest;
+use backend\models\StudentRegistration;
 use common\models\CapacityDictionary;
 use common\models\OrganizationRequestAbilities;
 use common\models\OrganizationRequests;
+use frontend\models\Comment;
 use frontend\models\Enterprises;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -51,6 +53,7 @@ class OrganizationRequestController extends Controller
     }
     public function actionView($id)
     {
+
         //$id = 183; //pheu
 
         $organization_requests = OrganizationRequests::findOne($id); // lay thong tin phieu theo id
@@ -61,15 +64,21 @@ class OrganizationRequestController extends Controller
 
         $lisSkill = OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
         // phpinfo();
+        $count = StudentRegistration::getCount($id);
+        $listComment = Comment::find()->where(['request_id' => $organization_requests->id])->limit(4)->all();
+
         return $this->render('view', [
             //'capacity' => $capacity,
             'organization_requests' => $organization_requests,
             'enterprise' => $enterprise,
             'lisSkill' => $lisSkill,
             'listOrganization_requests' => $listOrganization_requests,
+            'count' => $count,
+            'listComment' => $listComment,
         ]);
 
     }
+
     public function checkStatus($status)
     {
         if ($status == OrganizationRequest::confirm) {

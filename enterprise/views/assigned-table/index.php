@@ -16,14 +16,14 @@ $this->params['breadcrumbs'][] = $this->title;
     'dataProvider' => $dataProvider,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
-        'organizationRequest.subject',
+
         'student.username',
         'start_date',
         'end_date',
         //'status',
         //'create_date',
 
-        // ['class' => 'yii\grid\ActionColumn'],
+        ['class' => 'yii\grid\ActionColumn'],
     ],
 ]);?>
 

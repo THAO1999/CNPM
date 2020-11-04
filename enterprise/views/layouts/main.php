@@ -37,7 +37,7 @@ NavBar::begin([
     ],
 ]);
 $menuItems = [
-    ['label' => 'Home', 'url' => ['/home/index']],
+    ['label' => 'Home', 'url' => ['organization-request/index?status=10']],
     ['label' => 'Create', 'url' => ['/home/create']],
     ['label' => 'Recruitment',
         'items' => [

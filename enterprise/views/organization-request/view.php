@@ -2,13 +2,16 @@
 use backend\models\Enterprises;
 use backend\models\OrganizationRequest;
 use common\models\CapacityDictionary;
-use common\models\OrganizationRequestAbilities;
+use frontend\models\Students;
 use yii\helpers\Url;
 $this->registerCssFile("@web/css/css/styleDetail.css");
+
 ?>
-<hr>
-<hr>
-<hr>
+
+<br>
+<br>
+<br>
+</div>
 
 <!-- start body -->
 <div class="hidden-xs" id="scrolltop" style="display: none;">
@@ -51,18 +54,22 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 </div>
 <div class="overtime">
 <i class="fa fa-clock-o"></i>
+<?php if (OrganizationRequest::checkConfirm($organization_requests->status) == 10): ?>
 <span>
- Sinh Viên Đã Đăng ki: 10 Sinh Viên?
+ Sinh Viên Đã Đăng ki:<?=$count?>
 </span>
+<?php endif;?>
 </div>
 
 </div>
 
 <div class="headers__actions text-right">
-<?php if (OrganizationRequest::checkS($organization_requests->status)): ?>
-<a href="<?=Url::home() . 'organization-request/confirm?id=' . $organization_requests->id?>  "><button class="btn btn-success "> Chấp Nhận</button></a>
-<a href="<?=Url::home() . 'organization-request/create?id=' . $organization_requests->id?>  "><button class="btn btn-danger "> Hủy</button></a>
-                    <?php endif;?>
+
+<?php if (OrganizationRequest::checkConfirm($organization_requests->status) == 10): ?>
+<a href="<?=Url::home() . 'assigned-table/index?id=' . $organization_requests->id?>  "><button class="btn btn-danger ">  Danh Sách Phân Công</button></a>
+
+
+<?php endif;?>
 
 </div>
 </div>
@@ -76,8 +83,6 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 <div class="corner-bottom-right-overlay"></div>
 <div class="corner-bottom-right-curve"></div>
 </li>
-
-
 <li class="text social-icon navigation__item navigation__item--right hidden-sm hidden-xs">
 <a target="_blank" title="" rel="nofollow" data-controller="utils--tooltip" href="https://www.facebook.com/homecreditvn" data-original-title="Đến Facebook"><i class="fa fa-facebook"></i>
 </a></li>
@@ -89,16 +94,16 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 
 <!-- Description - Tech stack -->
 <!-- Last updated: "2020-10-14 21:37:42 +0700"-->
+
 <div class="panel panel-default">
-
-
 <div class="panel-body">
 <div class="paragraph">
 <h3 style="color:red;margin-bottom:10px">
 </h3>
 <p><?=$enterprise->description?></p>
 </div>
-<h3 class="panel-title"></h3>
+<h3 class="panel-title"> Skills we need</h3>
+<br>
 <ul class="employer-skills">
 <?php foreach ($lisSkill as $skill): ?>
 
@@ -110,13 +115,18 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 </div>
 </div>
 </div>
-<!-- Jobs -->
 
-<!-- Last Updated at: 2020-10-14 21:37:43 +0700 -->
+<?php if (OrganizationRequest::checkCancel($organization_requests->status) === 0): ?>
 <div class="panel panel-default">
-
+<div class="panel-heading">
+<h3 class="panel-title">Lí do  bị hủy</h3>
+</div>
+<div class="panel-body">
+<span class="content paragraph">==> <?=$organization_requests->cancel?></span>
 
 </div>
+</div>
+<?php endif;?>
 <!-- Our People -->
 <!-- Location -->
 
@@ -126,50 +136,31 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 
 <!-- Have you worked? -->
 <div class="panel panel-default company-ratings">
-<div class="panel-heading">
-<h2 class="panel-title">Jobs</h2>
-</div>
-<div class="panel-body">
-<!-- Last updated: "2020-10-22 14:42:31 +0700"-->
-<div class="job-list">
-<!-- Last updated: "2020-10-21 10:28:38 +0700"-->
-<?php foreach ($listOrganization_requests as $rq): ?>
+<?php if (OrganizationRequest::checkConfirm($organization_requests->status) == 10): ?>
 
-<div class="job">
-<h2 class="name">
-<a data-controller="utm-tracking" href="<?php echo Url::home() . "detail-request-enterprise " ?>  "><?=$rq->subject?></a>
-</h2>
-<div class="salary">
-<span class="salary-icon-stack">
-<i class="ion-ios-circle-outline"></i>
-<i class="ion-social-usd"></i>
-</span>
+<div class="panel-body disable-user-select">
 
-<span class="salary-text">
-You'll love it
-</span>
-</div>
-<div class="address" style="margin-bottom:5px">
-Deadline:<?=$rq->date_submitted?>
+<!-- Last updated: "2020-10-23 19:49:55 +0700"-->
+<?php foreach ($listComment as $comment): ?>
+<div class="review featured">
+<!-- tạo avatar -->
+<div class="sign-in-user-avatar"><img class="user-avatar" src="<?=Students::getImageStudent($comment->student->id)?>"></div>
+<!-- kết thúc avatar -->
+<a class="title a123" href="#"><?=$comment->student->username?><br></a>
 
-</div>
-<div class="tag-list">
-<?php $lisSkill = OrganizationRequestAbilities::getSkill($rq);?>
-
-<?php foreach ($lisSkill as $skill): ?>
-</a><a class=" ilabel mkt-track" data-controller="utm-tracking" href="#"><span>
-<?=CapacityDictionary::getCapacity($skill)?>
-</span>
-</a>
-<?php endforeach;?>
+<div class="paragraph">
+<?=$comment->content?>
 </div>
 </div>
 <hr>
 <?php endforeach;?>
-<a class="button ibutton full-width ibutton-red big add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" href="">Viết review</a>
+</div>
+<?php endif;?>
 </div>
 </div>
+
 </div>
+
 </div>
 
 </div>

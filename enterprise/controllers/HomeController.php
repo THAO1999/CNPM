@@ -82,19 +82,19 @@ class HomeController extends Controller
         ]);
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $id = Yii::$app->user->identity->id; // id Enterprises
-        $listOrganization_requests = OrganizationRequests::find()->where(['organization_id' => $id])->all();
-        return $this->render('index', [
-            //  'capacity' => $capacity,
-            'listOrganization_requests' => $listOrganization_requests,
-        ]);
-    }
+    // /**
+    //  * Displays about page.
+    //  *
+    //  * @return mixed
+    //  */
+    // public function actionIndex()
+    // {
+    //     $id = Yii::$app->user->identity->id; // id Enterprises
+    //     $listOrganization_requests = OrganizationRequests::find()->where(['organization_id' => $id])->all();
+    //     return $this->render('index', [
+    //         //  'capacity' => $capacity,
+    //         'listOrganization_requests' => $listOrganization_requests,
+    //     ]);
+    // }
 
 }

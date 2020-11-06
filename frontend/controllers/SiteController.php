@@ -1,19 +1,11 @@
 <?php
 namespace frontend\controllers;
 
-use frontend\models\ResendVerificationEmailForm;
-use frontend\models\VerifyEmailForm;
-use Yii;
-use yii\base\InvalidArgumentException;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use common\models\LoginFormStudent;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
-use frontend\models\ContactForm;
+use frontend\models\AssignedTables;
+use Yii;
+use yii\filters\AccessControl;
+use yii\web\Controller;
 
 /**
  * Site controller
@@ -72,8 +64,6 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-  
-    
 
     /**
      * Logs in a user.
@@ -86,12 +76,21 @@ class SiteController extends Controller
         //     return $this->goHome();
         // }
 
-       //
+        //
         $this->layout = 'blank';
 
         $model = new LoginFormStudent();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect('../home/index');
+            $assignedTables = new AssignedTables();
+            $assignedTables = $this->actionCheckStatus();
+
+            if ($assignedTables) {
+
+                return $this->redirect('../assigned-table/index?id=' . $assignedTables->organization_request_id);
+            } else {
+                return $this->redirect('../home/index');
+            }
+
         } else {
             $model->password = '';
 
@@ -106,18 +105,25 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-  
+    public function actionCheckStatus()
+    {
+        $id = Yii::$app->user->identity->id;
+        $model = AssignedTables::findOne([
+            'student_id' => $id,
+            'status' => 1,
+        ]);
+        // phpinfo();
+        return $model;
+
+    }
+
     public function actionLogout()
     {
-  
-       Yii::$app->user->logout();
 
-       return $this->actionLogin();
-      
+        Yii::$app->user->logout();
+
+        return $this->actionLogin();
+
     }
- 
 
-    
-    
-       
 }

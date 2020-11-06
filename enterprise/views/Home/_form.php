@@ -1,9 +1,7 @@
 <?php
 use enterprise\models\Capacity;
-use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\jui\DatePicker;
 use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model common\models\CapacityDictionary */

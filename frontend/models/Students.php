@@ -37,5 +37,16 @@ class Students extends Student
         return $model = Students::findOne($id);
 
     }
+    public function checkStatus($id)
+    {
+        $model = AssignedTables::findOne([
+            'student_id' => $id,
+
+        ]);
+        if ($model->status == 1) {
+            return true;
+        }
+
+    }
 
 }

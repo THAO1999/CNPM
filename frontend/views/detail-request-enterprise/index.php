@@ -2,6 +2,7 @@
 use common\models\CapacityDictionary;
 use common\models\OrganizationRequestAbilities;
 use frontend\models\Enterprises;
+use frontend\models\Students;
 use yii\helpers\Url;
 ?>
 </div>
@@ -59,9 +60,12 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 </div>
 
 <div class="headers__actions text-right">
-<button class="btn btn-success" onclick="studentRegister(<?=$organization_requests->id?>,<?=Yii::$app->user->identity->id?>)"> Đăng ki</button>
 
+<?php if (!Students::checkStatus(Yii::$app->user->identity->id)): ?>
+<button class="btn btn-success" onclick="studentRegister(<?=$organization_requests->id?>,<?=Yii::$app->user->identity->id?>)"> Đăng ki</button>
+<?php endif;?>
 </div>
+
 </div>
 
 <div class="row company-container">

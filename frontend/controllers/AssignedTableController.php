@@ -38,36 +38,39 @@ class AssignedTableController extends Controller
      * Lists all AssignedTable models.
      * @return mixed
      */
-    public function actionIndex($id)
+    public function actionIndex($student_id)
     {
-        //$id = 183; //pheu
-        $organization_requests = OrganizationRequests::findOne($id); // lay thong tin phieu theo id
-
-        $enterprise = Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
-
-        $listOrganization_requests = OrganizationRequests::find()->where(['status' => OrganizationRequest::confirm])->limit(5)->all();
-
-        $count = StudentRegistration::getCount($id);
-
-        $lisSkill = OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
-        // phpinfo();
         // xác định phiếu phân công của sinh viên
-        $id = Yii::$app->user->identity->id;
+        //$student_id = Yii::$app->user->identity->id;
         $model = AssignedTables::findOne([
-            'student_id' => $id,
+            'student_id' => $student_id,
             'status' => 1,
         ]);
-        return $this->render('index', [
-            //'capacity' => $capacity,
-            'organization_requests' => $organization_requests,
-            'enterprise' => $enterprise,
-            'lisSkill' => $lisSkill,
-            'listOrganization_requests' => $listOrganization_requests,
-            'count' => $count,
-            'model' => $model,
-            'student_id' => $id,
-        ]);
+        if ($model) {
+            $organization_requests = OrganizationRequests::findOne($model->organization_request_id); // lay thong tin phieu theo id
 
+            $enterprise = Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
+
+            $listOrganization_requests = OrganizationRequests::find()->where(['status' => OrganizationRequest::confirm])->limit(5)->all();
+
+            $count = StudentRegistration::getCount($model->organization_request_id);
+
+            $lisSkill = OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
+            // phpinfo();
+
+            return $this->render('index', [
+                //'capacity' => $capacity,
+                'organization_requests' => $organization_requests,
+                'enterprise' => $enterprise,
+                'lisSkill' => $lisSkill,
+                'listOrganization_requests' => $listOrganization_requests,
+                'count' => $count,
+                'model' => $model,
+                'student_id' => $student_id,
+            ]);
+        } else {
+            return $this->redirect('../home/index');
+        }
     }
 
     /**

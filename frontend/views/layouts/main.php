@@ -59,10 +59,10 @@ AppAsset::register($this);
 <span>My Account</span>
 </a></li>
 <li class="dropdown-menu__item--desktop">
-<a class="dropdown-menu__link--desktop" data-controller="utm-tracking" href="<?php echo Url::home() . "profile-student" ?>"><span class="dropdown-menu__icon">
+<a class="dropdown-menu__link--desktop" data-controller="utm-tracking" href="<?php echo Url::home() . "assigned-table/index?student_id=" . Yii::$app->user->identity->id ?>"><span class="dropdown-menu__icon">
 <div class="dropdown-menu__icon-my-jr"></div>
 </span>
-<span>My Job Robot</span>
+<span>My Job </span>
 </a></li>
 <li class="dropdown-menu__item--desktop">
 <a class="dropdown-menu__link--desktop" data-controller="utm-tracking" href="/saved_jobs"><span class="dropdown-menu__icon">

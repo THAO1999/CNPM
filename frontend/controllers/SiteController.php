@@ -86,7 +86,7 @@ class SiteController extends Controller
 
             if ($assignedTables) {
 
-                return $this->redirect('../assigned-table/index?id=' . $assignedTables->organization_request_id);
+                return $this->redirect('../assigned-table/index?student_id=' . $assignedTables->student_id);
             } else {
                 return $this->redirect('../home/index');
             }

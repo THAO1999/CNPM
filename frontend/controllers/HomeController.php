@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use backend\models\OrganizationRequest;
 use common\models\CapacityDictionary;
+use common\models\OrganizationRequestAbilities;
 use common\models\OrganizationRequests;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -61,13 +62,41 @@ class HomeController extends Controller
     }
     public function actionIndex()
     {
+
         $capacity = CapacityDictionary::find()->limit(12)->all();
-        $organization_requests = OrganizationRequests::find()->where(['status' => OrganizationRequest::confirm])->all();
+        $listOrganization_requests = OrganizationRequests::find()->where(['status' => OrganizationRequest::confirm])->all();
         return $this->render('index', [
             'capacity' => $capacity,
-            'organization_requests' => $organization_requests,
+            'organization_requests' => $listOrganization_requests,
+
         ]);
 
     }
 
+    public function actionSearchByCapacity($id)
+    {
+
+        $listOrganization_requests = [];
+        // tìm list id phiếu
+        $listOrganization_requestsID = OrganizationRequestAbilities::find()->where(['ability_id' => $id])->all();
+        // từ id phiếu lấy ra được các phiếu
+        foreach ($listOrganization_requestsID as $value) {
+
+            if (($model = OrganizationRequests::findOne([
+                'status' => OrganizationRequest::confirm,
+                'id' => $value->organization_request_id,
+            ])) !== null) {
+                $listOrganization_requests[] = $model;
+            }
+
+        }
+
+        $capacity = CapacityDictionary::find()->limit(12)->all();
+
+        return $this->render('index', [
+            'capacity' => $capacity,
+            'organization_requests' => $listOrganization_requests,
+
+        ]);
+    }
 }

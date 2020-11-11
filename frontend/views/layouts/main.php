@@ -18,8 +18,11 @@ AppAsset::register($this);
       .preload_image { display: none; }
     </style>
     <?php $this->registerCsrfMetaTags()?>
-    <?=Html::csrfMetaTags();?>
+    <?=Html::csrfMetaTags();
+$this->registerCssFile('css/custom.css');
+?>
     <title><?=Html::encode($this->title)?></title>
+
     <?php $this->head()?>
 </head>
 <body>

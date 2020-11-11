@@ -5,6 +5,7 @@ use backend\models\OrganizationRequest;
 use common\models\CapacityDictionary;
 use common\models\OrganizationRequestAbilities;
 use common\models\OrganizationRequests;
+use frontend\models\Enterprises;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -62,17 +63,47 @@ class HomeController extends Controller
     }
     public function actionIndex()
     {
-
+        $model = new Enterprises();
         $capacity = CapacityDictionary::find()->limit(12)->all();
         $listOrganization_requests = OrganizationRequests::find()->where(['status' => OrganizationRequest::confirm])->all();
         return $this->render('index', [
             'capacity' => $capacity,
             'organization_requests' => $listOrganization_requests,
-
+            'model' => $model,
         ]);
 
     }
+    public function actionSearchByNameEnterprise()
+    {
+        $listOrganization_requests = []; // danh sách các phiếu yêu cầu
+        $username = $_POST['Enterprises']['username']; // username cần tìm
+        // lấy ra danh sách các doanh nghiệp cần tìm
+        $listEnterprise = Enterprises::find()->Where(['LIKE', 'enterprise.username', $username])->all();
+// duyện danh sách theo id doanh nghiệp
+        foreach ($listEnterprise as $value) {
+            // lấy ra các phiếu có id doanh nghiệp cần tìm
+            if (($model = OrganizationRequests::find()->where([
+                'organization_id' => $value->id,
+                'status' => OrganizationRequest::confirm,
 
+            ])->all()) !== null) {
+                // lưu các phiếu
+                foreach ($model as $m) {
+                    $listOrganization_requests[] = $m;
+                }
+
+            }
+        }
+
+        $capacity = CapacityDictionary::find()->limit(12)->all();
+        $model = new Enterprises();
+        return $this->render('index', [
+            'capacity' => $capacity,
+            'organization_requests' => $listOrganization_requests,
+            'model' => $model,
+        ]);
+
+    }
     public function actionSearchByCapacity($id)
     {
 
@@ -92,11 +123,11 @@ class HomeController extends Controller
         }
 
         $capacity = CapacityDictionary::find()->limit(12)->all();
-
+        $model = new Enterprises();
         return $this->render('index', [
             'capacity' => $capacity,
             'organization_requests' => $listOrganization_requests,
-
+            'model' => $model,
         ]);
     }
 }

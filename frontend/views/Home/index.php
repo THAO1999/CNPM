@@ -1,42 +1,36 @@
 <?php
 use common\models\Enterprise;
+use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+
 ?>
     <h1 class="slogan">
     1,317 Việc Làm IT Chất Cho Sinh Viên
     </h1>
     <div class="search-form-wrapper clearfix">
+
+<!-- ---------------- -->
     <?php $form = ActiveForm::begin([
     'id' => 'search_form',
     'options' => ['class' => 'search-form'],
-    'action' => ['update'],
+    'action' => ['search-by-name-enterprise'],
 ]);?>
-    <!-- <form id="search_form" class="search-form" action="/viec-lam-it" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓"> -->
+
     <div class="search_section_wrapper no_header">
-    <div class="search_text_wrapper">
-    <!-- <div class="fas fa-search"></div> -->
 
-    <div class="search_field_wrapper">
 
-    <input type="text" name="query" id="search_text" value="" class="" style="display: none;">
-    <ul class="tagit ui-widget ui-widget-content ui-corner-all">
+    <?=$form->field($model, 'username', [
 
-<li>
-        <input type="text" class="ui-widget-content ui-autocomplete-input" placeholder="" autocomplete="off">
-        <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-</li>
-    </ul>
+])->textInput(['class' => "custom", 'placeholder' => "Tìm kiếm thông tin theo Công ty"])->label(false)?>
+
     </div>
-    </div>
-    </div>
-
     <div class="search_button_wrapper">
-    <input type="submit" value="Tìm Kiếm" class="search_button button-red left" data-disable-with="Tìm Kiếm">
+    <?=Html::submitButton('Tìm Kiếm', ['class' => 'search_button button-red left'])?>
+    <!-- <input type="submit" value="Tìm Kiếm" class="search_button button-red left" data-disable-with="Tìm Kiếm"> -->
     </div>
 
     <?php ActiveForm::end();?>
-
 
     </div>
 

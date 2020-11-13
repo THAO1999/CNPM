@@ -4,6 +4,7 @@ use common\models\OrganizationRequestAbilities;
 use frontend\models\Enterprises;
 use frontend\models\Students;
 use yii\helpers\Url;
+
 ?>
 </div>
 
@@ -70,43 +71,34 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 
 <div class="row company-container">
 <div class="col-md-8 col-left">
-<!-- Navigation -->
-<ul class="navigation">
-<li class="active navigation__item">
-<a data-controller="utm-tracking" href="#">Giới thiệu công ty</a>
-<div class="corner-bottom-right-overlay"></div>
-<div class="corner-bottom-right-curve"></div>
-</li>
 
+<ul class="nav nav-tabs navigation">
+        <li class="active">
+            <a href="#detail_request" data-toggle="tab"> <h3>Chi tiết phiếu yêu cầu</h3></a>
+        </li>
+        <li class="nav-item">
+            <a href="#detail_profile"  data-toggle="tab"><h3>Giới Thiệu về công ty</h3></a>
+        </li>
 
-<li class="text social-icon navigation__item navigation__item--right hidden-sm hidden-xs">
-<a target="_blank" title="" rel="nofollow" data-controller="utils--tooltip" href="https://www.facebook.com/homecreditvn" data-original-title="Đến Facebook"><i class="fa fa-facebook"></i>
-</a></li>
-<li class="text social-icon navigation__item navigation__item--right hidden-sm hidden-xs">
-<a target="_blank" title="" rel="nofollow" data-controller="utils--tooltip" href="https://www.facebook.com/homecreditvn" data-original-title="Đến Facebook"><i class="fa fa-instagram"></i>
-</a></li>
+    </ul>
 
-</ul>
-
-<!-- Description - Tech stack -->
-<!-- Last updated: "2020-10-14 21:37:42 +0700"-->
-<div class="panel panel-default">
-<div class="panel-heading">
+<div class="tab-content">
+    <div id="detail_request" class="panel panel-default tab-pane fade in active">
+<div class="panel-heading " >
 <h2 class="panel-title headline">
-<?=$enterprise->username?>
+<?=$organization_requests->subject?>
 </h2>
-
 </div>
-
 <div class="panel-body">
 <div class="paragraph">
 <h3 style="color:red;margin-bottom:10px">
-Address: <?=$enterprise->address?>
+Địa Chỉ: <?=$enterprise->address?>
 </h3>
-<p><?=$enterprise->description?></p>
+
+<p>-<?=$organization_requests->short_description?></p>
 </div>
 <h3 class="panel-title">
-Skills we need:
+kỹ năng chúng tôi cần
 </h3>
 <br>
 <ul class="employer-skills">
@@ -117,13 +109,41 @@ Skills we need:
 </ul>
 <div class="paragraph">
 <p></p>
+
 </div>
 </div>
+    </div>
+    <div id="detail_profile" class=" panel panel-default tab-pane  ">
+<div class="panel-heading " >
+<h2 class="panel-title headline">
+<?=$enterprise->username?>
+</h2>
+</div>
+<div class="panel-body">
+<div class="paragraph">
+<h3 style="color:red;margin-bottom:10px">
+Địa Chỉ: <?=$enterprise->address?>
+</h3>
+<p><?=$enterprise->description?></p>
+</div>
+
+<br>
+
+<div class="paragraph">
+<p></p>
+
+</div>
+</div>
+    </div>
+
+
 </div>
 <!-- Jobs -->
 
+
+
 <!-- Last Updated at: 2020-10-14 21:37:43 +0700 -->
-<div class="panel panel-default">
+<div class="panel panel-default ">
 <div class="panel-heading">
 <h3 class="panel-title">Tại Sao Bạn Sẽ Yêu Thích Làm Việc Tại Đây</h3>
 </div>

@@ -12,6 +12,7 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/bootstrap4.css',
         'css/style.css',
         'css/login.css',
         'css/styleDetail.css',
@@ -22,6 +23,8 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         // login
+        'js/jquery3.5.js',
+        'js/bootstrap4.js',
         "vendor/jquery/jquery.min.js",
         "vendor/bootstrap/js/popper.js",
         "vendor/bootstrap/js/bootstrap.min.js",
@@ -30,6 +33,7 @@ class AppAsset extends AssetBundle
         "js/main.js",
         'js/ajax.js',
         'js/sweetalert.min.js',
+
     ];
     public $depends = [
         'yii\web\YiiAsset',

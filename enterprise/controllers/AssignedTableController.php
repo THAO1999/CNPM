@@ -38,7 +38,7 @@ class AssignedTableController extends Controller
     public function actionIndex($id)
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => AssignedTable::find()->where(['organization_request_id' => $id]),
+            'query' => AssignedTable::find()->where(['organization_request_id' => $id, 'status' => 1]),
         ]);
 
         return $this->render('index', [

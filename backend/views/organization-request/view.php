@@ -4,7 +4,7 @@ use backend\models\OrganizationRequest;
 use backend\models\Student;
 use common\models\CapacityDictionary;
 use yii\helpers\Url;
-$this->registerCssFile("@web/css/css/styleDetail.css");
+//$this->registerCssFile("@web/css/css/styleDetail.css");
 
 ?>
 </div>

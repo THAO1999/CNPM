@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         //'status',
         //'create_date',
 
-        ['class' => 'yii\grid\ActionColumn'],
+        //['class' => 'yii\grid\ActionColumn'],
     ],
 ]);?>
 

@@ -98,7 +98,7 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 <p>-<?=$organization_requests->short_description?></p>
 </div>
 <h3 class="panel-title">
-kỹ năng chúng tôi cần
+Kỹ Năng Cần Có:
 </h3>
 <br>
 <ul class="employer-skills">

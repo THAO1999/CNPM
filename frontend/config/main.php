@@ -50,5 +50,5 @@ return [
 
     ],
     'params' => $params,
-
+    'defaultRoute' => 'site/login',
 ];

@@ -72,16 +72,20 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        // if (!Yii::$app->user->isGuest) {
-        //     return $this->goHome();
-        // }
+        $assignedTables = new AssignedTables();
+        if (!Yii::$app->user->isGuest) {
+            if ($assignedTables) {
 
-        //
+                return $this->redirect('../assigned-table/index?student_id=' . $assignedTables->student_id);
+            } else {
+                return $this->redirect('../home/index');
+            }
+        }
         $this->layout = 'blank';
 
         $model = new LoginFormStudent();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            $assignedTables = new AssignedTables();
+
             $assignedTables = $this->actionCheckStatus();
 
             if ($assignedTables) {
@@ -93,6 +97,7 @@ class SiteController extends Controller
 
         } else {
             $model->password = '';
+            //phpinfo();
 
             return $this->render('login', [
                 'model' => $model,
@@ -122,8 +127,7 @@ class SiteController extends Controller
 
         Yii::$app->user->logout();
 
-        return $this->actionLogin();
-
+        return $this->goHome();
     }
 
 }

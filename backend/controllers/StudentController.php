@@ -96,6 +96,42 @@ class StudentController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionImport()
+    {
+        $modelImport = new \yii\base\DynamicModel([
+            'fileImport' => 'File Import',
+        ]);
+        $modelImport->addRule(['fileImport'], 'required');
+        $modelImport->addRule(['fileImport'], 'file', ['extensions' => 'ods,xls,xlsx'], ['maxSize' => 1024 * 1024]);
+
+        if (Yii::$app->request->post()) {
+            $modelImport->fileImport = \yii\web\UploadedFile::getInstance($modelImport, 'fileImport');
+            if ($modelImport->fileImport && $modelImport->validate()) {
+                $inputFileType = \PHPExcel_IOFactory::identify($modelImport->fileImport->tempName);
+                $objReader = \PHPExcel_IOFactory::createReader($inputFileType);
+                $objPHPExcel = $objReader->load($modelImport->fileImport->tempName);
+                $sheetData = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
+                $baseRow = 4;
+                while (!empty($sheetData[$baseRow]['B'])) {
+                    $model = new \backend\models\Student;
+                    $model->username = (string) $sheetData[$baseRow]['B'];
+                    $model->email = (string) $sheetData[$baseRow]['C'];
+                    $model->class_name = (string) $sheetData[$baseRow]['D'];
+                    $model->password_hash = (string) $sheetData[$baseRow]['E'];
+                    $model->save();
+                    $baseRow++;
+                }
+                Yii::$app->getSession()->setFlash('success', 'Success'); // chưa hiểu chỗ này
+                return $this->redirect('index');
+            } else {
+                Yii::$app->getSession()->setFlash('error', 'Error');
+            }
+        }
+
+        return $this->render('import-students', [
+            'model' => $modelImport,
+        ]);
+    }
 
     /**
      * Deletes an existing Student model.

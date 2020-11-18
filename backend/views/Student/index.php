@@ -16,8 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?=Html::a('Create Student', ['create'], ['class' => 'btn btn-success'])?>
     </p>
+    <p>
+        <?=Html::a('Import file Excel', ['import'], ['class' => 'btn btn-success'])?>
+    </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?=GridView::widget([
     'dataProvider' => $dataProvider,

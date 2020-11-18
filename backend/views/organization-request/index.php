@@ -8,7 +8,16 @@ use yii\helpers\Url;
 
 
     <div class="top-companies">
-    <div class="title">Phiếu Tuyển Dụng</div>
+    <?php if ($status == 10): ?>
+      <div class="title">Phiếu Đã Xác Nhận</div>
+<?php elseif ($status == 9): ?>
+  <div class="title">Phiếu Chưa Xác Nhân</div>
+  <?php elseif ($status == 0): ?>
+  <div class="title">Phiếu Bị Hủy</div>
+
+<?php endif;?>
+
+
     <div class="row">
     <!-- Last updated: "2020-10-05 15:09:37 +0700"-->
 

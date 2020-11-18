@@ -54,8 +54,6 @@ class OrganizationRequestController extends Controller
     public function actionView($id)
     {
 
-        //$id = 183; //pheu
-
         $organization_requests = OrganizationRequests::findOne($id); // lay thong tin phieu theo id
 
         $enterprise = Enterprises::getEnterpriseProfiles($organization_requests->organization_id);
@@ -63,12 +61,11 @@ class OrganizationRequestController extends Controller
         $listOrganization_requests = OrganizationRequests::find()->limit(5)->all(); //lay list
 
         $lisSkill = OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
-        // phpinfo();
+
         $count = StudentRegistration::getCount($id);
         $listComment = Comment::find()->where(['request_id' => $organization_requests->id])->limit(4)->all();
 
         return $this->render('view', [
-            //'capacity' => $capacity,
             'organization_requests' => $organization_requests,
             'enterprise' => $enterprise,
             'lisSkill' => $lisSkill,
@@ -87,6 +84,8 @@ class OrganizationRequestController extends Controller
             return $this->getListOrganizationRequestUnConfirm();
         } elseif ($status == OrganizationRequest::cancel) {
             return $this->getListOrganizationRequestCancel();
+        } else {
+            return $this->getListOrganizationRequestExpire();
         }
 
     }
@@ -102,4 +101,9 @@ class OrganizationRequestController extends Controller
     {
         return OrganizationRequest::find()->where(['status' => OrganizationRequest::cancel])->all();
     }
+    public function getListOrganizationRequestExpire()
+    {
+        return OrganizationRequest::find()->where(['status' => OrganizationRequest::expire])->all();
+    }
+
 }

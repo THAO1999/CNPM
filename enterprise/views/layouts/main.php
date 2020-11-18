@@ -44,6 +44,7 @@ $menuItems = [
             ['label' => 'Confirm', 'url' => ['organization-request/index?status=10']],
             ['label' => 'UnConfirm', 'url' => ['organization-request/index?status=9']],
             ['label' => 'Cancel', 'url' => ['organization-request/index?status=0']],
+            ['label' => 'Expire', 'url' => ['organization-request/index?status=1']],
         ]],
 
 ];
@@ -69,7 +70,7 @@ NavBar::end();
         </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" style="margin-top:200px">
         <div class="container">
             <p class="pull-left">&copy; <?=Html::encode(Yii::$app->name)?> <?=date('Y')?></p>
 

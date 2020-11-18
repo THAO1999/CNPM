@@ -19,12 +19,7 @@ use yii\web\NotFoundHttpException;
  */
 class OrganizationRequestController extends Controller
 {
-    // const confirm = 10;
-    // const unConfirm = 9;
-    // const cancel = 0;
-    /**
-     * {@inheritdoc}
-     */
+
     public function behaviors()
     {
         return [
@@ -49,7 +44,7 @@ class OrganizationRequestController extends Controller
 
         return $this->render('index', [
             'listOrganizationRequest' => $listOrganizationRequest,
-
+            "status" => $status,
         ]);
 
     }
@@ -66,19 +61,23 @@ class OrganizationRequestController extends Controller
 
     {
         $model = $this->findModel($id);
+        return $this->render('create',
+            [
+                'model' => $model,
+            ]);
 
+    }
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post())) {
-
-            echo Yii::$app->request->post("cancel");
-            // phpinfo();
+            $model->cancel = $_POST['OrganizationRequests']["cancel"];
             $model->status = OrganizationRequest::cancel;
             $model->save();
             return $this->actionIndex($model->status);
         }
-        return $this->render('create',
-            ['model' => $model]);
-
     }
+
     public function actionView($id)
     {
         //$id = 183; //pheu
@@ -97,7 +96,6 @@ class OrganizationRequestController extends Controller
             'organization_requests' => $organization_requests,
             'enterprise' => $enterprise,
             'lisSkill' => $lisSkill,
-            //   'listOrganization_requests' => $listOrganization_requests,
             'count' => $count,
             'listComment' => $listComment,
         ]);

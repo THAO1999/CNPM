@@ -116,6 +116,7 @@ class SiteController extends Controller
         $model = AssignedTables::findOne([
             'student_id' => $id,
             'status' => 1,
+
         ]);
         // phpinfo();
         return $model;

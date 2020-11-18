@@ -65,14 +65,29 @@ class HomeController extends Controller
     {
         $model = new Enterprises();
         $capacity = CapacityDictionary::find()->limit(12)->all();
-        $listOrganization_requests = OrganizationRequests::find()->where(['status' => OrganizationRequest::confirm])->all();
+        $listOrganization_requests = OrganizationRequests::find()->all();
+        $this->actionCheckStatusOrigin($listOrganization_requests);
+        $listOrganization_requestsConfirm = OrganizationRequests::find()->where(['status' => OrganizationRequest::confirm])->all();
         return $this->render('index', [
             'capacity' => $capacity,
-            'organization_requests' => $listOrganization_requests,
+            'organization_requests' => $listOrganization_requestsConfirm,
             'model' => $model,
         ]);
 
     }
+
+    public function actionCheckStatusOrigin($listOrganization_requests)
+    {
+        $today = date("y-m-d");
+        foreach ($listOrganization_requests as $value) {
+            if ($value->date_submitted > $today) {
+                $value->status = 8;
+                $value->save();
+            }
+
+        }
+    }
+
     public function actionSearchByNameEnterprise()
     {
         $listOrganization_requests = []; // danh sách các phiếu yêu cầu

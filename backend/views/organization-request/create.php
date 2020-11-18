@@ -10,7 +10,9 @@ use yii\widgets\ActiveForm;
 
 <div class="cancel-form">
 
-    <?php $form = ActiveForm::begin();?>
+    <?php $form = ActiveForm::begin([
+    'action' => ['update', 'id' => $model->id],
+])?>
 
     <?=$form->field($model, 'cancel')->textarea(['maxlength' => true])?>
 

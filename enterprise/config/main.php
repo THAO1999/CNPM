@@ -1,5 +1,4 @@
 <?php
-use \yii\web\Request;
 //$baseUrl = str_replace('/web', '', (new Request)->getBaseUrl());
 //die( (new Request)->getBaseUrl());
 $params = array_merge(
@@ -42,7 +41,7 @@ return [
         ],
 
         'urlManager' => [
-         //   'baseUrl' => $baseUrl,
+            //   'baseUrl' => $baseUrl,
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
@@ -50,7 +49,14 @@ return [
         ],
 
     ],
- 
+
     'params' => $params,
     'defaultRoute' => 'site/login',
+
+    'modules' => [
+        'gridview' => [
+            'class' => 'kartik\grid\Module',
+            // other module settings
+        ],
+    ],
 ];

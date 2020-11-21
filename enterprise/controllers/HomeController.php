@@ -68,7 +68,8 @@ class HomeController extends Controller
         $organizationRequestAbilities = new OrganizationRequestAbilities();
         $model->organization_id = Yii::$app->user->identity->id;
         $model->status = 9;
-        $model->imageFile = UploadForm::Upload($model);
+        $img = "imageFile";
+        $model->imageFile = UploadForm::Upload($model, $img);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $organizationRequestAbilities->luu($model->id);

@@ -1,17 +1,12 @@
 <?php
 namespace enterprise\controllers;
 
-use Yii;
-use enterprise\models\Enterprises;
-use common\models\OrganizationRequestAbilities;
-use yii\web\UploadedFile;
-
 use common\models\UploadForm;
-use yii\web\Controller;
-use yii\helpers\ArrayHelper ;
-use yii\filters\VerbFilter;
+use enterprise\models\Enterprises;
+use Yii;
 use yii\filters\AccessControl;
-use common\models\OrganizationRequests;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
 
 /**
  * Site controller
@@ -64,7 +59,7 @@ class ProfileEnterpriseController extends Controller
             ],
         ];
     }
-    
+
     /**
      * Displays about page.
      *
@@ -73,10 +68,11 @@ class ProfileEnterpriseController extends Controller
     public function actionIndex()
     {
 
-         $model = new Enterprises();
-        $id=Yii::$app->user->identity->id; // id Enterprises
-        $model=$model->getEnterprisesProfiles($id);
-        $model->imageFile=UploadForm::Upload($model);
+        $model = new Enterprises();
+        $id = Yii::$app->user->identity->id; // id Enterprises
+        $model = $model->getEnterprisesProfiles($id);
+        $img = "imageFile";
+        $model->imageFile = UploadForm::Upload($model, $img);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->render('index', [
                 'model' => $model,
@@ -88,5 +84,4 @@ class ProfileEnterpriseController extends Controller
         ]);
     }
 
- 
 }

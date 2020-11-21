@@ -1,18 +1,14 @@
 <?php
 namespace frontend\controllers;
 
-
-use Yii;
 use common\models\UploadForm;
-use yii\web\Controller;
-use yii\filters\AccessControl;
 use frontend\models\Students;
-use yii\data\ActiveDataProvider;
-use common\models\OrganizationRequests;
-use yii\filters\VerbFilter;
 use frontend\models\StudentSkillProfile;
+use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
 
-use common\models\CapacityDictionary;
 /**
  * Site controller
  */
@@ -65,10 +61,6 @@ class ProfileStudentController extends Controller
         ];
     }
 
-
-
-   
-
     /**
      * Displays about page.
      *
@@ -77,23 +69,23 @@ class ProfileStudentController extends Controller
     public function actionIndex()
     {
         $model = new Students();
-        $id=Yii::$app->user->identity->id; // id student
-        $model=$model->getStudentProfiles($id);
-        $model->imageFile=UploadForm::Upload($model); // lay duong dan 
+        $id = Yii::$app->user->identity->id; // id student
+        $model = $model->getStudentProfiles($id);
+        $img = 'imageFile';
+        $model->imageFile = UploadForm::Upload($model, $img); // lay duong dan
 
-            $list_StudentSkill=StudentSkillProfile::getSkill($model->getStudent($id)); // lay list skill student
+        $list_StudentSkill = StudentSkillProfile::getSkill($model->getStudent($id)); // lay list skill student
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->render('index', [
                 'model' => $model,
-                'list_StudentSkill'=>$list_StudentSkill,
+                'list_StudentSkill' => $list_StudentSkill,
             ]);
         }
 
         return $this->render('index', [
             'model' => $model,
-            'list_StudentSkill'=>$list_StudentSkill,
+            'list_StudentSkill' => $list_StudentSkill,
         ]);
     }
-  
 
 }

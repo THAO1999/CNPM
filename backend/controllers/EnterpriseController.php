@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use app\models\EnterpriseSearch;
 use backend\models\Enterprises;
+use common\models\UploadForm;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -63,9 +64,13 @@ class EnterpriseController extends Controller
      */
     public function actionCreate()
     {
+
         $model = new Enterprises();
         $time = date("Y/m/d");
         $model->created_at = $time;
+        $img = "cover_img";
+        $model->cover_img = UploadForm::Upload($model, $img);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->actionIndex();
         }

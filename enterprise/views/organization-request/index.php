@@ -18,7 +18,7 @@ use yii\helpers\Url;
 
     <a class="top-company"href="<?=Url::home() . "organization-request/view?id=" . $value->id?>  " data-controller="utm-tracking" rel="nofollow" data-method="put" href="#">
       <div class="top-company__logo text-center">
-      <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" class=" ls-is-cached lazyloaded" data-src="" src="<?=Enterprises::getImageEnterprise($value->id)?>">
+      <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" class=" ls-is-cached lazyloaded" data-src="" src="<?=common\models\OrganizationRequests::getImageOrganizationRequest($value->id)?>">
     </div>
     <div class="top-company__name text-center"><?=$value->subject?> </div>
 

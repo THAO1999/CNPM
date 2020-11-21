@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "organization_requests".
@@ -80,6 +81,15 @@ class OrganizationRequests extends \yii\db\ActiveRecord
     public function getOrganizationRequestAbilities()
     {
         return $this->hasMany(OrganizationRequestAbilities::className(), ['organization_request_id' => 'id']);
+    }
+    public function getImageOrganizationRequest($id)
+    {
+
+        // lay organization_id doanh nghiep
+        $organizationRequests = OrganizationRequests::findOne($id);
+
+        return Url::base(true) . '/../../uploads/' . $organizationRequests->imageFile; // getpathImg
+
     }
 
 }

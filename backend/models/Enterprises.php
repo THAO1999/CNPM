@@ -4,6 +4,7 @@ namespace backend\models;
 
 use common\models\Enterprise;
 use common\models\OrganizationRequests;
+
 use yii\helpers\Url;
 
 class Enterprises extends Enterprise
@@ -30,4 +31,5 @@ class Enterprises extends Enterprise
         return Url::base(true) . '/../uploads/' . $enterprises->imageFile; // getpathImg
 
     }
+    
 }

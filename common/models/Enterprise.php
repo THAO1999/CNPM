@@ -51,7 +51,7 @@ class Enterprise extends \yii\db\ActiveRecord implements IdentityInterface
             [['username', 'password_hash'], 'required'],
             [['date_establish', 'created_at', 'updated_at'], 'safe'],
             [['employee_count', 'gross_revenue', 'status'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email', 'imageFile', 'cover_img', 'description'], 'string', 'max' => 255],
+            [['username', 'password_hash', 'password_reset_token', 'email', 'description'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['address'], 'string', 'max' => 50],
             [['username'], 'unique'],

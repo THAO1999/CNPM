@@ -58,11 +58,11 @@ class StudentRegistrationController extends Controller
     public function actionView($student_id, $request_id)
     {
         $model = new Students();
-        $id = Yii::$app->user->identity->id; // id student
-        $model = $model->getStudentProfiles($id);
-        $model->imageFile = UploadForm::Upload($model); // lay duong dan
-
-        $list_StudentSkill = StudentSkillProfile::getSkill($model->getStudent($id)); // lay list skill student
+        // $id = Yii::$app->user->identity->id; // id student
+        $model = $model->getStudentProfiles($student_id);
+        $img = 'imageFile';
+        $model->imageFile = UploadForm::Upload($model, $img); // lay duong dan
+        $list_StudentSkill = StudentSkillProfile::getSkill($model->getStudent($student_id)); // lay list skill student
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->render('view', [
                 'model' => $model,
@@ -107,12 +107,12 @@ class StudentRegistrationController extends Controller
         $model = new AssignedTable();
         $model->student_id = $student_id;
         $model->organization_request_id = $request_id;
-        $model->save();
-        return $this->actionDelete($student_id, $request_id);
+        $model->status = 1;
+        $student = $this->findStudent($student_id);
 
-        // return $this->render('update', [
-        //     'model' => $model,
-        // ]);
+        $model->save();
+        return $this->actionDeleteStudentFromRegister($student_id, $request_id);
+
     }
 
     /**
@@ -123,25 +123,20 @@ class StudentRegistrationController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($student_id, $request_id)
-    {
-        $this->findModel($student_id, $request_id)->delete();
 
+    public function actionDeleteStudentFromRegister($student_id, $request_id)
+    {
+        foreach ($this->findStudent($student_id, $request_id) as $value) {
+            # code...
+            $value->delete();
+        }
         return $this->actionIndex($request_id);
     }
 
-    /**
-     * Finds the StudentRegistration model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $student_id
-     * @param integer $request_id
-     * @return StudentRegistration the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($student_id, $request_id)
+    protected function findStudent($student_id)
     {
-        if (($model = StudentRegistration::findOne(['student_id' => $student_id, 'request_id' => $request_id])) !== null) {
-            return $model;
+        if (($listStudent = StudentRegistration::find()->where(['student_id' => $student_id])->all()) !== null) {
+            return $listStudent;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');

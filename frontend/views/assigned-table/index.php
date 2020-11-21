@@ -177,7 +177,7 @@ Skills we need:
 
 <?=$form->field($model, 'end_date')->widget(\yii\jui\DatePicker::classname(), [
     //'language' => 'ru',
-    'dateFormat' => 'MM-dd-yyyy',
+    'dateFormat' => 'yyyy-MM-dd',
 ])?>
 
 <?=$form->field($model, 'status')->dropDownList([

@@ -4,7 +4,6 @@ use common\models\OrganizationRequestAbilities;
 use frontend\models\Enterprises;
 use frontend\models\Students;
 use yii\helpers\Url;
-
 ?>
 </div>
 

@@ -80,7 +80,7 @@ class HomeController extends Controller
     {
         $today = date("y-m-d");
         foreach ($listOrganization_requests as $value) {
-            if ($value->date_submitted > $today) {
+            if ($value->date_submitted < $today) {
                 $value->status = 8;
                 $value->save();
             }

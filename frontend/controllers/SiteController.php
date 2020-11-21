@@ -2,7 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\LoginFormStudent;
-use frontend\models\AssignedTables;
+use frontend\models\Students;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -72,36 +72,32 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        $assignedTables = new AssignedTables();
-        if (!Yii::$app->user->isGuest) {
-            if ($assignedTables) {
 
-                return $this->redirect('../assigned-table/index?student_id=' . $assignedTables->student_id);
-            } else {
-                return $this->redirect('../home/index');
-            }
+        if (!Yii::$app->user->isGuest) {
+            $this->actionCheckAssignedTables();
+
         }
         $this->layout = 'blank';
 
         $model = new LoginFormStudent();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-
-            $assignedTables = $this->actionCheckStatus();
-
-            if ($assignedTables) {
-
-                return $this->redirect('../assigned-table/index?student_id=' . $assignedTables->student_id);
-            } else {
-                return $this->redirect('../home/index');
-            }
+            $this->actionCheckAssignedTables();
 
         } else {
             $model->password = '';
-            //phpinfo();
-
             return $this->render('login', [
                 'model' => $model,
             ]);
+        }
+    }
+    public function actionCheckAssignedTables()
+    {
+        $assignedTables = Students::checkStatus(Yii::$app->user->identity->id);
+        if ($assignedTables) {
+
+            return $this->redirect('assigned-table/index?student_id=' . $assignedTables->student_id);
+        } else {
+            return $this->redirect('home/index');
         }
     }
 
@@ -110,18 +106,6 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionCheckStatus()
-    {
-        $id = Yii::$app->user->identity->id;
-        $model = AssignedTables::findOne([
-            'student_id' => $id,
-            'status' => 1,
-
-        ]);
-        // phpinfo();
-        return $model;
-
-    }
 
     public function actionLogout()
     {

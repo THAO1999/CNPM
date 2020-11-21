@@ -1,7 +1,9 @@
 <?php
 use enterprise\models\Enterprises;
+use marqu3s\summernote\Summernote;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 ?>
 <hr>
 <hr>
@@ -84,7 +86,10 @@ use yii\widgets\ActiveForm;
                         <div class="form-group">
 
                             <div class="col-xs-6">
-                            <?=$form->field($model, 'description')->textInput(['maxlength' => true])?>
+
+    <?=$form->field($model, 'short_description')->widget(Summernote::class, [
+    'options' => ['placeholder' => 'Mô tả công việc ở đây...'],
+]);?>
                             </div>
                         </div>
 

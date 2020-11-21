@@ -52,11 +52,14 @@ return [
 
     'params' => $params,
     'defaultRoute' => 'site/login',
-
+    'params' => [
+        'icon-framework' => \kartik\icons\Icon::FAS, // Font Awesome Icon framework
+    ],
     'modules' => [
         'gridview' => [
             'class' => 'kartik\grid\Module',
             // other module settings
         ],
     ],
+
 ];

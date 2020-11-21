@@ -39,7 +39,7 @@ class OrganizationRequests extends \yii\db\ActiveRecord
             [['organization_id', 'subject', 'short_description', 'amount'], 'required'],
             [['organization_id', 'amount', 'status'], 'integer'],
             [['date_submitted'], 'safe'],
-            [['subject', 'short_description'], 'string', 'max' => 40],
+            [['subject', 'short_description'], 'string', 'max' => 100000],
             //[['imageFile'], 'string', 'max' => 250],
         ];
     }

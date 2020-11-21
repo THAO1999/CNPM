@@ -10,11 +10,13 @@ class Enterprises extends Enterprise
 {
     public function getImageEnterprise($id)
     {
+
         // lay organization_id doanh nghiep
         $organizationRequests = OrganizationRequests::findOne($id);
-        $id = $organizationRequests->organization_id; //
+        $enterpriseID = $organizationRequests->organization_id; //
 
-        $enterprise = Enterprise::findOne($id);
+        $enterprise = Enterprise::findOne($enterpriseID);
+        //return $enterprise->imageFile;
 
         return Url::base(true) . '/../uploads/' . $enterprise->imageFile; // getpathImg
 

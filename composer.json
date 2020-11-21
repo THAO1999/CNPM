@@ -22,7 +22,11 @@
         "phpoffice/phpexcel": "dev-develop",
         "kartik-v/yii2-export": "*",
         "kartik-v/yii2-mpdf": "*",
-        "kartik-v/yii2-grid": "@dev"
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-editors": "@dev",
+        "xutl/yii2-fontawesome-asset": "^2.0",
+        "kartik-v/yii2-icons": "@dev",
+        "marqu3s/yii2-summernote": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

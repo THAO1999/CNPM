@@ -3,12 +3,16 @@ use common\widgets\Alert;
 use frontend\assets\AppAsset;
 /* @var $this \yii\web\View */
 /* @var $content string */
+use kartik\icons\FontAwesomeAsset;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
-use \yii\web\View;
 AppAsset::register($this);
+
+use \yii\web\View;
+
+FontAwesomeAsset::register($this);
 ?>
 <?php $this->beginPage()?>
 <!DOCTYPE html>
@@ -21,6 +25,7 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags()?>
     <title><?=Html::encode($this->title)?></title>
     <?php $this->head()?>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 </head>
 
 <body>

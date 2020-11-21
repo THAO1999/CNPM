@@ -67,7 +67,7 @@ class EnterpriseController extends Controller
         $time = date("Y/m/d");
         $model->created_at = $time;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->actionIndex();
         }
         return $this->render('create', [
             'model' => $model,

@@ -1,8 +1,10 @@
 <?php
 use enterprise\models\Capacity;
+use marqu3s\summernote\Summernote;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 /* @var $this yii\web\View */
 /* @var $model common\models\CapacityDictionary */
 /* @var $form yii\widgets\ActiveForm */
@@ -17,7 +19,9 @@ use yii\widgets\ActiveForm;
 
     <?=$form->field($model, 'amount')->textInput(['maxlength' => true])?>
 
-    <?=$form->field($model, 'short_description')->textarea(['maxlength' => true, 'rows' => 4])?>
+    <?=$form->field($model, 'short_description')->widget(Summernote::class, [
+    'options' => ['placeholder' => 'Mô tả công việc ở đây...'],
+]);?>
 
     <?=$form->field($model, 'date_submitted')->widget(\yii\jui\DatePicker::classname(), [
     //'language' => 'ru',

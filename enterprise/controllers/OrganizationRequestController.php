@@ -9,6 +9,7 @@ use common\models\OrganizationRequestAbilities;
 use common\models\OrganizationRequests;
 use frontend\models\Comment;
 use frontend\models\Enterprises;
+use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 
@@ -44,7 +45,6 @@ class OrganizationRequestController extends Controller
         // confirm
 
         $listOrganizationRequest = $this->checkStatus($status);
-
         return $this->render('index', [
             'listOrganizationRequest' => $listOrganizationRequest,
 
@@ -91,19 +91,19 @@ class OrganizationRequestController extends Controller
     }
     public function getListOrganizationRequestConfirm()
     {
-        return OrganizationRequest::find()->where(['status' => OrganizationRequest::confirm])->all();
+        return OrganizationRequest::find()->where(['status' => OrganizationRequest::confirm, 'organization_id' => Yii::$app->user->identity->id])->all();
     }
     public function getListOrganizationRequestUnConfirm()
     {
-        return OrganizationRequest::find()->where(['status' => OrganizationRequest::unConfirm])->all();
+        return OrganizationRequest::find()->where(['status' => OrganizationRequest::unConfirm, 'organization_id' => Yii::$app->user->identity->id])->all();
     }
     public function getListOrganizationRequestCancel()
     {
-        return OrganizationRequest::find()->where(['status' => OrganizationRequest::cancel])->all();
+        return OrganizationRequest::find()->where(['status' => OrganizationRequest::cancel, 'organization_id' => Yii::$app->user->identity->id])->all();
     }
     public function getListOrganizationRequestExpire()
     {
-        return OrganizationRequest::find()->where(['status' => OrganizationRequest::expire])->all();
+        return OrganizationRequest::find()->where(['status' => OrganizationRequest::expire, 'organization_id' => Yii::$app->user->identity->id])->all();
     }
 
 }

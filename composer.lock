@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa08fa8a8db8ba9143c94fd631473d9e",
+    "content-hash": "6e8fd4dea0da8e8272e8baca7b318403",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -25,6 +25,41 @@
             "type": "bower-asset",
             "license": [
                 "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/codemirror",
+            "version": "5.57.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:components/codemirror.git",
+                "reference": "4532696973a4c93fd6752fdbc54da21d261fa611"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/codemirror/zipball/4532696973a4c93fd6752fdbc54da21d261fa611",
+                "reference": "4532696973a4c93fd6752fdbc54da21d261fa611"
+            },
+            "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/font-awesome",
+            "version": "v4.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/a8386aae19e200ddb0f6845b5feeee5eb7013687",
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687"
+            },
+            "type": "bower-asset",
+            "license": [
+                "OFL-1.1",
+                "MIT",
+                "CC-BY-3.0"
             ]
         },
         {
@@ -99,6 +134,21 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/bestiejs/punycode.js/zipball/38c8d3131a82567bfef18da09f7f4db68c84f8a3",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
+            },
+            "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/summernote",
+            "version": "v0.8.18",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:summernote/summernote.git",
+                "reference": "a4ef0fffde1873e80a79381df13052c4163871aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/summernote/summernote/zipball/a4ef0fffde1873e80a79381df13052c4163871aa",
+                "reference": "a4ef0fffde1873e80a79381df13052c4163871aa"
             },
             "type": "bower-asset"
         },
@@ -182,6 +232,44 @@
                 "markdown-extra"
             ],
             "time": "2018-03-26T11:24:36+00:00"
+        },
+        {
+            "name": "components/flag-icon-css",
+            "version": "3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lipis/flag-icon-css.git",
+                "reference": "5141384c57972b0b08fc3bb67bea297321fbd799"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lipis/flag-icon-css/zipball/5141384c57972b0b08fc3bb67bea297321fbd799",
+                "reference": "5141384c57972b0b08fc3bb67bea297321fbd799",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "name": "flag-icon-css",
+                    "files": [
+                        "less/**",
+                        "css/**",
+                        "flags/**"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Panayiotis Lipiridis (Lipis)",
+                    "email": "lipiridis@gmail.com"
+                }
+            ],
+            "description": "CSS for vector based country flags",
+            "time": "2020-06-10T11:53:19+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -539,6 +627,64 @@
             "time": "2019-02-23T19:25:47+00:00"
         },
         {
+            "name": "kartik-v/yii2-editors",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-editors.git",
+                "reference": "892e52ccc23d09e1eced43a108f78eb6b755061e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-editors/zipball/892e52ccc23d09e1eced43a108f78eb6b755061e",
+                "reference": "892e52ccc23d09e1eced43a108f78eb6b755061e",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-krajee-base": ">=2.0.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\editors\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Editor widgets Yii2 framework. Summernote WYSIWYG editor, Codemirror code editor and PlainText editor for Bootstrap 3.x & 4.x.",
+            "homepage": "https://github.com/kartik-v/yii2-editors",
+            "keywords": [
+                "bootstrap",
+                "code",
+                "codemirror",
+                "editor",
+                "extension",
+                "file",
+                "html",
+                "input",
+                "rich",
+                "summernote",
+                "widget",
+                "wysiwyg",
+                "yii2"
+            ],
+            "time": "2020-08-29T13:57:36+00:00"
+        },
+        {
             "name": "kartik-v/yii2-export",
             "version": "v1.4.1",
             "source": {
@@ -662,6 +808,58 @@
                 }
             ],
             "time": "2020-07-08T07:12:17+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-icons",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-icons.git",
+                "reference": "5d4c96a2350b014cb8871ed6251db879f014c834"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-icons/zipball/5d4c96a2350b014cb8871ed6251db879f014c834",
+                "reference": "5d4c96a2350b014cb8871ed6251db879f014c834",
+                "shasum": ""
+            },
+            "require": {
+                "components/flag-icon-css": "*",
+                "kartik-v/yii2-krajee-base": ">=1.9",
+                "yiisoft/yii2-jui": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\icons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://demos.krajee.com/"
+                }
+            ],
+            "description": "Set of icon frameworks for use in Yii Framework 2.0",
+            "homepage": "https://github.com/kartik-v/yii2-icons",
+            "keywords": [
+                "extension",
+                "font",
+                "icon",
+                "yii",
+                "yii2"
+            ],
+            "time": "2020-06-09T03:45:58+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -1168,6 +1366,64 @@
                 "vector"
             ],
             "time": "2020-08-28T17:11:00+00:00"
+        },
+        {
+            "name": "marqu3s/yii2-summernote",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marqu3s/yii2-summernote.git",
+                "reference": "28daacd5c981a8a221a2dd551c170af36346ed33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marqu3s/yii2-summernote/zipball/28daacd5c981a8a221a2dd551c170af36346ed33",
+                "reference": "28daacd5c981a8a221a2dd551c170af36346ed33",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/codemirror": "@stable",
+                "bower-asset/summernote": "0.*",
+                "yiisoft/yii2": "~2"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "marqu3s\\summernote\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Joao Marques",
+                    "email": "joao@jjmf.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yii2 Summernote widget. Super simple WYSIWYG editor on Bootstrap",
+            "homepage": "https://github.com/marqu3s/yii2-summernote",
+            "keywords": [
+                "summernote",
+                "widget",
+                "wysiwyg",
+                "yii2"
+            ],
+            "time": "2020-08-15T00:51:12+00:00"
         },
         {
             "name": "mpdf/mpdf",
@@ -2363,6 +2619,49 @@
                 }
             ],
             "time": "2020-10-23T14:02:19+00:00"
+        },
+        {
+            "name": "xutl/yii2-fontawesome-asset",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xutl/yii2-fontawesome-asset.git",
+                "reference": "a28b83ba4258de8ae66da4b6ce9e04b8e4fc288e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xutl/yii2-fontawesome-asset/zipball/a28b83ba4258de8ae66da4b6ce9e04b8e4fc288e",
+                "reference": "a28b83ba4258de8ae66da4b6ce9e04b8e4fc288e",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/font-awesome": "~4.0",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "xutl\\fontawesome\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "XuTL",
+                    "email": "xutl@gmail.com"
+                }
+            ],
+            "description": "The fontawesome extension for the Yii framework",
+            "keywords": [
+                "FontAwesome",
+                "yii2"
+            ],
+            "abandoned": "yiilab/yii2-fontawesome-asset",
+            "time": "2017-05-24T08:43:01+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -6325,7 +6624,10 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "phpoffice/phpexcel": 20,
-        "kartik-v/yii2-grid": 20
+        "kartik-v/yii2-grid": 20,
+        "kartik-v/yii2-editors": 20,
+        "kartik-v/yii2-icons": 20,
+        "marqu3s/yii2-summernote": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

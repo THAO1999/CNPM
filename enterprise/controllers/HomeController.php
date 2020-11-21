@@ -71,10 +71,8 @@ class HomeController extends Controller
         $model->imageFile = UploadForm::Upload($model);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if ($organizationRequestAbilities->luu($model->id)) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-
+            $organizationRequestAbilities->luu($model->id);
+            return $this->redirect('../organization-request/index?status=9');
         }
         return $this->render('create', [
             'model' => $model,

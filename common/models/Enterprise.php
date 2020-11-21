@@ -51,9 +51,11 @@ class Enterprise extends \yii\db\ActiveRecord implements IdentityInterface
             [['username', 'password_hash'], 'required'],
             [['date_establish', 'created_at', 'updated_at'], 'safe'],
             [['employee_count', 'gross_revenue', 'status'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email', 'description'], 'string', 'max' => 255],
+            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['address'], 'string', 'max' => 50],
+            [['description'], 'string', 'max' => 100000],
+
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
@@ -240,6 +242,7 @@ class Enterprise extends \yii\db\ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
     public function BeforeSave($insert)
     {
         // add teacher
@@ -250,6 +253,9 @@ class Enterprise extends \yii\db\ActiveRecord implements IdentityInterface
         } else {
             // update teacher
             $old_user = Enterprise::findOne(($this->id));
+            if ($this->imageFile == null) { // neu != password old thi ma hoa password dc update
+                $this->imageFile = $old_user->imageFile;
+            }
             if ($old_user->password_hash != $this->password_hash) { // neu != password old thi ma hoa password dc update
                 $this->generateAuthKey();
                 $this->generatePasswordResetToken();

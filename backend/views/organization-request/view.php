@@ -99,7 +99,7 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 <div class="paragraph">
 <h3 style="color:red;margin-bottom:10px">
 </h3>
-<p><?=$enterprise->description?></p>
+<p><?=$organization_requests->short_description?></p>
 </div>
 <h3 class="panel-title"> Skills we need</h3>
 <br>

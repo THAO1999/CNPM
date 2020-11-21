@@ -1,13 +1,14 @@
 <?php
 
 namespace frontend\controllers;
+
 use enterprise\models\Capacity;
-use Yii;
 use frontend\models\StudentSkillProfile;
+use Yii;
 use yii\data\ActiveDataProvider;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * StudentSkillProfileController implements the CRUD actions for StudentSkillProfile model.
@@ -67,12 +68,12 @@ class StudentSkillProfileController extends Controller
         $model = new StudentSkillProfile();
         $capacity = new Capacity();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->actionIndex();
         }
 
         return $this->render('create', [
             'model' => $model,
-            'capacity'=>$capacity,
+            'capacity' => $capacity,
         ]);
     }
 
@@ -89,12 +90,12 @@ class StudentSkillProfileController extends Controller
         $capacity = new Capacity();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-           
+
         }
 
         return $this->render('update', [
             'model' => $model,
-            'capacity'=>$capacity,
+            'capacity' => $capacity,
         ]);
     }
 

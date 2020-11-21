@@ -4,7 +4,6 @@ namespace backend\models;
 
 use common\models\Enterprise;
 use common\models\OrganizationRequests;
-
 use yii\helpers\Url;
 
 class Enterprises extends Enterprise
@@ -28,8 +27,8 @@ class Enterprises extends Enterprise
         // lay organization_id doanh nghiep
         $enterprises = Enterprises::findOne($id);
 
-        return Url::base(true) . '/../uploads/' . $enterprises->imageFile; // getpathImg
+        return Url::base(true) . '/../../uploads/' . $enterprises->imageFile; // getpathImg
 
     }
-    
+
 }

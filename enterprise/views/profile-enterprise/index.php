@@ -88,7 +88,7 @@ use yii\widgets\ActiveForm;
                             <div class="col-xs-12">
 
     <?=$form->field($model, 'description')->widget(Summernote::class, [
-    'options' => ['placeholder' => 'Mô tả công việc ở đây...'],
+    'options' => ['placeholder' => 'Mô tả công ty ở đây...'],
 ]);?>
                             </div>
                         </div>

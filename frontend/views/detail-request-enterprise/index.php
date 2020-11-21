@@ -94,7 +94,7 @@ Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 Địa Chỉ: <?=$enterprise->address?>
 </h3>
 
-<p>-<?=$organization_requests->short_description?></p>
+<p><?=$organization_requests->short_description?></p>
 </div>
 <h3 class="panel-title">
 Kỹ Năng Cần Có:

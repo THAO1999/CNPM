@@ -46,7 +46,7 @@ $this->registerCssFile('css/custom.css');
 
 
     <li class="pageMenu__item">
-<a href="<?php echo Url::home() . "home" ?>">Home</a>
+<a href="<?php echo Url::home() . "home/" ?>">Home</a>
 </li>
         <li class="dropdown hidden-xs" id="user-dropdown">
 <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="" role="button">

@@ -13863,3 +13863,9 @@ body #header a:focus {
     display: inline-block;
     vertical-align: middle
 }
+.thembackground{
+    background-color: white;
+}
+#footer{
+    background-color: white;
+}

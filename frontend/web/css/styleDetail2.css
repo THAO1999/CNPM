@@ -53,3 +53,7 @@
 .breadcrumbList a{color:#727272;font-size:13px}.breadcrumbList a:hover{text-decoration:none}
 @media (max-width:768px){.breadcrumbList{padding-top:10px}}.swal2-styled.swal2-confirm.swal2-confirm--red{background-color:#ea2635}.swal2-close:focus{outline:0}
 .text-pretty-bold{font-weight:500}
+
+#footer{
+    background-color: white;
+}

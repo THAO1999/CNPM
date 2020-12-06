@@ -55,7 +55,7 @@ return [
 
 RUNNING
 ------------
-## Giao Diện Giáo viên
+## Giao Diện Giáo Viên
 http://localhost/SE04-Nhom27.1/backend/site/login
 * username:giaovien2
 * password:giaovien123456

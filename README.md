@@ -26,13 +26,13 @@ The minimum requirement by this project template that your Web server supports P
 
 INSTALLATION
 ------------
-### use Git 
+### Use Git 
 git clone https://github.com/THAO1999/SE04-Nhom27.1.git
 
 ### Running 
   Run the commands:
-    1. `php  init`;
-    2. `composer install`;
+    * `php  init`;
+    * `composer install`;
    
     
  
@@ -55,17 +55,17 @@ return [
 
 RUNNING
 ------------
-##Giao Diện Giáo viên
+## Giao Diện Giáo viên
 http://localhost/SE04-Nhom27.1/backend/site/login
-username:giaovien2
-password:giaovien123456
+* username:giaovien2
+* password:giaovien123456
 
-##Giao Diện Sinh Viên
+## Giao Diện Sinh Viên
 http://localhost/SE04-Nhom27.1/frontend/web/site/login
-username:phamthanhtung
-password:sv123456
-##Giao Diện Doanh Nghiệp
+* username:phamthanhtung
+* password:sv123456
+## Giao Diện Doanh Nghiệp
 http://localhost/SE04-Nhom27.1/enterprise/web/site/login
-username:2nf
-password:dn123456
+* username:2nf
+* password:dn123456
  

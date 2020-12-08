@@ -74,10 +74,10 @@ $this->registerCssFile('css/custom.css');
 <span>Saved Jobs</span>
 </a></li>
 <li class="dropdown-menu__item--desktop">
-<a class="dropdown-menu__link--desktop" data-controller="utm-tracking" href="/users/job_applications"><span class="dropdown-menu__icon">
+<a class="dropdown-menu__link--desktop" data-controller="utm-tracking" href="<?php echo Url::home() . "cv-student" ?>"><span class="dropdown-menu__icon">
 <div class="dropdown-menu__icon-tick"></div>
 </span>
-<span>Applied Jobs</span>
+<span>CV</span>
 </a></li>
 <li class="dropdown-menu__item--desktop">
 <a class="dropdown-menu__link--desktop" href="<?=Url::toRoute('site/logout')?>"rel="nofollow" data-method="delete" href="/sign_out"><span class="dropdown-menu__icon">

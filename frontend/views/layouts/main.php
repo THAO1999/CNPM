@@ -46,7 +46,7 @@ $this->registerCssFile('css/custom.css');
 
 
     <li class="pageMenu__item">
-<a href="<?php echo Url::home() . "home" ?>">Home</a>
+<a href="<?php echo Url::home() . "home/" ?>">Home</a>
 </li>
         <li class="dropdown hidden-xs" id="user-dropdown">
 <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="" role="button">
@@ -98,12 +98,12 @@ $this->registerCssFile('css/custom.css');
 ])?>
                     <?=Alert::widget()?>
                     <?=$content?>
-                    <div id="footer">
-<div class="content">
+<div id="footer">
+<div class="content thembackground">
 <div class="bottom" style="margin-top:20px">
 <div class="footer-contact hidden-xs">
 <div class="footer-link">
-<h4>Want to post a job? Contact us at Ho Chi Minh: (+84) 977 460 519 - Ha Noi: (+84) 981 448 474 - Email: love@itviec.com<h4>
+<h4>Want to post a job? Contact us at Ha Noi: (+84) 977 460 519 - Ha Noi: (+84) 981 448 474 - Email: love@hus.com<h4>
 </div>
 </div>
 <div class="footer-links hidden-xs">
@@ -122,12 +122,13 @@ $this->registerCssFile('css/custom.css');
 <a target="_blank" class="footer-link" rel="canonical" href="https://itviec.com/blog/faq-cac-cau-hoi-thuong-gap/">FAQ</a>
 </div>
 <div class="col-md-6 footer-links__col">
-<span class="footer-link">Copyright © IT VIEC JSC</span>
+<span class="footer-link">Founded by Team K62 MT&KHTT HUS</span>
 <span class="footer-link">Tax code: 0312192258</span>
 <span class="footer-link">Phone: 028.66811397</span>
-<span class="footer-link">Address: 60 Nguyen Van Thu, Dakao Ward, District 1, HCMC</span>
-
+<span class="footer-link">Address: 334 Nguyen Trai- Thanh Xuan- Ha Noi</span>
 </div>
+
+
 </div>
 <div class="footer-links visible-xs">
 <a class="footer-link" data-controller="utm-tracking" href="/">Home</a>
@@ -138,10 +139,10 @@ $this->registerCssFile('css/custom.css');
 <a target="_blank" class="footer-link" href="https://itviec.com/blog/terms-and-conditions/">Term &amp; Conditions</a>
 <a target="_blank" class="footer-link" href="https://itviec.com/blog/quy-che-hoat-dong-cua-itviec/">Operating Regulation</a>
 <a target="_blank" class="footer-link" href="https://itviec.com/blog/chinh-sach-giai-quyet-khieu-nai/">Complaint Handling Policy</a>
-<span class="footer-link">Copyright © IT VIEC JSC</span>
+<span class="footer-link">Founded by Team K62 MT&KHTT HUS</span>
 <span class="footer-link">Tax code: 0312192258</span>
 <span class="footer-link">Phone: 028.66811397</span>
-<span class="footer-link">Address: 60 Nguyen Van Thu, Dakao Ward, District 1, HCMC</span>
+<span class="footer-link">Address: 334 Nguyen Trai- Thanh Xuan- Ha Noi</span>
 
 </div>
 </div>

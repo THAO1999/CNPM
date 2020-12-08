@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 03, 2020 lúc 03:28 AM
+-- Thời gian đã tạo: Th10 25, 2020 lúc 04:32 PM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.6
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `assigned_table` (
-  `id` int(11) NOT NULL,
   `organization_request_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `start_date` date DEFAULT NULL,
@@ -41,9 +40,10 @@ CREATE TABLE `assigned_table` (
 -- Đang đổ dữ liệu cho bảng `assigned_table`
 --
 
-INSERT INTO `assigned_table` (`id`, `organization_request_id`, `student_id`, `start_date`, `end_date`, `status`, `create_date`) VALUES
-(5, 185, 2, NULL, NULL, NULL, NULL),
-(6, 195, 2, NULL, NULL, NULL, NULL);
+INSERT INTO `assigned_table` (`organization_request_id`, `student_id`, `start_date`, `end_date`, `status`, `create_date`) VALUES
+(229, 14, '2020-11-20', '2020-11-12', 1, NULL),
+(229, 15, NULL, NULL, 1, NULL),
+(231, 14, NULL, NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -67,15 +67,12 @@ INSERT INTO `capacity_dictionary` (`id`, `ability_name`, `aibility_type`, `abili
 (3, 'PHP', 'ngôn ngữ lập trinh', '10'),
 (4, 'C++', 'ngôn ngữ lập trinh', '10'),
 (7, 'Python', 'ngôn ngữ lập trinh', '10'),
-(8, '.NET', 'Framework', '10'),
-(9, 'Laravel', 'Framework', '10'),
-(10, 'Yii2', 'Framework', '10'),
-(11, 'ReactJS', 'Framework', '10'),
-(12, 'Angular', 'Framework', '10'),
-(13, 'VueJS', 'Framework', '10'),
-(14, 'Android', '', '10'),
-(15, 'Ios', 'mobile', '10'),
-(16, 'React Native', 'Framework', '10');
+(17, 'Ruby', '', ''),
+(18, 'JavaScript', '', ''),
+(19, 'C#', '', ''),
+(20, 'Mysql', '', ''),
+(21, 'SQL Sever', '', ''),
+(22, 'Oracle', '', '');
 
 -- --------------------------------------------------------
 
@@ -96,20 +93,9 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `student_id`, `request_id`, `content`, `submission_date`) VALUES
-(1, 2, 187, 'thuddđss', NULL),
-(3, 3, 187, 'cc', NULL),
-(4, 2, 187, 'ss', NULL),
-(5, 2, 187, 'ss44', NULL),
-(6, 2, 187, 'ss44', NULL),
-(7, 2, 187, 'ss44', NULL),
-(8, 2, 187, 'ss', NULL),
-(9, 2, 187, 'ss', NULL),
-(10, 2, 187, 'ss', NULL),
-(11, 2, 187, 'hihi', NULL),
-(12, 2, 187, 'hihi', NULL),
-(13, 2, 187, 'hihi', NULL),
-(14, 2, 187, 'hih', NULL),
-(15, 2, 195, 'tao đéo thích mày', NULL);
+(17, 14, 231, 'chế độ đãi ngộ khá ok', NULL),
+(18, 14, 231, 'hihi', NULL),
+(19, 14, 231, 'tao deeso thích mauyf', NULL);
 
 -- --------------------------------------------------------
 
@@ -128,7 +114,7 @@ CREATE TABLE `enterprise` (
   `employee_count` int(11) DEFAULT NULL,
   `imageFile` varchar(255) DEFAULT NULL,
   `cover_img` varchar(255) DEFAULT NULL,
-  `description` varchar(10000) DEFAULT NULL,
+  `description` mediumtext DEFAULT NULL,
   `gross_revenue` int(11) DEFAULT NULL,
   `status` smallint(6) NOT NULL DEFAULT 10,
   `created_at` date DEFAULT NULL,
@@ -141,10 +127,8 @@ CREATE TABLE `enterprise` (
 --
 
 INSERT INTO `enterprise` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `date_establish`, `employee_count`, `imageFile`, `cover_img`, `description`, `gross_revenue`, `status`, `created_at`, `updated_at`, `address`) VALUES
-(7, 'DN', 'OAhvxe6ZAfH_wm6UV65KeTcRUxP1iL9H', '$2y$13$TetBQEsjKbTki6TKBrZQuuwv8R.e..TTylQKl4cBoXDcgqyGhPs3C', 'tk3zo50I7hw75fJT1K3YipCxvPZAfhUH_1602250935', 'dn@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, 10, '2020-10-09', NULL, NULL),
-(8, 'DN2', 'kr7YQ3xDie0lzkVSBAIVIflXltGhCQNf', '$2y$13$/ryCmxd1aD1hYuu3lRlE9.zKx5fSw2tRpMLbz1BsFJicf8kdomVbe', 'AEjfROvbH_jqTBmiCEYa1IYycI0-oEV0_1602250951', 'dn2@gmail.com', NULL, 12, 'anhbiafb.jpg', 'anhbiafb.jpg', ' FPT Software is part of FPT Corporation (FPT – HoSE) – the global leading technology, outsourcing and IT services group headquartered in Vietnam with nearly US$2 billion in revenue and more than 13,000 employees. Qualified with CMMI Level 5 & ISO 27001:2013, ASPICE LEVEL 3, FPT Software delivers world-class services in Smart factory, Digital platform, RPA, AI, IoT, Enterprise Mobilization, Cloud, AR/VR, Embedded System, Managed service, Testing, Platform modernization, Business Applications, Application Service, BPO and more services globally from delivery centers across the United States, Japan, Europe, Korea, China, Australia, Vietnam and the Asia Pacific. \"', NULL, 10, '2020-10-09', NULL, '310 TrầnDuy Hưng,Hà Nội'),
-(9, 'dn3', 'Z5ly4_BjOknRvu_X1d1nBcG0vdkduayx', '$2y$13$SceAkzBZmvYP07wR/vrX/u5FtOthBepjHRFAi2po0cHufoi4xpgX6', 'w83sDzOzE8Izr_dLyjn8UCH6wVBSammU_1603010904', 'dn@gmal.com', NULL, NULL, NULL, NULL, NULL, NULL, 10, '2020-10-18', NULL, NULL),
-(10, 'dn4', 'BJfJ1VCfmjZa2GghSmHGPnH3hcA4WL64', '$2y$13$VnveNusCqkmu2xo0e2olc.WlbXmDVC1CMZmjtQEHbU.MsXqmyf4qy', 'MRgoqd_VC1EzVS2crngKft5fbI1TlMti_1604298364', 'd33n@gmal.com', NULL, NULL, NULL, NULL, NULL, NULL, 10, '2020-11-02', NULL, NULL);
+(28, 'FPT', 'E8uHnUBexpoVTI2O1bsBBc4uLyeWlhDt', '$2y$13$CdnnjG2MmgcOLckygztkcOQUcqkoAGVo/e8iv12ysYU0vTP6OVq6O', 'v6HU6aZOWH5gBbRdfm0XAhZJ-5p8-OJj_1605951586', 'fpt@gmal.com', NULL, 10000, 'fpt.png', 'fpt.jpg', '<p>Cty1</p><p>1.Mô tả công việc&nbsp;</p><p>-Được đào tạo định hướng về Front-end và Back-end&nbsp;</p><p>-Tham gia các dự án nước ngoài theo hình thức training on-job dưới sự hướng dẫn trực tiếp của Leader&nbsp;</p><p>-Đọc hiểu tài liệu kỹ thuật, tìm hiểu và phân tích yêu cầu sản phẩm, thiết kế tính năng, nghiên cứu các công nghệ được phân công Phối hợp với các thành viên trong team để thiết kế, triển khai các tính năng mới theo yêu cầu dự án&nbsp;</p><p>-Thực hiên các công việc khác theo sự phân công của quản lý&nbsp;</p><p>-Chi tiết sẽ trao đổi cụ thể khi phỏng vấn&nbsp;</p><p>2.Yêu cầu công việc&nbsp; &nbsp;</p><p>-Sinh viên năm 3,4 hoặc tốt nghiệp cao đẳng/đại học chuyên ngành CNTT, Kỹ thuật phần mềm, Khoa học máy tính, ... hoặc các lĩnh vực liên quan Nắm vững các kiến thức về PHP Có kiến thức tốt về MySQL, viết và tối ưa hóa truy vấn SQL</p><p>-Kiến thức tốt về lập trình hướng đối tượng.</p><p>-Có kiến thức về lập trình web: HTML, CSS, Javascript, JQuery, ...</p><p>-Có kinh nghiệm làm việc với một trong các Framework: Laravel, CakePHP là lợi thế Kỹ năng làm việc nhóm và trao đổi thông tin tốt Chăm chỉ, có tinh thần học hỏi, chủ động trong công việc Đam mê lập trình, tư duy logic, sẵn sàng tìm hiểu và học hỏi cái mới</p><p>-Nhiệt tình và có trách nhiệm trong công việc&nbsp;</p><p>3.Các phúc lợi dành cho bạn&nbsp; Có hỗ trợ lương hàng tháng từ 1,000,000 – 5,000,000 tùy theo năng lực</p><p>-Có cơ hội trở thành nhân viên chính thức tại Adamo với mức lương hấp dẫn&nbsp;</p><p>-Lương T13 khi lên chính thức&nbsp; Review lương 2 lần 1 năm</p><p>-Thưởng các dịp lễ Tết, thưởng quý, thưởng thâm niên, thưởng lợi nhuận.</p><p>-Quà tặng dịp sinh nhật cá nhân Cơ hội được học hỏi, làm việc với công nghệ mới</p><p>-Được làm việc trong một môi trường chuyên nghiệp với các đối tác nước ngoài&nbsp;</p><p>-Du lịch, teambuilding 2 năm/lần Khám sức khỏe định kỳ cho nhân viên&nbsp;</p><p>-Hỗ trợ tham gia các khóa đào tạo nâng cao kiến thức và kỹ năng</p><div><br></div>', NULL, 10, '2020-11-21', NULL, '45 duy tan'),
+(29, 'linxhq', 'GGm2gCIqF8cJY7WjrrpdQw7zyy2kh952', '$2y$13$ElLFEEGvY5jNQHnvEHH6IuoQmST07EKj2VUyPQ5kZXkl7Thh2cG7.', 'PZ4dXODZhjqipNid3iMpg7H9R52fI5ff_1605951662', 'linxhq@gmal.com', NULL, 555, 'toshiba.png', 'to.jpg', '<p><b>Overview about ITviec</b></p><p>Ít nhưng mà chất</p><p><br></p><p>ITviec.com is where \"Ít nhưng mà chất\" developers go to find great new jobs.</p><p><br></p><p>Our mission is to help IT people develop so they can build great products and change the world. We don\'t have the most jobs...but we do have the best ones.</p><p><br></p><p>We focus on building an awesome job website and providing IT people with tips and practical advice they can use to manage their IT career and find the job that\'s best for them.</p><p><br></p><p>We have a fun, young, no-bullshit culture. You have an idea? Just do it! No committees and no bureaucracy.</p><p><br></p><p><b>Are you \"Ít nhưng mà chất\"? </b>Join us right NOW!!</p><div><br></div>', NULL, 10, '2020-11-21', NULL, '4555 duy tan');
 
 -- --------------------------------------------------------
 
@@ -179,7 +163,7 @@ CREATE TABLE `organization_requests` (
   `id` int(11) NOT NULL,
   `organization_id` int(11) NOT NULL,
   `subject` varchar(40) NOT NULL,
-  `short_description` varchar(40) NOT NULL,
+  `short_description` mediumtext NOT NULL,
   `amount` int(11) NOT NULL,
   `date_submitted` date DEFAULT NULL,
   `status` int(11) NOT NULL,
@@ -192,19 +176,9 @@ CREATE TABLE `organization_requests` (
 --
 
 INSERT INTO `organization_requests` (`id`, `organization_id`, `subject`, `short_description`, `amount`, `date_submitted`, `status`, `imageFile`, `cancel`) VALUES
-(183, 8, 'Tuyen dung PHP', 'hong can ', 1111, '2020-10-14', 0, 'anhbiafb.jpg', 'vì tao đéo thích mày'),
-(184, 8, 'Tuyen dung C', 'hong can ', 1111, NULL, 10, 'toshiba.png', NULL),
-(185, 8, 'Tuyen Dung .NET', '222', 12, NULL, 10, 'net.jpg', NULL),
-(186, 8, 'Tuyen dung JS', '233', 1111, NULL, 0, 'js.jpg', NULL),
-(187, 8, 'Tuyen dung C++', 'wwwww', 11, NULL, 10, 'java.jpg', NULL),
-(188, 8, 'Tuyển dụng 45', 'jhihi', 12, NULL, 2, 'c#.jpg', NULL),
-(189, 8, 'Tuyển dụng 45', 'jhihi', 12, NULL, 0, 'c#.jpg', NULL),
-(190, 8, 'Tuyển dụng 45', 'jhihi', 12, NULL, 2, 'c#.jpg', NULL),
-(191, 8, 'Tuyển dụng 45', 'jhihi', 12, NULL, 2, 'java.jpg', NULL),
-(192, 8, 'Tuyển dụng 45', 'jhihi', 12, NULL, 2, 'java.jpg', NULL),
-(193, 8, 'Tuyển dụng thực tập PHP', 'jhihi', 2, NULL, 0, 'php.jpg', NULL),
-(194, 8, 'Tuyển dụng thực tập C', 'không có gì', 3, NULL, 10, 'java.jpg', NULL),
-(195, 8, 'Tuyển dụng senior PHP', 'đéo có gì để mo tả cả', 12, NULL, 10, 'php.jpg', NULL);
+(229, 28, 'Tuyển dụng Fresher PHP', '<p><b>1.Mô tả công việc&nbsp;</b><br></p><p>-Được đào tạo định hướng về Front-end và Back-end&nbsp;</p><p>-Tham gia các dự án nước ngoài theo hình thức training on-job dưới sự hướng dẫn trực tiếp của Leader&nbsp;</p><p>-Đọc hiểu tài liệu kỹ thuật, tìm hiểu và phân tích yêu cầu sản phẩm, thiết kế tính năng, nghiên cứu các công nghệ được phân công Phối hợp với các thành viên trong team để thiết kế, triển khai các tính năng mới theo yêu cầu dự án&nbsp;</p><p>-Thực hiên các công việc khác theo sự phân công của quản lý&nbsp;</p><p>-Chi tiết sẽ trao đổi cụ thể khi phỏng vấn&nbsp;</p><p><b>2.Yêu cầu công việc&nbsp; &nbsp;</b></p><p>-Sinh viên năm 3,4 hoặc tốt nghiệp cao đẳng/đại học chuyên ngành CNTT, Kỹ thuật phần mềm, Khoa học máy tính, ... hoặc các lĩnh vực liên quan Nắm vững các kiến thức về PHP Có kiến thức tốt về MySQL, viết và tối ưa hóa truy vấn SQL</p><p>-Kiến thức tốt về lập trình hướng đối tượng.</p><p>-Có kiến thức về lập trình web: HTML, CSS, Javascript, JQuery, ...</p><p>-Có kinh nghiệm làm việc với một trong các Framework: Laravel, CakePHP là lợi thế Kỹ năng làm việc nhóm và trao đổi thông tin tốt Chăm chỉ, có tinh thần học hỏi, chủ động trong công việc Đam mê lập trình, tư duy logic, sẵn sàng tìm hiểu và học hỏi cái mới</p><p>-Nhiệt tình và có trách nhiệm trong công việc&nbsp;</p><p><b>3.Các phúc lợi dành cho bạn&nbsp; </b></p><p>-Có hỗ trợ lương hàng tháng từ 1,000,000 – 5,000,000 tùy theo năng lực</p><p>-Có cơ hội trở thành nhân viên chính thức tại Adamo với mức lương hấp dẫn&nbsp;</p><p>-Lương T13 khi lên chính thức&nbsp; Review lương 2 lần 1 năm</p><p>-Thưởng các dịp lễ Tết, thưởng quý, thưởng thâm niên, thưởng lợi nhuận.</p><p>-Quà tặng dịp sinh nhật cá nhân Cơ hội được học hỏi, làm việc với công nghệ mới</p><p>-Được làm việc trong một môi trường chuyên nghiệp với các đối tác nước ngoài&nbsp;</p><p>-Du lịch, teambuilding 2 năm/lần Khám sức khỏe định kỳ cho nhân viên&nbsp;</p><p>-Hỗ trợ tham gia các khóa đào tạo nâng cao kiến thức và kỹ năng</p><div><br></div>', 3, '2020-11-28', 10, 'php.jpg', NULL),
+(230, 28, 'đ', 'ssssssssss', 2, '2020-11-11', 0, 'toshiba.png', 'bố đéo thích mày thì hủy thôi'),
+(231, 29, 'Tuyển dụng thực tâp Java', '<p>1. Mô tả công việc</p><p>- Tham gia phát triển hệ thống kết nối vận hành với các đối tác giao vận, cổng thanh toán, ứng dụng thanh toán di động…</p><p>- Thực hiện các công việc liên quan khác được giao</p><p><b>2. Yêu cầu</b></p><p>-Sinh viên năm 3, năm 4</p><p>- Đang theo học các trường đại học khoa Công nghệ thông tin</p><p>- Có hiểu biết hoặc kinh nghiệm với PHP (Laravel/Yii)</p><p>- Có kiến thức về html, css, ajax, jQuery, Bootstrap, AngularJS, VueJS, ReactJS</p><p>- Có kiến thức về phát triển hệ thống REST, API.</p><p><b>3. Quyền lợi</b></p><p>- Được hỗ trợ chi phí và dấu thực tập.</p><p>- Được trở thành nhân viên chính thức của công ty.&nbsp;</p><p>- Làm việc từ Thứ 2 – Thứ 6</p><p>- Làm việc trong môi trường trẻ trung, năng động, khoa học và được tạo mọi cơ hội để phát triển bản thân</p><p>- Được đào tạo các kiến thức, kỹ năng cần thiết cho công việc</p>', 2, '2020-11-28', 10, 'java.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -225,28 +199,13 @@ CREATE TABLE `organization_request_abilities` (
 --
 
 INSERT INTO `organization_request_abilities` (`id`, `organization_request_id`, `ability_id`, `ability_required`, `note`) VALUES
-(95, 183, 2, NULL, NULL),
-(96, 183, 3, NULL, NULL),
-(97, 183, 4, NULL, NULL),
-(98, 184, 2, NULL, NULL),
-(99, 185, 2, NULL, NULL),
-(100, 185, 3, NULL, NULL),
-(102, 185, 7, NULL, NULL),
-(103, 185, 8, NULL, NULL),
-(104, 185, 9, NULL, NULL),
-(105, 186, 11, NULL, NULL),
-(106, 186, 12, NULL, NULL),
-(107, 187, 2, NULL, NULL),
-(108, 187, 3, NULL, NULL),
-(109, 188, 4, NULL, NULL),
-(110, 189, 4, NULL, NULL),
-(111, 190, 4, NULL, NULL),
-(112, 191, 3, NULL, NULL),
-(113, 192, 3, NULL, NULL),
-(114, 193, 3, NULL, NULL),
-(115, 194, 4, NULL, NULL),
-(116, 195, 3, NULL, NULL),
-(117, 195, 9, NULL, NULL);
+(166, 229, 3, NULL, NULL),
+(167, 229, 18, NULL, NULL),
+(168, 229, 20, NULL, NULL),
+(169, 230, 2, NULL, NULL),
+(170, 231, 2, NULL, NULL),
+(171, 231, 18, NULL, NULL),
+(172, 231, 20, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -276,9 +235,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `date_of_birth`, `class_name`, `imageFile`, `status`, `created_at`, `updated_at`, `address`, `phone`) VALUES
-(1, 'sinhvien1', '2H5i41B73dCNh7xcg-doAFZMKU52aExX', '$2y$13$cpKhcMgVuwdOD/Eivf8YAOf8CtDK4R0Cf6TxGUCKi0w/Mhl/rbcV.', 'e-1Bz1MrfaCt3nQT8ifH-t0pEswo-2qx_1603339800', 'tathao@gmail.com', NULL, 'k62A4', '', 10, '2020-10-09', NULL, '87 hus', 939393),
-(2, 'sinhvien2', '1ENdeOQLbsXIehBY8C5rlU2IzKTNf7-L', '$2y$13$Faq7AVkfMvbxF3MuyrIaxOOyClloUsVaOVDQL3zdnQ5eLx8lSAQGu', 'VVmM51cEOG-WbHj-XJlLAyPJoAwe4ePn_1602224862', 'tathao99@gmail.com', NULL, 'k62A43', 'logo.png', 10, '2020-10-09', NULL, '63 duy tan', 585640443),
-(3, 'sinhvien3', '_aR6cHHVQs_1q-EWKb8P0r5zGwxT_MoF', '$2y$13$uRwbkU6Iw1l71Co4HjkMhuw/vwQDsz0mwoDg387KyIn6KgiEYsqbK', 'VVPMWd18z3pay3dnKakYlmmenbHBPNop_1604045137', 'tathaoee@gmail.com', NULL, 'k62A5', NULL, 10, '2020-10-30', NULL, NULL, NULL);
+(14, 'PhamThanhTung', 'MasWXaGWWc4F_7icDjfgslpkQTbnv4d1', '$2y$13$XzHkt0yiH3h8obj7sBDfyukQ58G2TcegQbOjgrLQgGLCRX72YH8Yu', '-sbtp1o3x-IGXOXov07Yx_s3fWUFlTon_1605925452', 'phamthanhtung@gmail.com', NULL, 'k62a3', 'user.png', 10, NULL, NULL, '', NULL),
+(15, 'taminhthao', 'hxZUPvDQcNAxsZscunZ-ErI73HpvzP2y', '$2y$13$9u.dMToq4NGkETJckTSQSuJXnoozKB.zvme6KSi4WDa14aCkDVvry', 'w1SwNFguI2sWkmrm2bbkivwIcjZda87m_1605925453', 'taminthao@gmail.com', NULL, 'k62a3', 'fpt.png', 10, NULL, NULL, '54 hus', 585640443),
+(16, 'nguyenducmanh', 'CcXxikDTBaHKlwI1EmCgHjShn6RwylSP', '$2y$13$3IqPmgdiEtI3A2TS4s7qQOGxfBhF.5zBl4tHnYzSGz4taLbtcvVmW', '27wsroSV-ffkBkdo-JEhN-Aw-RfI23hs_1605925454', 'nguyenducmanh@gmail.com', NULL, 'k62a3', NULL, 10, NULL, NULL, NULL, NULL),
+(17, 'quynh99', 'WkheneiqibxZPcVtoS0iVEnuxcbcfcXi', '$2y$13$y.Dg1uxDL6Qdp4gp6//Ueu44IFIIZW6x15LYq0BW3BUST.kPDEX3O', 'WV3ElG2pHg95iEuExJMU2GsV-jguV3o3_1605925455', 'quynh99@gmail.com', NULL, 'k62a3', NULL, 10, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -287,7 +247,6 @@ INSERT INTO `student` (`id`, `username`, `auth_key`, `password_hash`, `password_
 --
 
 CREATE TABLE `student_registration` (
-  `id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `request_id` int(11) NOT NULL,
   `submit_date` date DEFAULT NULL
@@ -311,11 +270,8 @@ CREATE TABLE `student_skill_profile` (
 --
 
 INSERT INTO `student_skill_profile` (`id`, `student_id`, `ability_id`, `ability_rate`) VALUES
-(4, 2, 12, 10),
-(5, 2, 7, 10),
-(6, 2, 4, 10),
-(7, 2, 2, 90),
-(8, 2, 7, 10);
+(9, 14, 17, 90),
+(10, 14, 2, 10);
 
 -- --------------------------------------------------------
 
@@ -342,9 +298,7 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `img`, `sex`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'giaovien1', 'U8qc01y0abdg8r09UY7RbQI67ZIHPyl2', '$2y$13$cnV8CoNOPM0oHVQCvzm7feD2IgC8fn9Xt4Ei3zKay8Un2p2ThrKcq', 'Dq7NcjQ_3F-rVLy4g90XjLdqITSkJOI5_1602219551', 'taminhthao@gmail.com', NULL, 4, 10, NULL, '2020-10-09'),
-(2, 'giaovien2', 'rqlrC6_Ov9nMgRVpZnKkV0KyRLKU6w35', '$2y$13$YMbmgdCSbrMCgliIiqXtWeZ9vI1okeEsTU/Gj2M7.DcfzQlETxnIC', '48cQScQr18vLwsPOayxMPAr8nqjb4F3s_1602216668', 'taminhthao99@gmail.com', NULL, 42, 10, '2020-10-09', NULL),
-(4, 'giaovien4', 'ZQVy7GSiTYo2yu_gqKmUSN_4YwVYjRo2', '$2y$13$PwZHtNDxF0WAa0mu36s9Guw6Nq46zdNkRQFg8CQcGoP7A1MxQQz3.', 'hX6zcBtpLl-k_07RYHEztAiH4qAVdOZT_1602218469', 'taminhthao22@gmail.com', NULL, 4, 10, '2020-10-09', NULL);
+(2, 'giaovien2', 'rqlrC6_Ov9nMgRVpZnKkV0KyRLKU6w35', '$2y$13$YMbmgdCSbrMCgliIiqXtWeZ9vI1okeEsTU/Gj2M7.DcfzQlETxnIC', '48cQScQr18vLwsPOayxMPAr8nqjb4F3s_1602216668', 'taminhthao99@gmail.com', NULL, 42, 10, '2020-10-09', NULL);
 
 -- --------------------------------------------------------
 
@@ -373,7 +327,7 @@ CREATE TABLE `user` (
 -- Chỉ mục cho bảng `assigned_table`
 --
 ALTER TABLE `assigned_table`
-  ADD PRIMARY KEY (`id`,`organization_request_id`,`student_id`) USING BTREE,
+  ADD PRIMARY KEY (`organization_request_id`,`student_id`) USING BTREE,
   ADD KEY `FK_assigned_student_skill` (`student_id`),
   ADD KEY `FK_assigned_enterprise_request` (`organization_request_id`);
 
@@ -434,9 +388,8 @@ ALTER TABLE `student`
 -- Chỉ mục cho bảng `student_registration`
 --
 ALTER TABLE `student_registration`
-  ADD PRIMARY KEY (`id`,`student_id`,`request_id`) USING BTREE,
-  ADD KEY `FK_student_registration_skill` (`request_id`),
-  ADD KEY `student_registration_ibfk_2` (`student_id`);
+  ADD PRIMARY KEY (`student_id`,`request_id`) USING BTREE,
+  ADD KEY `FK_student_registration_skill` (`request_id`);
 
 --
 -- Chỉ mục cho bảng `student_skill_profile`
@@ -469,58 +422,46 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT cho bảng `assigned_table`
---
-ALTER TABLE `assigned_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT cho bảng `capacity_dictionary`
 --
 ALTER TABLE `capacity_dictionary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `enterprise`
 --
 ALTER TABLE `enterprise`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT cho bảng `organization_requests`
 --
 ALTER TABLE `organization_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=232;
 
 --
 -- AUTO_INCREMENT cho bảng `organization_request_abilities`
 --
 ALTER TABLE `organization_request_abilities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
 -- AUTO_INCREMENT cho bảng `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `student_registration`
---
-ALTER TABLE `student_registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `student_skill_profile`
 --
 ALTER TABLE `student_skill_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `teachers`

@@ -5176,7 +5176,7 @@ tbody.collapse.in {
     clear: both;
     font-weight: 400;
     line-height: 1.428571429;
-    color: #333333;
+    color: #fbf8f8;
     white-space: nowrap
 }
 
@@ -5229,6 +5229,9 @@ tbody.collapse.in {
     left: 0
 }
 
+.dropdown-menu {
+    background-color: #fffbfc;
+    }
 .dropdown-header {
     display: block;
     padding: 3px 20px;
@@ -10737,7 +10740,7 @@ body.best_companies_index .slogan-wrapper__badge img {
 }
 
 .dropdown-menu {
-    background-color: #2E2A2B;
+    background-color: #ffffff;
     color: white;
     padding-top: 0;
     padding-bottom: 0;

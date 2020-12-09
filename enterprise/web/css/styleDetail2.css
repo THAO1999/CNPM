@@ -1,3 +1,6 @@
+.dropdown-menu {
+    background-color: #fffbfc;
+    }
 .more-link{display:inline-block;font-size:13px}
 .more-link,.more-link:hover{color:#57595b;text-decoration:none}
 .more-link--dotted{border-bottom:1px dotted}

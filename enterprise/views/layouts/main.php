@@ -75,13 +75,6 @@ NavBar::end();
         </div>
     </div>
 
-    <footer class="footer" style="margin-top:200px">
-        <div class="container">
-            <p class="pull-left">&copy; <?=Html::encode(Yii::$app->name)?> <?=date('Y')?></p>
-
-            <p class="pull-right"><?=Yii::powered()?></p>
-        </div>
-    </footer>
 
     <?php $this->endBody()?>
 </body>

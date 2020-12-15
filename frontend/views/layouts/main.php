@@ -13,7 +13,7 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="vi-VN" xml:lang="vi-VN" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <style>
       .preload_image { display: none; }
     </style>

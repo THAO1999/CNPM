@@ -1,10 +1,6 @@
 <?php
 namespace frontend\controllers;
 
-use common\models\UploadForm;
-use frontend\models\Students;
-use frontend\models\StudentSkillProfile;
-use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -12,7 +8,7 @@ use yii\web\Controller;
 /**
  * Site controller
  */
-class CVStudentController extends Controller
+class CvStudentController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -68,7 +64,6 @@ class CVStudentController extends Controller
      */
     public function actionIndex()
     {
-       
 
         return $this->render('index');
     }

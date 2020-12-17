@@ -83,13 +83,13 @@ class SiteController extends Controller
 
         $this->layout = "blank";
         if (!Yii::$app->user->isGuest) {
-            return $this->redirect('organization-request/index?status=10');
+            return $this->redirect('../organization-request/index?status=10');
         }
 
         $model = new LoginFormEnterprise();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-            return $this->redirect('organization-request/index?status=10');
+            return $this->redirect('../organization-request/index?status=10');
         } else {
             $model->password = '';
 

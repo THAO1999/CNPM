@@ -1,6 +1,15 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Colleges;
+use common\models\Experience;
+use common\models\hobby;
+use common\models\information;
+use common\models\operation;
+use common\models\Target;
+use frontend\models\Students;
+use frontend\models\StudentSkillProfile;
+use yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -64,8 +73,25 @@ class CvStudentController extends Controller
      */
     public function actionIndex()
     {
+        $model = new Students();
+        $student_id = Yii::$app->user->identity->id;
+        $target = Target::getTarget($student_id);
+        $colleges = Colleges::find()->where(['user_id' => $student_id])->one();
+        $experience = Experience::find()->where(['user_id' => $student_id])->one();
+        $operator = operation::find()->where(['user_id' => $student_id])->one();
+        $hobby = hobby::find()->where(['user_id' => $student_id])->one();
+        $info = Information::find()->where(['user_id' => $student_id])->one();
 
-        return $this->render('index');
+        $list_StudentSkill = StudentSkillProfile::getSkill($model->getStudent($student_id)); // lay list skill student
+        return $this->render('index', [
+            'target' => $target,
+            'colleges' => $colleges,
+            'experience' => $experience,
+            'operator' => $operator,
+            'hobby' => $hobby,
+            'info' => $info,
+            'list_StudentSkill' => $list_StudentSkill,
+        ]);
     }
 
 }

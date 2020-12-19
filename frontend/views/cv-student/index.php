@@ -20,19 +20,19 @@
             <img id="cvo-profile-avatar" src="https://images-na.ssl-images-amazon.com/images/I/61Jvm0rckSL.jpg" >
         </div>
                 <div>
-            <span id="cvo-profile-fullname" >Kim Jennie</span><br>
+            <span id="cvo-profile-fullname" ><?=$student->username?></span><br>
                         <span id="cvo-profile-title">Thực tập DBA</span>
                     </div>
     </div>
     <div id="profile-contact-wraper">
                 <div id="cvo-profile-dob-wraper">
-            <i class="fas fa-calendar"></i><span id="cvo-profile-dob">20/04/1999</span>
+            <i class="fas fa-calendar"></i><span id="cvo-profile-dob"><?=$student->date_of_birth?></span>
         </div>
-                        <div id="cvo-profile-gender-wraper"><i class="fas fa-user"></i><span id="cvo-profile-gender">Nữ</span></div>
-                <div id="cvo-profile-phone-wraper"><i class="fas fa-phone"></i><span id="cvo-profile-phone">0123456789</span>
+                        <div id="cvo-profile-gender-wraper"><i class="fas fa-user"></i><span id="cvo-profile-gender">Nam</span></div>
+                <div id="cvo-profile-phone-wraper"><i class="fas fa-phone"></i><span id="cvo-profile-phone"><?=$student->phone?></span>
                 </div>
-        <div id="cvo-profile-email-wraper"><i class="fas fa-envelope-square"></i><span id="cvo-profile-email">jennie@blackpink.com</span></div>
-                <div id="cvo-profile-address-wraper"><i class="fas fa-map-marker"></i><span id="cvo-profile-address">263 Nguyễn Trãi- Thanh Xuân- Hà Nội</span></div>
+        <div id="cvo-profile-email-wraper"><i class="fas fa-envelope-square"></i><span id="cvo-profile-email"><?=$student->email?></span></div>
+                <div id="cvo-profile-address-wraper"><i class="fas fa-map-marker"></i><span id="cvo-profile-address"><?=$student->address?></span></div>
                         <div id="cvo-profile-website-wraper"><i class="fas fa-info"></i><span id="cvo-profile-website" >http://fb.com/blackpink?jennie</span></div>
             </div>
 </div>

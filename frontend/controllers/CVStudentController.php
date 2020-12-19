@@ -81,7 +81,7 @@ class CvStudentController extends Controller
         $operator = operation::find()->where(['user_id' => $student_id])->one();
         $hobby = hobby::find()->where(['user_id' => $student_id])->one();
         $info = Information::find()->where(['user_id' => $student_id])->one();
-
+        $student = Students::find()->where(['id' => $student_id])->one();
         $list_StudentSkill = StudentSkillProfile::getSkill($model->getStudent($student_id)); // lay list skill student
         return $this->render('index', [
             'target' => $target,
@@ -91,6 +91,7 @@ class CvStudentController extends Controller
             'hobby' => $hobby,
             'info' => $info,
             'list_StudentSkill' => $list_StudentSkill,
+            'student' => $student,
         ]);
     }
 

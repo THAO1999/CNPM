@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 
 <div class="container bootstrap snippet">
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-10 profile">
             <h1>Profile-Student</h1>
         </div>
 

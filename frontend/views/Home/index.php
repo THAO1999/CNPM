@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
 
 ?>
     <h1 class="slogan">
-    1,317 Việc Làm IT Chất Cho Sinh Viên
+    Uy tín - Trách nhiệm - Năng động
     </h1>
     <div class="search-form-wrapper clearfix">
 

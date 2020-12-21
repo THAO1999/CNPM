@@ -95,9 +95,9 @@ class SiteController extends Controller
         $assignedTables = Students::checkStatus(Yii::$app->user->identity->id);
         if ($assignedTables) {
 
-            return $this->redirect('assigned-table/index?student_id=' . $assignedTables->student_id);
+            return $this->redirect('../assigned-table/index?student_id=' . $assignedTables->student_id);
         } else {
-            return $this->redirect('home/index');
+            return $this->redirect('../home/index');
         }
     }
 

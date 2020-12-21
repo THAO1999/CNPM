@@ -506,3 +506,11 @@ iframe {
         opacity: 1;
     }
 }
+.profile {
+    background-color: #46b875;
+    margin-bottom: revert;
+    width: 214px;
+    color: blanchedalmond;
+    font-family: -webkit-body;
+    margin-top: -17px;
+}

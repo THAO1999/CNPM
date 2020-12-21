@@ -13,7 +13,23 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="vi-VN" xml:lang="vi-VN" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
+4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3
++Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
+<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/base/reset.css?v=2.0">
+<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/base/style.css?v=2.5">
+
+<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/cropper/style.css?v=2.1">
+<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/cvoPrompt/cvoPrompt.css?v=2.0">
+
+<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/templates//onepage_impressive_2/cv.css">
+
+
+<link rel="stylesheet" type="text/css" href="Test.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <style>
       .preload_image { display: none; }
     </style>
@@ -36,7 +52,7 @@ $this->registerCssFile('css/custom.css');
         <div class="pageMenu__header">
 
           <a class="pageMenu__logo" data-controller="utm-tracking" href="#">
-              <img class="logo-itviec" alt="itviec" src="<?=yii\helpers\Url::base(true) . '/../../uploads/logo.png'?>"width="108" height="42">
+              <img class="logo-itviec" alt="itviec" src="<?=yii\helpers\Url::base(true) . '/../img/itviec.png'?>"width="108" height="42">
           </a>
 
         </div>
@@ -74,10 +90,10 @@ $this->registerCssFile('css/custom.css');
 <span>Saved Jobs</span>
 </a></li>
 <li class="dropdown-menu__item--desktop">
-<a class="dropdown-menu__link--desktop" data-controller="utm-tracking" href="/users/job_applications"><span class="dropdown-menu__icon">
+<a class="dropdown-menu__link--desktop" data-controller="utm-tracking" href="<?php echo Url::home() . "cv-student" ?>"><span class="dropdown-menu__icon">
 <div class="dropdown-menu__icon-tick"></div>
 </span>
-<span>Applied Jobs</span>
+<span>CV</span>
 </a></li>
 <li class="dropdown-menu__item--desktop">
 <a class="dropdown-menu__link--desktop" href="<?=Url::toRoute('site/logout')?>"rel="nofollow" data-method="delete" href="/sign_out"><span class="dropdown-menu__icon">

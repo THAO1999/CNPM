@@ -4,7 +4,12 @@ namespace backend\controllers;
 
 use backend\models\AssignedTable;
 use backend\models\StudentRegistration;
-use common\models\UploadForm;
+use common\models\Colleges;
+use common\models\Experience;
+use common\models\hobby;
+use common\models\information;
+use common\models\operation;
+use common\models\Target;
 use frontend\models\Students;
 use frontend\models\StudentSkillProfile;
 use Yii;
@@ -57,22 +62,26 @@ class StudentRegistrationController extends Controller
      */
     public function actionView($student_id, $request_id)
     {
-        $model = new Students();
-        // $id = Yii::$app->user->identity->id; // id student
-        $model = $model->getStudentProfiles($student_id);
-        $img = 'imageFile';
-        $model->imageFile = UploadForm::Upload($model, $img); // lay duong dan
-        $list_StudentSkill = StudentSkillProfile::getSkill($model->getStudent($student_id)); // lay list skill student
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->render('view', [
-                'model' => $model,
-                'list_StudentSkill' => $list_StudentSkill,
-            ]);
-        }
 
+        $model = new Students();
+
+        $target = Target::getTarget($student_id);
+        $colleges = Colleges::find()->where(['user_id' => $student_id])->one();
+        $experience = Experience::find()->where(['user_id' => $student_id])->one();
+        $operator = operation::find()->where(['user_id' => $student_id])->one();
+        $hobby = hobby::find()->where(['user_id' => $student_id])->one();
+        $info = Information::find()->where(['user_id' => $student_id])->one();
+        $student = Students::find()->where(['id' => $student_id])->one();
+        $list_StudentSkill = StudentSkillProfile::getSkill($model->getStudent($student_id)); // lay list skill student
         return $this->render('view', [
-            'model' => $model,
+            'target' => $target,
+            'colleges' => $colleges,
+            'experience' => $experience,
+            'operator' => $operator,
+            'hobby' => $hobby,
+            'info' => $info,
             'list_StudentSkill' => $list_StudentSkill,
+            'student' => $student,
         ]);
     }
 

@@ -31,27 +31,23 @@ use yii\helpers\Url;
 <h1 class="title">
 <?=$organization_requests->subject?>
 </h1>
-<span>
-<i class="fa fa-map-marker"></i>
-Trạng Thái: Trong Thời Gian Đăng ki?
-</span>
+
 <!-- Last updated: "2020-10-14 21:37:42 +0700"-->
 
 <div class="working-date">
-<i class="fa fa-calendar"></i>
+<i class="far fa-calendar-alt"></i>
 <span>
 Hạn Đăng ki: <?=$organization_requests->date_submitted?>
 </span>
 </div>
 
 <div class="working-date">
-<i class="fa fa-calendar"></i>
-<span>
-Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
+<i class="fas fa-user-friends"></i>
+<span>Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
 </span>
 </div>
 <div class="overtime">
-<i class="fa fa-clock-o"></i>
+<i class="fas fa-clock"></i>
 <span>
  Sinh Viên Đã Đăng ki:<?=$count?>
 </span>

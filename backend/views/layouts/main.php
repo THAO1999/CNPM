@@ -15,6 +15,23 @@ AppAsset::register($this);
 <html lang="<?=Yii::$app->language?>">
 
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
+4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3
++Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
+<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/base/reset.css?v=2.0">
+<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/base/style.css?v=2.5">
+
+<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/cropper/style.css?v=2.1">
+<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/cvoPrompt/cvoPrompt.css?v=2.0">
+
+<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/templates//onepage_impressive_2/cv.css">
+
+
+<link rel="stylesheet" type="text/css" href="Test.css">
+
+    
     <meta charset="<?=Yii::$app->charset?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

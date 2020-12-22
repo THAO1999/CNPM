@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 <div class="container bootstrap snippet">
     <div class="row">
         <div class="col-sm-10">
-            <h1>Profile-Enterprise</h1>
+            <h1>Hồ sơ Doanh nghiệp</h1>
         </div>
 
     </div>
@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
 ])?>
             <div class="text-center">
                 <img  src="<?=Enterprises::getImageEnterprises($model->id)?>" class="avatar img-circle img-thumbnail" alt="avatar">
-                <h6>Upload a different photo...</h6>
+                <h5></h5>
 
     <?=$form->field($model, 'imageFile')->fileInput()?>
             </div>
@@ -49,7 +49,7 @@ use yii\widgets\ActiveForm;
         <!--/col-3-->
         <div class="col-sm-9">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                <li class="active"><a data-toggle="tab" href="#home">Trang chủ</a></li>
 
             </ul>
 
@@ -100,7 +100,7 @@ use yii\widgets\ActiveForm;
                                 <br>
                                 <?=Html::submitButton('Save', ['class' => 'btn btn-success'])?>
 
-                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>Reset</button>
                             </div>
                         </div>
                         <?php ActiveForm::end();?>

@@ -75,15 +75,15 @@ class Enterprise extends \yii\db\ActiveRecord implements IdentityInterface
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
             'date_establish' => 'Date Establish',
-            'employee_count' => 'Employee Count',
-            'imageFile' => 'Image File',
+            'employee_count' => 'Số lượng nhân viên',
+            'imageFile' => '',
             'cover_img' => 'Cover Img',
-            'description' => 'Description',
+            'description' => 'Mô tả công việc',
             'gross_revenue' => 'Gross Revenue',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'address' => 'Address',
+            'address' => 'Địa chỉ',
         ];
     }
     public function getEnterpriseRecruitmentRequestForms()

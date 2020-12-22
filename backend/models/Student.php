@@ -68,19 +68,19 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'auth_key' => 'Auth Key',
-            'password_hash' => 'Password Hash',
-            'password_reset_token' => 'Password Reset Token',
+            'username' => 'Tên sinh viên',
+            'auth_key' => 'Khoá xác thực',
+            'password_hash' => 'Băm mật khẩu',
+            'password_reset_token' => 'Mã đặt lại mật khẩu',
             'email' => 'Email',
-            'date_of_birth' => 'Date Of Birth',
-            'class_name' => 'Class Name',
-            'imageFile' => 'imageFile',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'address' => 'address',
-            'phone' => 'phone',
+            'date_of_birth' => 'Ngày sinh',
+            'class_name' => 'Tên lớp',
+            'imageFile' => 'Hình ảnh tệp',
+            'status' => 'Trạng thái',
+            'created_at' => 'Được tạo lúc',
+            'updated_at' => 'Cập nhật lúc',
+            'address' => 'Địa chỉ',
+            'phone' => 'Số điện thoại',
         ];
     }
 

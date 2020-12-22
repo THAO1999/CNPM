@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
 
 ?>
     <h1 class="slogan">
-    uy tín - trách nhiệm - năng động
+        Uy tín - Trách nhiệm - Năng động
     </h1>
     <div class="search-form-wrapper clearfix">
 

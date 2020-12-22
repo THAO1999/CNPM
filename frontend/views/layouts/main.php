@@ -52,7 +52,7 @@ $this->registerCssFile('css/custom.css');
         <div class="pageMenu__header">
 
           <a class="pageMenu__logo" data-controller="utm-tracking" href="#">
-              <img class="logo-itviec" alt="itviec" src="<?=yii\helpers\Url::base(true) . '/../../uploads/logo.png'?>"width="108" height="42">
+              <img class="logo-itviec" alt="itviec" src="<?=yii\helpers\Url::base(true) . '/../img/itviec.png'?>"width="108" height="42">
           </a>
 
         </div>

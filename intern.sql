@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 25, 2020 lúc 04:32 PM
+-- Thời gian đã tạo: Th12 22, 2020 lúc 03:04 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.6
 
@@ -41,9 +41,7 @@ CREATE TABLE `assigned_table` (
 --
 
 INSERT INTO `assigned_table` (`organization_request_id`, `student_id`, `start_date`, `end_date`, `status`, `create_date`) VALUES
-(229, 14, '2020-11-20', '2020-11-12', 1, NULL),
-(229, 15, NULL, NULL, 1, NULL),
-(231, 14, NULL, NULL, 0, NULL);
+(229, 14, NULL, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -77,6 +75,28 @@ INSERT INTO `capacity_dictionary` (`id`, `ability_name`, `aibility_type`, `abili
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `colleges`
+--
+
+CREATE TABLE `colleges` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `specialized` varchar(255) NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `end_at` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `colleges`
+--
+
+INSERT INTO `colleges` (`id`, `name`, `specialized`, `created_at`, `end_at`, `user_id`) VALUES
+(1, 'Trường Đại Học Khoa Học Tự Nhiên', '\r\n<p>Khoa học máy tính</><p>- Sinh viên năm 4</p>\r\n<p>- Điểm tích luỹ: 2.7</p>\r\n<p>- Hệ chính quy</p>', 0, 0, 14);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `comment`
 --
 
@@ -87,15 +107,6 @@ CREATE TABLE `comment` (
   `content` varchar(1000) NOT NULL,
   `submission_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `comment`
---
-
-INSERT INTO `comment` (`id`, `student_id`, `request_id`, `content`, `submission_date`) VALUES
-(17, 14, 231, 'chế độ đãi ngộ khá ok', NULL),
-(18, 14, 231, 'hihi', NULL),
-(19, 14, 231, 'tao deeso thích mauyf', NULL);
 
 -- --------------------------------------------------------
 
@@ -133,6 +144,67 @@ INSERT INTO `enterprise` (`id`, `username`, `auth_key`, `password_hash`, `passwo
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `experience`
+--
+
+CREATE TABLE `experience` (
+  `id` int(11) NOT NULL,
+  `enterprise_name` varchar(255) NOT NULL,
+  `namejob` varchar(255) NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `end_at` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `experience`
+--
+
+INSERT INTO `experience` (`id`, `enterprise_name`, `namejob`, `created_at`, `end_at`, `user_id`) VALUES
+(1, '2NF', '<h3>Thực Tập Sinh ASP.NET MVC</h3>\r\n<p>-Làm project website bán hàng</p>', 0, 0, 14);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `hobby`
+--
+
+CREATE TABLE `hobby` (
+  `id` int(11) NOT NULL,
+  `hobby_name` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `hobby`
+--
+
+INSERT INTO `hobby` (`id`, `hobby_name`, `user_id`) VALUES
+(4, '<p>- Thích xem phim,thích học tiếng anh,chơi\r\nthể thao đặc biệt là đá bóng\r\n</p>', 14);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `information`
+--
+
+CREATE TABLE `information` (
+  `id` int(11) NOT NULL,
+  `personal_information` varchar(255) NOT NULL,
+  `specialize` varchar(255) NOT NULL,
+  `user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `information`
+--
+
+INSERT INTO `information` (`id`, `personal_information`, `specialize`, `user_id`) VALUES
+(1, '<p>- Hoạt bát, nhiệt tình, thật thà và cẩn thận.</p>\r\n<p>- Thích tìm tòi, chinh phục những tri thức, công việc mà\r\nmình chưa biết đến.</p>', '<p>- Sử dụng Git cơ bản,</p>\r\n<p>- Cơ bản Mysql, OOP, SOLID</p>\r\n<p>-Đọc tài liệu chuyên ngành khá tốt</p>\r\n<p>- Khả năng làm việc nhóm tốt\r\n</p>', 14);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `migration`
 --
 
@@ -151,7 +223,45 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 ('m190124_110200_add_verification_token_column_to_user_table', 1602215408),
 ('m201007_082621_create_news_table_student', 1602215408),
 ('m201007_082857_create_news_table_enterprise', 1602215409),
-('m201007_083831_create_news_table_teachers', 1602215409);
+('m201007_083831_create_news_table_teachers', 1602215409),
+('m201215_073327_create_news_experience', 1608186321),
+('m201215_074619_create_news_colleges', 1608186322),
+('m201215_074916_create_news_operation', 1608186322),
+('m201215_075222_create_news_target', 1608186322),
+('m201215_075446_create_news_hobby', 1608186322),
+('m201217_064310_add_target_id_column_to_user_table', 1608188143),
+('m201217_064830_create_information_table', 1608188143),
+('m201217_065652_add_target_id_column_to_student_table', 1608188317),
+('m201217_070726_add_student_id_for_student_table', 1608188966),
+('m201217_070942_addForeignKey_for_student_table', 1608189505),
+('m201217_072016_addForeignKey_for_colleges_table', 1608189759),
+('m201217_072304_addForeignKey_for_enterprise_table', 1608190448),
+('m201217_072435_addForeignKey_for_hobby_table', 1608190475),
+('m201217_072533_addForeignKey_for_information_table', 1608190563),
+('m201217_072614_addForeignKey_for_operation_table', 1608190587),
+('m201217_072650_addForeignKey_for_target_table', 1608190587);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `operation`
+--
+
+CREATE TABLE `operation` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `detail` varchar(255) NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `end_at` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `operation`
+--
+
+INSERT INTO `operation` (`id`, `name`, `detail`, `created_at`, `end_at`, `user_id`) VALUES
+(1, 'Hành trình đỏ về nguồn\r\n', '<p> CLB dành cho những bạn trẻ muốn cải thiện kĩ năng\r\nmềm. Ở đó tôi được học hỏi các kỹ năng: làm việc nhóm,\r\nkỹ năng thuyết trình ….</p>', 0, 0, 14);
 
 -- --------------------------------------------------------
 
@@ -227,18 +337,24 @@ CREATE TABLE `student` (
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
   `address` varchar(50) DEFAULT NULL,
-  `phone` int(15) DEFAULT NULL
+  `phone` int(15) DEFAULT NULL,
+  `college_id` int(11) DEFAULT NULL,
+  `target_id` int(11) DEFAULT NULL,
+  `hobby_id` int(11) DEFAULT NULL,
+  `operation_id` int(11) DEFAULT NULL,
+  `experience_id` int(11) DEFAULT NULL,
+  `information_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `student`
 --
 
-INSERT INTO `student` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `date_of_birth`, `class_name`, `imageFile`, `status`, `created_at`, `updated_at`, `address`, `phone`) VALUES
-(14, 'PhamThanhTung', 'MasWXaGWWc4F_7icDjfgslpkQTbnv4d1', '$2y$13$XzHkt0yiH3h8obj7sBDfyukQ58G2TcegQbOjgrLQgGLCRX72YH8Yu', '-sbtp1o3x-IGXOXov07Yx_s3fWUFlTon_1605925452', 'phamthanhtung@gmail.com', NULL, 'k62a3', 'user.png', 10, NULL, NULL, '', NULL),
-(15, 'taminhthao', 'hxZUPvDQcNAxsZscunZ-ErI73HpvzP2y', '$2y$13$9u.dMToq4NGkETJckTSQSuJXnoozKB.zvme6KSi4WDa14aCkDVvry', 'w1SwNFguI2sWkmrm2bbkivwIcjZda87m_1605925453', 'taminthao@gmail.com', NULL, 'k62a3', 'fpt.png', 10, NULL, NULL, '54 hus', 585640443),
-(16, 'nguyenducmanh', 'CcXxikDTBaHKlwI1EmCgHjShn6RwylSP', '$2y$13$3IqPmgdiEtI3A2TS4s7qQOGxfBhF.5zBl4tHnYzSGz4taLbtcvVmW', '27wsroSV-ffkBkdo-JEhN-Aw-RfI23hs_1605925454', 'nguyenducmanh@gmail.com', NULL, 'k62a3', NULL, 10, NULL, NULL, NULL, NULL),
-(17, 'quynh99', 'WkheneiqibxZPcVtoS0iVEnuxcbcfcXi', '$2y$13$y.Dg1uxDL6Qdp4gp6//Ueu44IFIIZW6x15LYq0BW3BUST.kPDEX3O', 'WV3ElG2pHg95iEuExJMU2GsV-jguV3o3_1605925455', 'quynh99@gmail.com', NULL, 'k62a3', NULL, 10, NULL, NULL, NULL, NULL);
+INSERT INTO `student` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `date_of_birth`, `class_name`, `imageFile`, `status`, `created_at`, `updated_at`, `address`, `phone`, `college_id`, `target_id`, `hobby_id`, `operation_id`, `experience_id`, `information_id`) VALUES
+(14, 'PhamThanhTung', 'MasWXaGWWc4F_7icDjfgslpkQTbnv4d1', '$2y$13$XzHkt0yiH3h8obj7sBDfyukQ58G2TcegQbOjgrLQgGLCRX72YH8Yu', '-sbtp1o3x-IGXOXov07Yx_s3fWUFlTon_1605925452', 'phamthanhtung@gmail.com', '1999-12-16', 'k62a3', 'user.png', 10, NULL, NULL, '334 Nguyễn Trãi , Thanh Xuân , Hà Nội', 585640443, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 'taminhthao', 'hxZUPvDQcNAxsZscunZ-ErI73HpvzP2y', '$2y$13$9u.dMToq4NGkETJckTSQSuJXnoozKB.zvme6KSi4WDa14aCkDVvry', 'w1SwNFguI2sWkmrm2bbkivwIcjZda87m_1605925453', 'taminthao@gmail.com', NULL, 'k62a3', 'fpt.png', 10, NULL, NULL, '54 hus', 585640443, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 'nguyenducmanh', 'CcXxikDTBaHKlwI1EmCgHjShn6RwylSP', '$2y$13$3IqPmgdiEtI3A2TS4s7qQOGxfBhF.5zBl4tHnYzSGz4taLbtcvVmW', '27wsroSV-ffkBkdo-JEhN-Aw-RfI23hs_1605925454', 'nguyenducmanh@gmail.com', NULL, 'k62a3', NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 'quynh99', 'WkheneiqibxZPcVtoS0iVEnuxcbcfcXi', '$2y$13$y.Dg1uxDL6Qdp4gp6//Ueu44IFIIZW6x15LYq0BW3BUST.kPDEX3O', 'WV3ElG2pHg95iEuExJMU2GsV-jguV3o3_1605925455', 'quynh99@gmail.com', NULL, 'k62a3', NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -270,8 +386,30 @@ CREATE TABLE `student_skill_profile` (
 --
 
 INSERT INTO `student_skill_profile` (`id`, `student_id`, `ability_id`, `ability_rate`) VALUES
-(9, 14, 17, 90),
-(10, 14, 2, 10);
+(11, 14, 2, 10),
+(12, 14, 4, 90);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `target`
+--
+
+CREATE TABLE `target` (
+  `id` int(11) NOT NULL,
+  `short_time` varchar(255) NOT NULL,
+  `long_time` varchar(255) NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `end_at` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `target`
+--
+
+INSERT INTO `target` (`id`, `short_time`, `long_time`, `created_at`, `end_at`, `user_id`) VALUES
+(5, '\r\n+ Tốt nghiệp đại học loại khá\r\n+ Thành thạo Laravel', '+Sau 5 năm sẽ trở thành full-stack Web\r\nDeveloper', 0, 0, 14);
 
 -- --------------------------------------------------------
 
@@ -316,7 +454,13 @@ CREATE TABLE `user` (
   `status` smallint(6) NOT NULL DEFAULT 10,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
-  `verification_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `verification_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `colleges_id` int(11) DEFAULT NULL,
+  `target_id` int(11) DEFAULT NULL,
+  `hobby_id` int(11) DEFAULT NULL,
+  `operation_id` int(11) DEFAULT NULL,
+  `experience_id` int(11) DEFAULT NULL,
+  `information_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -339,6 +483,14 @@ ALTER TABLE `capacity_dictionary`
   ADD KEY `id` (`id`);
 
 --
+-- Chỉ mục cho bảng `colleges`
+--
+ALTER TABLE `colleges`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`),
+  ADD KEY `fk-student` (`user_id`);
+
+--
 -- Chỉ mục cho bảng `comment`
 --
 ALTER TABLE `comment`
@@ -356,10 +508,40 @@ ALTER TABLE `enterprise`
   ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
 
 --
+-- Chỉ mục cho bảng `experience`
+--
+ALTER TABLE `experience`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `enterprise_name` (`enterprise_name`),
+  ADD KEY `fk-experience-user_id` (`user_id`);
+
+--
+-- Chỉ mục cho bảng `hobby`
+--
+ALTER TABLE `hobby`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk-hobby-user_id` (`user_id`);
+
+--
+-- Chỉ mục cho bảng `information`
+--
+ALTER TABLE `information`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk-information-user_id` (`user_id`);
+
+--
 -- Chỉ mục cho bảng `migration`
 --
 ALTER TABLE `migration`
   ADD PRIMARY KEY (`version`);
+
+--
+-- Chỉ mục cho bảng `operation`
+--
+ALTER TABLE `operation`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`),
+  ADD KEY `fk-operation-user_id` (`user_id`);
 
 --
 -- Chỉ mục cho bảng `organization_requests`
@@ -382,7 +564,13 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
+  ADD UNIQUE KEY `password_reset_token` (`password_reset_token`),
+  ADD KEY `fk-information` (`information_id`),
+  ADD KEY `fk-colleges` (`college_id`),
+  ADD KEY `fk-target` (`target_id`),
+  ADD KEY `fk-hobby` (`hobby_id`),
+  ADD KEY `fk-operation` (`operation_id`),
+  ADD KEY `fk-experience` (`experience_id`);
 
 --
 -- Chỉ mục cho bảng `student_registration`
@@ -398,6 +586,13 @@ ALTER TABLE `student_skill_profile`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ability_id` (`ability_id`),
   ADD KEY `student_skill_profile_ibfk_1` (`student_id`);
+
+--
+-- Chỉ mục cho bảng `target`
+--
+ALTER TABLE `target`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk-target-user_id` (`user_id`);
 
 --
 -- Chỉ mục cho bảng `teachers`
@@ -428,16 +623,46 @@ ALTER TABLE `capacity_dictionary`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
+-- AUTO_INCREMENT cho bảng `colleges`
+--
+ALTER TABLE `colleges`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `enterprise`
 --
 ALTER TABLE `enterprise`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT cho bảng `experience`
+--
+ALTER TABLE `experience`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `hobby`
+--
+ALTER TABLE `hobby`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT cho bảng `information`
+--
+ALTER TABLE `information`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `operation`
+--
+ALTER TABLE `operation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `organization_requests`
@@ -461,7 +686,13 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT cho bảng `student_skill_profile`
 --
 ALTER TABLE `student_skill_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT cho bảng `target`
+--
+ALTER TABLE `target`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `teachers`
@@ -487,6 +718,12 @@ ALTER TABLE `assigned_table`
   ADD CONSTRAINT `assigned_table_ibfk_1` FOREIGN KEY (`organization_request_id`) REFERENCES `organization_requests` (`id`);
 
 --
+-- Các ràng buộc cho bảng `colleges`
+--
+ALTER TABLE `colleges`
+  ADD CONSTRAINT `fk-student` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;
+
+--
 -- Các ràng buộc cho bảng `comment`
 --
 ALTER TABLE `comment`
@@ -494,11 +731,46 @@ ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`request_id`) REFERENCES `organization_requests` (`id`);
 
 --
+-- Các ràng buộc cho bảng `experience`
+--
+ALTER TABLE `experience`
+  ADD CONSTRAINT `fk-experience-user_id` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `hobby`
+--
+ALTER TABLE `hobby`
+  ADD CONSTRAINT `fk-hobby-user_id` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `information`
+--
+ALTER TABLE `information`
+  ADD CONSTRAINT `fk-information-user_id` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `operation`
+--
+ALTER TABLE `operation`
+  ADD CONSTRAINT `fk-operation-user_id` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;
+
+--
 -- Các ràng buộc cho bảng `organization_request_abilities`
 --
 ALTER TABLE `organization_request_abilities`
   ADD CONSTRAINT `FK_assigned_list` FOREIGN KEY (`organization_request_id`) REFERENCES `organization_requests` (`id`),
   ADD CONSTRAINT `organization_request_abilities_ibfk_1` FOREIGN KEY (`ability_id`) REFERENCES `capacity_dictionary` (`id`);
+
+--
+-- Các ràng buộc cho bảng `student`
+--
+ALTER TABLE `student`
+  ADD CONSTRAINT `fk-colleges` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk-experience` FOREIGN KEY (`experience_id`) REFERENCES `experience` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk-hobby` FOREIGN KEY (`hobby_id`) REFERENCES `hobby` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk-information` FOREIGN KEY (`information_id`) REFERENCES `information` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk-operation` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk-target` FOREIGN KEY (`target_id`) REFERENCES `target` (`id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `student_registration`
@@ -513,6 +785,12 @@ ALTER TABLE `student_registration`
 ALTER TABLE `student_skill_profile`
   ADD CONSTRAINT `FK_student_skill_capacity` FOREIGN KEY (`ability_id`) REFERENCES `capacity_dictionary` (`id`),
   ADD CONSTRAINT `student_skill_profile_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`);
+
+--
+-- Các ràng buộc cho bảng `target`
+--
+ALTER TABLE `target`
+  ADD CONSTRAINT `fk-target-user_id` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

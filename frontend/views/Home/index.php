@@ -92,7 +92,7 @@ use yii\widgets\ActiveForm;
     <div class="blog-list__content">
     <!-- Last updated: "2020-09-16 08:38:32 +0700"-->
     <div class="blog">
-    <a class="blog__image-link" href="#"><img class=" ls-is-cached lazyloaded" data-src="img/react-native.png" width="100%" src="<?=yii\helpers\Url::base(true) . '/../../uploads/react-native.png'?>"
+    <a class="blog__image-link" href="#"><img class=" ls-is-cached lazyloaded" data-src="img/react-native.png" width="100%" src="<?=yii\helpers\Url::base(true) . '/../../uploads/blog.jpg'?>"
     ><div class="blog__description">
     <h4 class="blog__description-title">
     <a target="_blank" href="#">React Native là gì? 20+ Tài liệu học React Native từ cơ bản đến nâng cao</a>

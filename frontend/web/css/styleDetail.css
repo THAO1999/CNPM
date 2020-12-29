@@ -165,3 +165,10 @@ small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertic
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
 }
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 0px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}

@@ -39,9 +39,10 @@ class OrganizationRequestController extends Controller
     public function actionIndex($status)
     {
         // confirm
+      
 
         $listOrganizationRequest = $this->checkStatus($status);
-
+ 
         return $this->render('index', [
             'listOrganizationRequest' => $listOrganizationRequest,
             "status" => $status,

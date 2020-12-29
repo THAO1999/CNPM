@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
 <h2 class="panel-title review-title hidden-xs hidden-sm">
 <div class="title">
 <div class="text">Đánh giá</div>
-<div class="company-name">  <?=$enterprises->username?>   </div>
+<div class="company-name"> Công ty <?=$enterprises->username?>   </div>
 </div>
 <div class="logo">
 <img src="<?=Enterprises::getImageEnterprise($enterprises->id)?>">

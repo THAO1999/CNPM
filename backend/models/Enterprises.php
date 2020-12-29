@@ -18,7 +18,7 @@ class Enterprises extends Enterprise
         $enterprise = Enterprise::findOne($enterpriseID);
         //return $enterprise->imageFile;
 
-        return Url::base(true) . '/../uploads/' . $enterprise->imageFile; // getpathImg
+        return Url::base(true) . '/../uploads/' .$enterprise->imageFile; // getpathImg
 
     }
 
@@ -27,7 +27,7 @@ class Enterprises extends Enterprise
         // lay organization_id doanh nghiep
         $enterprises = Enterprises::findOne($id);
 
-        return Url::base(true) . '/../../uploads/' . $enterprises->imageFile; // getpathImg
+        return Url::base(true) . '/../uploads/' . $enterprises->imageFile; // getpathImg
 
     }
 

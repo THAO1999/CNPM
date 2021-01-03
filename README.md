@@ -13,11 +13,15 @@ SE04-nhoms27.1
 - HTML5, CSS3,Bootstrap4.
 - Cơ sở dữ liệu : MySQL.
 - Công cụ sử dụng : Visual Studio code, SublimeText3,Diagrams,Xampp.
+
 #### 1.4 Thành Viên :
 - Tạ Minh Thao
 - Phạm Thanh Tùng
 - Nguyễn Đức Mạnh
 - Vũ Thị Như Quỳnh
+
+#### 1.5 Kiến trúc hệ thống
+-Design/baocaocongnghephanmen.docx
 
 REQUIREMENTS
 ------------
@@ -39,6 +43,7 @@ git clone https://github.com/THAO1999/SE04-Nhom27.1.git
 ### Database
 ## import
 import file intern.sql to Database
+
 
 ## Config
 Edit the file `config/db.php` with real data, for example:

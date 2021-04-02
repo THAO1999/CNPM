@@ -87,7 +87,7 @@ $this->registerCssFile('css/custom.css');
 <a class="dropdown-menu__link--desktop" data-controller="utm-tracking" href="/saved_jobs"><span class="dropdown-menu__icon">
 <div class="dropdown-menu__icon-saved"></div>
 </span>
-<span>Saved Jobs</span>
+<span>Update CV</span>
 </a></li>
 <li class="dropdown-menu__item--desktop">
 <a class="dropdown-menu__link--desktop" data-controller="utm-tracking" href="<?php echo Url::home() . "cv-student" ?>"><span class="dropdown-menu__icon">

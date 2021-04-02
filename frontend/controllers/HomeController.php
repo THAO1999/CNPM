@@ -78,7 +78,8 @@ class HomeController extends Controller
 
     public function actionCheckStatusOrigin($listOrganization_requests)
     {
-        $today = date("y-m-d");
+        $today = date("Y-m-d");
+
         foreach ($listOrganization_requests as $value) {
             if ($value->date_submitted < $today) {
                 $value->status = 8;

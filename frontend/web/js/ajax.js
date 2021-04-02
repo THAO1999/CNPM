@@ -8,14 +8,11 @@ function studentRegister(request_id, student_id) {
         data: { studentID: student_id, requestID: request_id, _csrf: yii.getCsrfToken() },
         dataType: 'json',
         success: function(result) {
-            if (result == 1)
-
-                swal("Chúc Mừng!", "Bạn đã đăng ki thành công!", "success");
-
+        console.log(result)
+            if (result)
+            swal("Chúc Mừng!", "Bạn đã đăng ki thành công!", "success");
             else
-
-                swal("Good job!", "Thất Bai!", "Fail");
-
+                swal("Rất tiếc", "Bạn đã đăng kí Job này rồi", "error");
         },
     });
 }

@@ -88,9 +88,10 @@ class DetailRequestEnterpriseController extends Controller
         $model->request_id = $requestID;
 
         if ($model->save()) {
-            return true;
+            return 1;
         } else {
-            return false;
+
+            return 0;
         }
 
         // return StudentRegistrations::saveStudentRegistrations($studentID, $requestID);

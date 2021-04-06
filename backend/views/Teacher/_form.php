@@ -16,6 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?=$form->field($model, 'password_hash')->textInput(['maxlength' => true, 'type' => 'password', 'autocomplete' => 'new-password'])?>
     <?=$form->field($model, 'email')->textInput(['maxlength' => true])?>
+    <?=$form->field($model, 'name')->textInput()?>
     <?=$form->field($model, 'sex')->textInput()?>
     <?=$form->field($model, 'status')->dropDownList([
     0 => 'khong hoat dong',

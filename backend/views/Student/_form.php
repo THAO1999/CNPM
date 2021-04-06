@@ -15,10 +15,11 @@ use yii\widgets\ActiveForm;
     <?=$form->field($model, 'username')->textInput(['maxlength' => true])?>
 
     <?=$form->field($model, 'password_hash')->textInput(['maxlength' => true, 'type' => 'password', 'autocomplete' => 'new-password'])?>
-
+    <?=$form->field($model, 'name')->textInput(['maxlength' => true])?>
     <?=$form->field($model, 'email')->textInput(['maxlength' => true])?>
 
     <?=$form->field($model, 'class_name')->textInput(['maxlength' => true])?>
+
 
     <div class="form-group">
         <?=Html::submitButton('Save', ['class' => 'btn btn-success'])?>

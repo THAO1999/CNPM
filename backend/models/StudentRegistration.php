@@ -14,7 +14,8 @@ use Yii;
  *
 
  * @property Student $student
- * @property OrganizationRequest $organizationRequest
+ * @property
+ *  $organizationRequest
  */
 class StudentRegistration extends \yii\db\ActiveRecord
 {
@@ -48,7 +49,7 @@ class StudentRegistration extends \yii\db\ActiveRecord
 
             'student_id' => 'Student ID',
             'request_id' => 'Request ID',
-            'submit_date' => 'Submit Date',
+            'enterprise_name' => 'Tên công ty',
         ];
     }
 

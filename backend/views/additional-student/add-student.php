@@ -1,31 +1,39 @@
 <?php
-
 use yii\grid\GridView;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
+/* @var $searchModel backend\models\StudentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Student Registrations';
+$this->title = 'Students';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="student-registration-index">
+<div class="student-index">
 
     <h1><?=Html::encode($this->title)?></h1>
-    <p>
-        <?=Html::a('Thêm sinh viên', ['./additional-student'], ['class' => 'btn btn-success'])?>
-    </p>
+
+
     <?=GridView::widget([
     'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
-        'student.username',
-        'organizationRequest.subject',
-        'enterprise_name',
+
+        'username',
+        //  'auth_key',
+        // 'password_hash',
+        //'password_reset_token',
+        'email:email',
+        //'date_of_birth',
+        'class_name',
+        //'img',
+        'status',
+        //'created_at',
+        //'updated_at',
 
         ['class' => 'yii\grid\ActionColumn'],
     ],
 ]);?>
-
 
 </div>

@@ -28,6 +28,7 @@ use yii\web\IdentityInterface;
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property string|null $address
+ *   @property string|null $name
  */
 class Enterprise extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -58,6 +59,7 @@ class Enterprise extends \yii\db\ActiveRecord implements IdentityInterface
 
             [['username'], 'unique'],
             [['email'], 'unique'],
+            [['name'], 'string'],
             [['password_reset_token'], 'unique'],
         ];
     }
@@ -69,9 +71,9 @@ class Enterprise extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Tên Công Ty',
+            'username' => 'Tên tài khoản',
             'auth_key' => 'Auth Key',
-            'password_hash' => 'Password Hash',
+            'password_hash' => 'Mật khẩu',
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
             'date_establish' => 'Date Establish',
@@ -84,6 +86,8 @@ class Enterprise extends \yii\db\ActiveRecord implements IdentityInterface
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'address' => 'Địa chỉ',
+            'name' => 'Tên Doanh nghiệp',
+
         ];
     }
     public function getEnterpriseRecruitmentRequestForms()

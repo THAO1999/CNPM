@@ -1,27 +1,29 @@
 // hien thi thong tin khach hang theo id_kh
-function studentRegister(request_id, student_id) {
-
-    // goi ajax
-    $.ajax({
-        url: 'detail-request-enterprise/student-register',
-        type: 'post',
-        data: { studentID: student_id, requestID: request_id, _csrf: yii.getCsrfToken() },
-        dataType: 'json',
-        success: function(result) {
-        console.log(result)
-            if (result){
-            swal("Chúc Mừng!", "Bạn đã đăng ki thành công!", "success");
-          }
-            else{
-                swal("Rất tiếc", "Bạn đã đăng kí Job này rồi", "error");
-                
-                 }
-        },
-    });
-    setTimeout(function() {
+function studentRegister(request_id, student_id, enterprise_name) {
+  // goi ajax
+  $.ajax({
+    url: "detail-request-enterprise/student-register",
+    type: "post",
+    data: {
+      enterpriseName: enterprise_name,
+      studentID: student_id,
+      requestID: request_id,
+      _csrf: yii.getCsrfToken(),
+    },
+    dataType: "json",
+    success: function (result) {
+      console.log(result);
+      if (result) {
+        swal("Chúc Mừng!", "Bạn đã đăng ki thành công!", "success");
+      } else {
+        swal("Rất tiếc", "Bạn đã đăng kí Job này rồi", "error");
+      }
+    },
+  });
+  setTimeout(function () {
     location.reload();
- }, 5000);
-   // await sleep(2000);
+  }, 5000);
+  // await sleep(2000);
 
-   //  sleep(2000).then(() => {  });
+  //  sleep(2000).then(() => {  });
 }

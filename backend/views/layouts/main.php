@@ -31,7 +31,7 @@ AppAsset::register($this);
 
 <link rel="stylesheet" type="text/css" href="Test.css">
 
-    
+
     <meta charset="<?=Yii::$app->charset?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -304,7 +304,7 @@ AppAsset::register($this);
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown"style="background: white;"role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo Yii::$app->user->identity->username ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo Yii::$app->user->identity->name ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                             </a>

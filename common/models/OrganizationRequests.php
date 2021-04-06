@@ -72,6 +72,10 @@ class OrganizationRequests extends \yii\db\ActiveRecord
     {
         return $this->hasMany(AssignedTable::className(), ['organization_request_id' => 'id']);
     }
+    public function getEnterprise()
+    {
+        return $this->hasOne(Enterprise::className(), ['id' => 'organization_id']);
+    }
 
     /**
      * Gets query for [[OrganizationRequestAbilities]].

@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?=Html::a('Thêm mới doanh nghiệp', ['create'], ['class' => 'btn btn-success'])?>
     </p>
 
-   
+
     <?=GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         //'description',
         //'gross_revenue',
         'status',
+        'name',
         'created_at',
         //'updated_at',
 

@@ -150,4 +150,11 @@ class StudentRegistrationController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionAddStudent()
+    {
+
+        return $this->render('index');
+
+    }
 }

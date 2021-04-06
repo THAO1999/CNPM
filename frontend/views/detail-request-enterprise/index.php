@@ -58,7 +58,7 @@ Hạn Đăng ki: <?=$organization_requests->date_submitted?>
 <div class="headers__actions text-right">
 
 <?php if (!Students::checkStatus(Yii::$app->user->identity->id)): ?>
-<button class="btn btn-success" onclick="studentRegister(<?=$organization_requests->id?>,<?=Yii::$app->user->identity->id?>)"> Đăng ki</button>
+<button class="btn btn-success" onclick="studentRegister(<?=$organization_requests->id?>,<?=Yii::$app->user->identity->id?>,'<?=$enterprise->username?>')"> Đăng ki</button>
 <?php endif;?>
 </div>
 

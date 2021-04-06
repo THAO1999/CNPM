@@ -17,6 +17,7 @@ use yii\web\IdentityInterface;
  * @property string $auth_key
  * @property string $password_hash
  * @property string|null $password_reset_token
+ *  @property string $name
  * @property string $email
  * @property string|null $date_of_birth
  * @property string|null $class_name
@@ -58,6 +59,7 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
+            [['name'], 'string'],
         ];
     }
 
@@ -68,9 +70,9 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Tên sinh viên',
+            'username' => 'Tên tài khoản',
             'auth_key' => 'Khoá xác thực',
-            'password_hash' => 'Băm mật khẩu',
+            'password_hash' => ' Mật khẩu',
             'password_reset_token' => 'Mã đặt lại mật khẩu',
             'email' => 'Email',
             'date_of_birth' => 'Ngày sinh',
@@ -81,6 +83,7 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
             'updated_at' => 'Cập nhật lúc',
             'address' => 'Địa chỉ',
             'phone' => 'Số điện thoại',
+            'name' => 'Tên sinh viên',
         ];
     }
 
@@ -304,6 +307,5 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
         return Url::base(true) . '/../uploads/' . $student->imageFile; // getpathImg
 
     }
-  
 
 }

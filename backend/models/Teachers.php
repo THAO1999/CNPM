@@ -21,6 +21,7 @@ use yii\web\IdentityInterface;
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
+ *  @property string $name
  */
 class Teachers extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -47,6 +48,7 @@ class Teachers extends \yii\db\ActiveRecord implements IdentityInterface
             [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
+            [['name'], 'string'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
         ];
@@ -59,9 +61,9 @@ class Teachers extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'username' => 'Tên tài khoản',
             'auth_key' => 'Auth Key',
-            'password_hash' => 'Password Hash',
+            'password_hash' => 'Mật khẩu',
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
             'img' => 'Img',
@@ -69,6 +71,7 @@ class Teachers extends \yii\db\ActiveRecord implements IdentityInterface
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'name' => 'Tên giáo viên',
         ];
     }
 

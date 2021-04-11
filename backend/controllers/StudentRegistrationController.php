@@ -12,7 +12,6 @@ use common\models\operation;
 use common\models\Target;
 use frontend\models\Students;
 use frontend\models\StudentSkillProfile;
-use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -85,34 +84,28 @@ class StudentRegistrationController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new StudentRegistration model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new StudentRegistration();
+    // /**
+    //  * Creates a new StudentRegistration model.
+    //  * If creation is successful, the browser will be redirected to the 'view' page.
+    //  * @return mixed
+    //  */
+    // public function actionCreate()
+    // {
+    //     $model = new StudentRegistration();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'student_id' => $model->student_id, 'request_id' => $model->request_id]);
-        }
+    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
+    //         return $this->redirect(['view', 'student_id' => $model->student_id, 'request_id' => $model->request_id]);
+    //     }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
+    //     return $this->render('create', [
+    //         'model' => $model,
+    //     ]);
+    // }
 
-    /**
-     * Updates an existing StudentRegistration model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $student_id
-     * @param integer $request_id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($student_id, $request_id)
     {
+        echo "thao";
+        die();
         $model = new AssignedTable();
         $model->student_id = $student_id;
         $model->organization_request_id = $request_id;
@@ -123,15 +116,6 @@ class StudentRegistrationController extends Controller
         return $this->actionDeleteStudentFromRegister($student_id, $request_id);
 
     }
-
-    /**
-     * Deletes an existing StudentRegistration model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $student_id
-     * @param integer $request_id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
 
     public function actionDeleteStudentFromRegister($student_id, $request_id)
     {

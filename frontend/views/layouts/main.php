@@ -66,7 +66,7 @@ $this->registerCssFile('css/custom.css');
 </li>
         <li class="dropdown hidden-xs" id="user-dropdown">
 <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="" role="button">
-<span class="dropdown-toggle__text"><?php echo Yii::$app->user->identity->username ?></span>
+<span class="dropdown-toggle__text"><?php echo Yii::$app->user->identity->name ?></span>
 <span class="caret"></span>
 <div class="sign-in-user-avatar"><img class="user-avatar" src="https://lh5.googleusercontent.com/-NEqiGPoAAVM/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnEZAkLbXKAlBavRoKCwMzncgmfAg/s96-c/photo.jpg"></div>
 </a>

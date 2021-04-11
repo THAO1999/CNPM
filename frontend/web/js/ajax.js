@@ -1,16 +1,15 @@
 // hien thi thong tin khach hang theo id_kh
-function studentRegister(request_id, student_id, enterprise_name) {
+function studentRegister(request_id, student_id, enterprise_id) {
   // goi ajax
   $.ajax({
     url: "detail-request-enterprise/student-register",
     type: "post",
     data: {
-      enterpriseName: enterprise_name,
       studentID: student_id,
       requestID: request_id,
+      enterpriseID: enterprise_id,
       _csrf: yii.getCsrfToken(),
     },
-    dataType: "json",
     success: function (result) {
       console.log(result);
       if (result) {

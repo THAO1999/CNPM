@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Assigned Tables';
+$this->title = 'Bảng phân công';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="assigned-table-index">
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
 
-        'student.username',
+        'student.name',
         'start_date',
         'end_date',
         //'status',

@@ -41,6 +41,7 @@ class AssignedTableController extends Controller
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'request_id' => $id,
         ]);
     }
 

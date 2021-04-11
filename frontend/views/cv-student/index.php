@@ -47,7 +47,7 @@
 
 
     <?php foreach ($list_StudentSkill as $skill): ?>
-                <p  id="demo"><?=CapacityDictionary::getCapacity($skill)?></p>
+                <p  id="demo" style="color:white"><?=CapacityDictionary::getCapacity($skill)?></p>
                 <div class="progress">
   <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style=" width:<?=$skill->ability_rate . '%'?>" aria-valuenow="50" aria-valuemin="0" aria-valuemax="90"></div>
 </div>
@@ -59,7 +59,7 @@
 </div><div id="cvo-interest" class="cvo-block" >
     <div class="cvo-block-title"><span id="cvo-interest-blocktitle">Sở thích</span></div>
 
-                                <p class="row"><span class="cvo-interest-details default_min_width" ><?=$hobby->hobby_name?></span></p>
+                                <p class="row" ><span class="cvo-interest-details default_min_width" ><?=$hobby->hobby_name?></span></p>
 
 
 </div>

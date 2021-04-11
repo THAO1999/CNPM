@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Teachers';
+$this->title = 'Danh sách giáo viên';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="teachers-index">

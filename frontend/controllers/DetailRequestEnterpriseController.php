@@ -82,12 +82,12 @@ class DetailRequestEnterpriseController extends Controller
     {
         $studentID = Yii::$app->request->post('studentID');
         $requestID = Yii::$app->request->post('requestID');
-        $enterpriseName = Yii::$app->request->post('enterpriseName');
+        $enterpriseID = Yii::$app->request->post('enterpriseID');
         $model = new StudentRegistration();
 
         $model->student_id = $studentID;
         $model->request_id = $requestID;
-        $model->enterprise_name = $enterpriseName;
+        $model->enterprise_id = $enterpriseID;
         if ($model->save()) {
             return 1;
         } else {

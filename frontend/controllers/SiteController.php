@@ -80,8 +80,9 @@ class SiteController extends Controller
         $this->layout = 'blank';
 
         $model = new LoginFormStudent();
+
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            $this->actionCheckAssignedTables();
+            $this->actionCheckAssignedTables(); // kiểm tra xem đã được phân công hay chưa
 
         } else {
             $model->password = '';
@@ -95,9 +96,9 @@ class SiteController extends Controller
         $assignedTables = Students::checkStatus(Yii::$app->user->identity->id);
         if ($assignedTables) {
 
-            return $this->redirect('../assigned-table/index?student_id=' . $assignedTables->student_id);
+            return $this->redirect('assigned-table/index?student_id=' . $assignedTables->student_id);
         } else {
-            return $this->redirect('../home/index');
+            return $this->redirect('home/index');
         }
     }
 

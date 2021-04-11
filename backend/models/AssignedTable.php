@@ -48,8 +48,8 @@ class AssignedTable extends \yii\db\ActiveRecord
         return [
             'organization_request_id' => 'Organization Request ID',
             'student_id' => 'Student ID',
-            'start_date' => 'Start Date',
-            'end_date' => 'End Date',
+            'start_date' => 'Ngày bắt đầu',
+            'end_date' => 'Ngày kết thúc',
             'status' => 'Status',
             'create_date' => 'Create Date',
         ];
@@ -62,6 +62,7 @@ class AssignedTable extends \yii\db\ActiveRecord
      */
     public function getStudent()
     {
+
         return $this->hasOne(Student::className(), ['id' => 'student_id']);
     }
 

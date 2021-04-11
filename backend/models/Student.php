@@ -52,7 +52,7 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['username', 'password_hash', 'email'], 'required'],
-            // [['date_of_birth', 'created_at', 'updated_at'], 'safe'],
+            // [['date_of_birth', 'created_at', 'updated_at'], 'safe'], 
             [['status'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'phone', 'class_name', 'address'], 'string', 'max' => 255], // da tung loi day ,"adress,phone"
             [['auth_key'], 'string', 'max' => 32],
@@ -62,7 +62,6 @@ class Student extends \yii\db\ActiveRecord implements IdentityInterface
             [['name'], 'string'],
         ];
     }
-
     /**
      * {@inheritdoc}
      */

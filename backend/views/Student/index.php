@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $searchModel backend\models\StudentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Students';
+$this->title = 'Danh sách sinh viên';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="student-index">
@@ -14,17 +14,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?=Html::encode($this->title)?></h1>
 
     <p>
-        <?=Html::a('Create Student', ['create'], ['class' => 'btn btn-success'])?>
+        <?=Html::a('Thêm mới sinh viên', ['create'], ['class' => 'btn btn-success'])?>
     </p>
     <p>
-        <?=Html::a('Import file Excel', ['import'], ['class' => 'btn btn-success'])?>
+        <?=Html::a('Thêm mới sinh viên từ file Excel', ['import'], ['class' => 'btn btn-success'])?>
     </p>
 
     <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?=GridView::widget([
     'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
+    //'filterModel' => $searchModel,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
 

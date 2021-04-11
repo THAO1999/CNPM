@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?=GridView::widget([
     'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
+    //'filterModel' => $searchModel,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
 
-        'username',
+        'name',
         //  'auth_key',
         // 'password_hash',
         //'password_reset_token',

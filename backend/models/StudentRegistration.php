@@ -10,7 +10,7 @@ use Yii;
  * @property int $id
  * @property int $student_id
  * @property int $request_id
- * @property string $submit_date
+ * @property int $enterprise_id
  *
 
  * @property Student $student
@@ -33,8 +33,7 @@ class StudentRegistration extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['student_id', 'request_id'], 'integer'],
-            [['submit_date'], 'safe'],
+            [['student_id', 'request_id', 'enterprise_id'], 'integer'],
             [['student_id', 'request_id'], 'unique', 'targetAttribute' => ['student_id', 'request_id']],
             [['student_id'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['student_id' => 'id']],
         ];
@@ -49,7 +48,7 @@ class StudentRegistration extends \yii\db\ActiveRecord
 
             'student_id' => 'Student ID',
             'request_id' => 'Request ID',
-            'enterprise_name' => 'Tên công ty',
+            'enterprise_id' => 'ENTERPRISE ID',
         ];
     }
 
@@ -65,6 +64,10 @@ class StudentRegistration extends \yii\db\ActiveRecord
     public function getOrganizationRequest()
     {
         return $this->hasOne(OrganizationRequest::className(), ['id' => 'request_id']);
+    }
+    public function getEnterprise()
+    {
+        return $this->hasOne(Enterprises::className(), ['id' => 'enterprise_id']);
     }
 
     public function getCount($id)

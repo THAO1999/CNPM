@@ -69,7 +69,7 @@ $menuItems = [
         ]],
 
 ];
-$menuItems[] = ['label' => Yii::$app->user->identity->username,
+$menuItems[] = ['label' => Yii::$app->user->identity->name,
     'items' => [
         ['label' => 'My Profile', 'url' => ['/profile-enterprise/index']],
         ['label' => 'Logout', 'url' => ['/site/logout'],

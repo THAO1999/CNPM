@@ -9,7 +9,7 @@ AppAsset::register($this);
 /* @var $searchModel app\models\EnterpriseSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Enterprises';
+$this->title = 'Danh sách doanh nghiệp';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="enterprise-index">
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?=GridView::widget([
     'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
+    // 'filterModel' => $searchModel,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
 

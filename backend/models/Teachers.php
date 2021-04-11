@@ -67,9 +67,9 @@ class Teachers extends \yii\db\ActiveRecord implements IdentityInterface
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
             'img' => 'Img',
-            'sex' => 'Sex',
-            'status' => 'Status',
-            'created_at' => 'Created At',
+            'sex' => 'Tuổi',
+            'status' => 'Trạng thái',
+            'created_at' => 'Ngày tạo',
             'updated_at' => 'Updated At',
             'name' => 'Tên giáo viên',
         ];

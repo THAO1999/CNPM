@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Capacity Dictionaries';
+$this->title = 'Danh sách kĩ năng';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="capacity-dictionary-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?=Html::encode($this->title)?></h1>
 
     <p>
-        <?=Html::a('Create Capacity Dictionary', ['create'], ['class' => 'btn btn-success'])?>
+        <?=Html::a('Tạo mới kĩ năng', ['create'], ['class' => 'btn btn-success'])?>
     </p>
 
 

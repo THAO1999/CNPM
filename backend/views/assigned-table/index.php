@@ -6,9 +6,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Assigned Tables';
+$this->title = 'Bảng phân công';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<p>
+    <?=Html::a('Thêm sinh viên', ['./additional-student/?request_id=' . $request_id], ['class' => 'btn btn-success'])?>
+</p>
 <div class="assigned-table-index">
 
     <h1><?=Html::encode($this->title)?></h1>
@@ -17,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
         'organizationRequest.subject',
-        'student.username',
+        'student.name',
         'start_date',
         'end_date',
         //'status',

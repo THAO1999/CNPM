@@ -82,14 +82,13 @@ class SiteController extends Controller
     {
 
         $this->layout = "blank";
-        if (!Yii::$app->user->isGuest) {
-            return $this->redirect('../organization-request/index?status=10');
+        if (!Yii::$app->user->isGuest) { // nếu đã có tài khoản rồi
+            return $this->redirect('organization-request/index?status=10'); // trang thái phiếu đã xác nhận
         }
-
         $model = new LoginFormEnterprise();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-            return $this->redirect('../organization-request/index?status=10');
+            return $this->redirect('organization-request/index?status=10');// trang thái phiếu đã xác nhận
         } else {
             $model->password = '';
 

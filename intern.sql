@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 22, 2020 lúc 03:04 AM
--- Phiên bản máy phục vụ: 10.4.11-MariaDB
--- Phiên bản PHP: 7.4.6
+-- Host: 127.0.0.1
+-- Generation Time: Apr 11, 2021 at 05:18 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `intern`
+-- Database: `intern`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `assigned_table`
+-- Table structure for table `assigned_table`
 --
 
 CREATE TABLE `assigned_table` (
@@ -37,16 +37,17 @@ CREATE TABLE `assigned_table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `assigned_table`
+-- Dumping data for table `assigned_table`
 --
 
 INSERT INTO `assigned_table` (`organization_request_id`, `student_id`, `start_date`, `end_date`, `status`, `create_date`) VALUES
-(229, 14, NULL, NULL, 1, NULL);
+(231, 15, NULL, NULL, 10, NULL),
+(231, 17, '2021-04-13', NULL, 10, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `capacity_dictionary`
+-- Table structure for table `capacity_dictionary`
 --
 
 CREATE TABLE `capacity_dictionary` (
@@ -57,7 +58,7 @@ CREATE TABLE `capacity_dictionary` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `capacity_dictionary`
+-- Dumping data for table `capacity_dictionary`
 --
 
 INSERT INTO `capacity_dictionary` (`id`, `ability_name`, `aibility_type`, `ability_note`) VALUES
@@ -75,7 +76,7 @@ INSERT INTO `capacity_dictionary` (`id`, `ability_name`, `aibility_type`, `abili
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `colleges`
+-- Table structure for table `colleges`
 --
 
 CREATE TABLE `colleges` (
@@ -88,7 +89,7 @@ CREATE TABLE `colleges` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `colleges`
+-- Dumping data for table `colleges`
 --
 
 INSERT INTO `colleges` (`id`, `name`, `specialized`, `created_at`, `end_at`, `user_id`) VALUES
@@ -97,7 +98,7 @@ INSERT INTO `colleges` (`id`, `name`, `specialized`, `created_at`, `end_at`, `us
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
@@ -108,10 +109,30 @@ CREATE TABLE `comment` (
   `submission_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `student_id`, `request_id`, `content`, `submission_date`) VALUES
+(21, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(22, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(23, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(24, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(25, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(26, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(27, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(28, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(29, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(30, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(31, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(32, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(33, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL),
+(34, 14, 231, 'Công ty rất ok  nhé, môi trường năng động', NULL);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `enterprise`
+-- Table structure for table `enterprise`
 --
 
 CREATE TABLE `enterprise` (
@@ -130,21 +151,22 @@ CREATE TABLE `enterprise` (
   `status` smallint(6) NOT NULL DEFAULT 10,
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
-  `address` varchar(50) DEFAULT NULL
+  `address` varchar(50) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `enterprise`
+-- Dumping data for table `enterprise`
 --
 
-INSERT INTO `enterprise` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `date_establish`, `employee_count`, `imageFile`, `cover_img`, `description`, `gross_revenue`, `status`, `created_at`, `updated_at`, `address`) VALUES
-(28, 'FPT', 'E8uHnUBexpoVTI2O1bsBBc4uLyeWlhDt', '$2y$13$CdnnjG2MmgcOLckygztkcOQUcqkoAGVo/e8iv12ysYU0vTP6OVq6O', 'v6HU6aZOWH5gBbRdfm0XAhZJ-5p8-OJj_1605951586', 'fpt@gmal.com', NULL, 10000, 'fpt.png', 'fpt.jpg', '<p>Cty1</p><p>1.Mô tả công việc&nbsp;</p><p>-Được đào tạo định hướng về Front-end và Back-end&nbsp;</p><p>-Tham gia các dự án nước ngoài theo hình thức training on-job dưới sự hướng dẫn trực tiếp của Leader&nbsp;</p><p>-Đọc hiểu tài liệu kỹ thuật, tìm hiểu và phân tích yêu cầu sản phẩm, thiết kế tính năng, nghiên cứu các công nghệ được phân công Phối hợp với các thành viên trong team để thiết kế, triển khai các tính năng mới theo yêu cầu dự án&nbsp;</p><p>-Thực hiên các công việc khác theo sự phân công của quản lý&nbsp;</p><p>-Chi tiết sẽ trao đổi cụ thể khi phỏng vấn&nbsp;</p><p>2.Yêu cầu công việc&nbsp; &nbsp;</p><p>-Sinh viên năm 3,4 hoặc tốt nghiệp cao đẳng/đại học chuyên ngành CNTT, Kỹ thuật phần mềm, Khoa học máy tính, ... hoặc các lĩnh vực liên quan Nắm vững các kiến thức về PHP Có kiến thức tốt về MySQL, viết và tối ưa hóa truy vấn SQL</p><p>-Kiến thức tốt về lập trình hướng đối tượng.</p><p>-Có kiến thức về lập trình web: HTML, CSS, Javascript, JQuery, ...</p><p>-Có kinh nghiệm làm việc với một trong các Framework: Laravel, CakePHP là lợi thế Kỹ năng làm việc nhóm và trao đổi thông tin tốt Chăm chỉ, có tinh thần học hỏi, chủ động trong công việc Đam mê lập trình, tư duy logic, sẵn sàng tìm hiểu và học hỏi cái mới</p><p>-Nhiệt tình và có trách nhiệm trong công việc&nbsp;</p><p>3.Các phúc lợi dành cho bạn&nbsp; Có hỗ trợ lương hàng tháng từ 1,000,000 – 5,000,000 tùy theo năng lực</p><p>-Có cơ hội trở thành nhân viên chính thức tại Adamo với mức lương hấp dẫn&nbsp;</p><p>-Lương T13 khi lên chính thức&nbsp; Review lương 2 lần 1 năm</p><p>-Thưởng các dịp lễ Tết, thưởng quý, thưởng thâm niên, thưởng lợi nhuận.</p><p>-Quà tặng dịp sinh nhật cá nhân Cơ hội được học hỏi, làm việc với công nghệ mới</p><p>-Được làm việc trong một môi trường chuyên nghiệp với các đối tác nước ngoài&nbsp;</p><p>-Du lịch, teambuilding 2 năm/lần Khám sức khỏe định kỳ cho nhân viên&nbsp;</p><p>-Hỗ trợ tham gia các khóa đào tạo nâng cao kiến thức và kỹ năng</p><div><br></div>', NULL, 10, '2020-11-21', NULL, '45 duy tan'),
-(29, 'linxhq', 'GGm2gCIqF8cJY7WjrrpdQw7zyy2kh952', '$2y$13$ElLFEEGvY5jNQHnvEHH6IuoQmST07EKj2VUyPQ5kZXkl7Thh2cG7.', 'PZ4dXODZhjqipNid3iMpg7H9R52fI5ff_1605951662', 'linxhq@gmal.com', NULL, 555, 'toshiba.png', 'to.jpg', '<p><b>Overview about ITviec</b></p><p>Ít nhưng mà chất</p><p><br></p><p>ITviec.com is where \"Ít nhưng mà chất\" developers go to find great new jobs.</p><p><br></p><p>Our mission is to help IT people develop so they can build great products and change the world. We don\'t have the most jobs...but we do have the best ones.</p><p><br></p><p>We focus on building an awesome job website and providing IT people with tips and practical advice they can use to manage their IT career and find the job that\'s best for them.</p><p><br></p><p>We have a fun, young, no-bullshit culture. You have an idea? Just do it! No committees and no bureaucracy.</p><p><br></p><p><b>Are you \"Ít nhưng mà chất\"? </b>Join us right NOW!!</p><div><br></div>', NULL, 10, '2020-11-21', NULL, '4555 duy tan');
+INSERT INTO `enterprise` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `date_establish`, `employee_count`, `imageFile`, `cover_img`, `description`, `gross_revenue`, `status`, `created_at`, `updated_at`, `address`, `name`) VALUES
+(28, 'FPT', 'E8uHnUBexpoVTI2O1bsBBc4uLyeWlhDt', '$2y$13$CdnnjG2MmgcOLckygztkcOQUcqkoAGVo/e8iv12ysYU0vTP6OVq6O', 'v6HU6aZOWH5gBbRdfm0XAhZJ-5p8-OJj_1605951586', 'fpt@gmal.com', NULL, 10000, 'fpt.png', 'fpt.jpg', '<p>Cty1</p><p>1.Mô tả công việc&nbsp;</p><p>-Được đào tạo định hướng về Front-end và Back-end&nbsp;</p><p>-Tham gia các dự án nước ngoài theo hình thức training on-job dưới sự hướng dẫn trực tiếp của Leader&nbsp;</p><p>-Đọc hiểu tài liệu kỹ thuật, tìm hiểu và phân tích yêu cầu sản phẩm, thiết kế tính năng, nghiên cứu các công nghệ được phân công Phối hợp với các thành viên trong team để thiết kế, triển khai các tính năng mới theo yêu cầu dự án&nbsp;</p><p>-Thực hiên các công việc khác theo sự phân công của quản lý&nbsp;</p><p>-Chi tiết sẽ trao đổi cụ thể khi phỏng vấn&nbsp;</p><p>2.Yêu cầu công việc&nbsp; &nbsp;</p><p>-Sinh viên năm 3,4 hoặc tốt nghiệp cao đẳng/đại học chuyên ngành CNTT, Kỹ thuật phần mềm, Khoa học máy tính, ... hoặc các lĩnh vực liên quan Nắm vững các kiến thức về PHP Có kiến thức tốt về MySQL, viết và tối ưa hóa truy vấn SQL</p><p>-Kiến thức tốt về lập trình hướng đối tượng.</p><p>-Có kiến thức về lập trình web: HTML, CSS, Javascript, JQuery, ...</p><p>-Có kinh nghiệm làm việc với một trong các Framework: Laravel, CakePHP là lợi thế Kỹ năng làm việc nhóm và trao đổi thông tin tốt Chăm chỉ, có tinh thần học hỏi, chủ động trong công việc Đam mê lập trình, tư duy logic, sẵn sàng tìm hiểu và học hỏi cái mới</p><p>-Nhiệt tình và có trách nhiệm trong công việc&nbsp;</p><p>3.Các phúc lợi dành cho bạn&nbsp; Có hỗ trợ lương hàng tháng từ 1,000,000 – 5,000,000 tùy theo năng lực</p><p>-Có cơ hội trở thành nhân viên chính thức tại Adamo với mức lương hấp dẫn&nbsp;</p><p>-Lương T13 khi lên chính thức&nbsp; Review lương 2 lần 1 năm</p><p>-Thưởng các dịp lễ Tết, thưởng quý, thưởng thâm niên, thưởng lợi nhuận.</p><p>-Quà tặng dịp sinh nhật cá nhân Cơ hội được học hỏi, làm việc với công nghệ mới</p><p>-Được làm việc trong một môi trường chuyên nghiệp với các đối tác nước ngoài&nbsp;</p><p>-Du lịch, teambuilding 2 năm/lần Khám sức khỏe định kỳ cho nhân viên&nbsp;</p><p>-Hỗ trợ tham gia các khóa đào tạo nâng cao kiến thức và kỹ năng</p><div><br></div>', NULL, 10, '2020-11-21', NULL, '45 duy tan', 'FPT Software'),
+(29, 'linxhq', 'GGm2gCIqF8cJY7WjrrpdQw7zyy2kh952', '$2y$13$ElLFEEGvY5jNQHnvEHH6IuoQmST07EKj2VUyPQ5kZXkl7Thh2cG7.', 'PZ4dXODZhjqipNid3iMpg7H9R52fI5ff_1605951662', 'linxhq@gmal.com', NULL, 555, 'toshiba.png', 'to.jpg', '<p><b>Overview about ITviec</b></p><p>Ít nhưng mà chất</p><p><br></p><p>ITviec.com is where \"Ít nhưng mà chất\" developers go to find great new jobs.</p><p><br></p><p>Our mission is to help IT people develop so they can build great products and change the world. We don\'t have the most jobs...but we do have the best ones.</p><p><br></p><p>We focus on building an awesome job website and providing IT people with tips and practical advice they can use to manage their IT career and find the job that\'s best for them.</p><p><br></p><p>We have a fun, young, no-bullshit culture. You have an idea? Just do it! No committees and no bureaucracy.</p><p><br></p><p><b>Are you \"Ít nhưng mà chất\"? </b>Join us right NOW!!</p><div><br></div>', NULL, 10, '2020-11-21', NULL, '4555 duy tan', 'Lixhq Software');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `experience`
+-- Table structure for table `experience`
 --
 
 CREATE TABLE `experience` (
@@ -157,7 +179,7 @@ CREATE TABLE `experience` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `experience`
+-- Dumping data for table `experience`
 --
 
 INSERT INTO `experience` (`id`, `enterprise_name`, `namejob`, `created_at`, `end_at`, `user_id`) VALUES
@@ -166,7 +188,7 @@ INSERT INTO `experience` (`id`, `enterprise_name`, `namejob`, `created_at`, `end
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `hobby`
+-- Table structure for table `hobby`
 --
 
 CREATE TABLE `hobby` (
@@ -176,16 +198,16 @@ CREATE TABLE `hobby` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `hobby`
+-- Dumping data for table `hobby`
 --
 
 INSERT INTO `hobby` (`id`, `hobby_name`, `user_id`) VALUES
-(4, '<p>- Thích xem phim,thích học tiếng anh,chơi\r\nthể thao đặc biệt là đá bóng\r\n</p>', 14);
+(4, '<p style=\"color:white\">- Thích xem phim,thích học tiếng anh,chơi\r\nthể thao đặc biệt là đá bóng\r\n</p>', 14);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `information`
+-- Table structure for table `information`
 --
 
 CREATE TABLE `information` (
@@ -196,7 +218,7 @@ CREATE TABLE `information` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `information`
+-- Dumping data for table `information`
 --
 
 INSERT INTO `information` (`id`, `personal_information`, `specialize`, `user_id`) VALUES
@@ -205,7 +227,7 @@ INSERT INTO `information` (`id`, `personal_information`, `specialize`, `user_id`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `migration`
+-- Table structure for table `migration`
 --
 
 CREATE TABLE `migration` (
@@ -214,7 +236,7 @@ CREATE TABLE `migration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `migration`
+-- Dumping data for table `migration`
 --
 
 INSERT INTO `migration` (`version`, `apply_time`) VALUES
@@ -244,7 +266,7 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `operation`
+-- Table structure for table `operation`
 --
 
 CREATE TABLE `operation` (
@@ -257,7 +279,7 @@ CREATE TABLE `operation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `operation`
+-- Dumping data for table `operation`
 --
 
 INSERT INTO `operation` (`id`, `name`, `detail`, `created_at`, `end_at`, `user_id`) VALUES
@@ -266,7 +288,7 @@ INSERT INTO `operation` (`id`, `name`, `detail`, `created_at`, `end_at`, `user_i
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `organization_requests`
+-- Table structure for table `organization_requests`
 --
 
 CREATE TABLE `organization_requests` (
@@ -282,18 +304,18 @@ CREATE TABLE `organization_requests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `organization_requests`
+-- Dumping data for table `organization_requests`
 --
 
 INSERT INTO `organization_requests` (`id`, `organization_id`, `subject`, `short_description`, `amount`, `date_submitted`, `status`, `imageFile`, `cancel`) VALUES
-(229, 28, 'Tuyển dụng Fresher PHP', '<p><b>1.Mô tả công việc&nbsp;</b><br></p><p>-Được đào tạo định hướng về Front-end và Back-end&nbsp;</p><p>-Tham gia các dự án nước ngoài theo hình thức training on-job dưới sự hướng dẫn trực tiếp của Leader&nbsp;</p><p>-Đọc hiểu tài liệu kỹ thuật, tìm hiểu và phân tích yêu cầu sản phẩm, thiết kế tính năng, nghiên cứu các công nghệ được phân công Phối hợp với các thành viên trong team để thiết kế, triển khai các tính năng mới theo yêu cầu dự án&nbsp;</p><p>-Thực hiên các công việc khác theo sự phân công của quản lý&nbsp;</p><p>-Chi tiết sẽ trao đổi cụ thể khi phỏng vấn&nbsp;</p><p><b>2.Yêu cầu công việc&nbsp; &nbsp;</b></p><p>-Sinh viên năm 3,4 hoặc tốt nghiệp cao đẳng/đại học chuyên ngành CNTT, Kỹ thuật phần mềm, Khoa học máy tính, ... hoặc các lĩnh vực liên quan Nắm vững các kiến thức về PHP Có kiến thức tốt về MySQL, viết và tối ưa hóa truy vấn SQL</p><p>-Kiến thức tốt về lập trình hướng đối tượng.</p><p>-Có kiến thức về lập trình web: HTML, CSS, Javascript, JQuery, ...</p><p>-Có kinh nghiệm làm việc với một trong các Framework: Laravel, CakePHP là lợi thế Kỹ năng làm việc nhóm và trao đổi thông tin tốt Chăm chỉ, có tinh thần học hỏi, chủ động trong công việc Đam mê lập trình, tư duy logic, sẵn sàng tìm hiểu và học hỏi cái mới</p><p>-Nhiệt tình và có trách nhiệm trong công việc&nbsp;</p><p><b>3.Các phúc lợi dành cho bạn&nbsp; </b></p><p>-Có hỗ trợ lương hàng tháng từ 1,000,000 – 5,000,000 tùy theo năng lực</p><p>-Có cơ hội trở thành nhân viên chính thức tại Adamo với mức lương hấp dẫn&nbsp;</p><p>-Lương T13 khi lên chính thức&nbsp; Review lương 2 lần 1 năm</p><p>-Thưởng các dịp lễ Tết, thưởng quý, thưởng thâm niên, thưởng lợi nhuận.</p><p>-Quà tặng dịp sinh nhật cá nhân Cơ hội được học hỏi, làm việc với công nghệ mới</p><p>-Được làm việc trong một môi trường chuyên nghiệp với các đối tác nước ngoài&nbsp;</p><p>-Du lịch, teambuilding 2 năm/lần Khám sức khỏe định kỳ cho nhân viên&nbsp;</p><p>-Hỗ trợ tham gia các khóa đào tạo nâng cao kiến thức và kỹ năng</p><div><br></div>', 3, '2020-11-28', 10, 'php.jpg', NULL),
-(230, 28, 'đ', 'ssssssssss', 2, '2020-11-11', 0, 'toshiba.png', 'bố đéo thích mày thì hủy thôi'),
-(231, 29, 'Tuyển dụng thực tâp Java', '<p>1. Mô tả công việc</p><p>- Tham gia phát triển hệ thống kết nối vận hành với các đối tác giao vận, cổng thanh toán, ứng dụng thanh toán di động…</p><p>- Thực hiện các công việc liên quan khác được giao</p><p><b>2. Yêu cầu</b></p><p>-Sinh viên năm 3, năm 4</p><p>- Đang theo học các trường đại học khoa Công nghệ thông tin</p><p>- Có hiểu biết hoặc kinh nghiệm với PHP (Laravel/Yii)</p><p>- Có kiến thức về html, css, ajax, jQuery, Bootstrap, AngularJS, VueJS, ReactJS</p><p>- Có kiến thức về phát triển hệ thống REST, API.</p><p><b>3. Quyền lợi</b></p><p>- Được hỗ trợ chi phí và dấu thực tập.</p><p>- Được trở thành nhân viên chính thức của công ty.&nbsp;</p><p>- Làm việc từ Thứ 2 – Thứ 6</p><p>- Làm việc trong môi trường trẻ trung, năng động, khoa học và được tạo mọi cơ hội để phát triển bản thân</p><p>- Được đào tạo các kiến thức, kỹ năng cần thiết cho công việc</p>', 2, '2020-11-28', 10, 'java.jpg', NULL);
+(229, 28, 'Tuyển dụng Fresher PHP', '<p><b>1.Mô tả công việc&nbsp;</b><br></p><p>-Được đào tạo định hướng về Front-end và Back-end&nbsp;</p><p>-Tham gia các dự án nước ngoài theo hình thức training on-job dưới sự hướng dẫn trực tiếp của Leader&nbsp;</p><p>-Đọc hiểu tài liệu kỹ thuật, tìm hiểu và phân tích yêu cầu sản phẩm, thiết kế tính năng, nghiên cứu các công nghệ được phân công Phối hợp với các thành viên trong team để thiết kế, triển khai các tính năng mới theo yêu cầu dự án&nbsp;</p><p>-Thực hiên các công việc khác theo sự phân công của quản lý&nbsp;</p><p>-Chi tiết sẽ trao đổi cụ thể khi phỏng vấn&nbsp;</p><p><b>2.Yêu cầu công việc&nbsp; &nbsp;</b></p><p>-Sinh viên năm 3,4 hoặc tốt nghiệp cao đẳng/đại học chuyên ngành CNTT, Kỹ thuật phần mềm, Khoa học máy tính, ... hoặc các lĩnh vực liên quan Nắm vững các kiến thức về PHP Có kiến thức tốt về MySQL, viết và tối ưa hóa truy vấn SQL</p><p>-Kiến thức tốt về lập trình hướng đối tượng.</p><p>-Có kiến thức về lập trình web: HTML, CSS, Javascript, JQuery, ...</p><p>-Có kinh nghiệm làm việc với một trong các Framework: Laravel, CakePHP là lợi thế Kỹ năng làm việc nhóm và trao đổi thông tin tốt Chăm chỉ, có tinh thần học hỏi, chủ động trong công việc Đam mê lập trình, tư duy logic, sẵn sàng tìm hiểu và học hỏi cái mới</p><p>-Nhiệt tình và có trách nhiệm trong công việc&nbsp;</p><p><b>3.Các phúc lợi dành cho bạn&nbsp; </b></p><p>-Có hỗ trợ lương hàng tháng từ 1,000,000 – 5,000,000 tùy theo năng lực</p><p>-Có cơ hội trở thành nhân viên chính thức tại Adamo với mức lương hấp dẫn&nbsp;</p><p>-Lương T13 khi lên chính thức&nbsp; Review lương 2 lần 1 năm</p><p>-Thưởng các dịp lễ Tết, thưởng quý, thưởng thâm niên, thưởng lợi nhuận.</p><p>-Quà tặng dịp sinh nhật cá nhân Cơ hội được học hỏi, làm việc với công nghệ mới</p><p>-Được làm việc trong một môi trường chuyên nghiệp với các đối tác nước ngoài&nbsp;</p><p>-Du lịch, teambuilding 2 năm/lần Khám sức khỏe định kỳ cho nhân viên&nbsp;</p><p>-Hỗ trợ tham gia các khóa đào tạo nâng cao kiến thức và kỹ năng</p><div><br></div>', 3, '2022-06-26', 10, 'php.jpg', NULL),
+(230, 28, 'đ', 'ssssssssss', 2, '2022-02-11', 10, 'toshiba.png', 'bố đéo thích mày thì hủy thôi'),
+(231, 29, 'Tuyển dụng thực tâp Java', '<p>1. Mô tả công việc</p><p>- Tham gia phát triển hệ thống kết nối vận hành với các đối tác giao vận, cổng thanh toán, ứng dụng thanh toán di động…</p><p>- Thực hiện các công việc liên quan khác được giao</p><p><b>2. Yêu cầu</b></p><p>-Sinh viên năm 3, năm 4</p><p>- Đang theo học các trường đại học khoa Công nghệ thông tin</p><p>- Có hiểu biết hoặc kinh nghiệm với PHP (Laravel/Yii)</p><p>- Có kiến thức về html, css, ajax, jQuery, Bootstrap, AngularJS, VueJS, ReactJS</p><p>- Có kiến thức về phát triển hệ thống REST, API.</p><p><b>3. Quyền lợi</b></p><p>- Được hỗ trợ chi phí và dấu thực tập.</p><p>- Được trở thành nhân viên chính thức của công ty.&nbsp;</p><p>- Làm việc từ Thứ 2 – Thứ 6</p><p>- Làm việc trong môi trường trẻ trung, năng động, khoa học và được tạo mọi cơ hội để phát triển bản thân</p><p>- Được đào tạo các kiến thức, kỹ năng cần thiết cho công việc</p>', 2, '2021-11-28', 10, 'java.jpg', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `organization_request_abilities`
+-- Table structure for table `organization_request_abilities`
 --
 
 CREATE TABLE `organization_request_abilities` (
@@ -305,7 +327,7 @@ CREATE TABLE `organization_request_abilities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `organization_request_abilities`
+-- Dumping data for table `organization_request_abilities`
 --
 
 INSERT INTO `organization_request_abilities` (`id`, `organization_request_id`, `ability_id`, `ability_required`, `note`) VALUES
@@ -320,7 +342,7 @@ INSERT INTO `organization_request_abilities` (`id`, `organization_request_id`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `student`
+-- Table structure for table `student`
 --
 
 CREATE TABLE `student` (
@@ -343,35 +365,43 @@ CREATE TABLE `student` (
   `hobby_id` int(11) DEFAULT NULL,
   `operation_id` int(11) DEFAULT NULL,
   `experience_id` int(11) DEFAULT NULL,
-  `information_id` int(11) DEFAULT NULL
+  `information_id` int(11) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `student`
+-- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `date_of_birth`, `class_name`, `imageFile`, `status`, `created_at`, `updated_at`, `address`, `phone`, `college_id`, `target_id`, `hobby_id`, `operation_id`, `experience_id`, `information_id`) VALUES
-(14, 'PhamThanhTung', 'MasWXaGWWc4F_7icDjfgslpkQTbnv4d1', '$2y$13$XzHkt0yiH3h8obj7sBDfyukQ58G2TcegQbOjgrLQgGLCRX72YH8Yu', '-sbtp1o3x-IGXOXov07Yx_s3fWUFlTon_1605925452', 'phamthanhtung@gmail.com', '1999-12-16', 'k62a3', 'user.png', 10, NULL, NULL, '334 Nguyễn Trãi , Thanh Xuân , Hà Nội', 585640443, NULL, NULL, NULL, NULL, NULL, NULL),
-(15, 'taminhthao', 'hxZUPvDQcNAxsZscunZ-ErI73HpvzP2y', '$2y$13$9u.dMToq4NGkETJckTSQSuJXnoozKB.zvme6KSi4WDa14aCkDVvry', 'w1SwNFguI2sWkmrm2bbkivwIcjZda87m_1605925453', 'taminthao@gmail.com', NULL, 'k62a3', 'fpt.png', 10, NULL, NULL, '54 hus', 585640443, NULL, NULL, NULL, NULL, NULL, NULL),
-(16, 'nguyenducmanh', 'CcXxikDTBaHKlwI1EmCgHjShn6RwylSP', '$2y$13$3IqPmgdiEtI3A2TS4s7qQOGxfBhF.5zBl4tHnYzSGz4taLbtcvVmW', '27wsroSV-ffkBkdo-JEhN-Aw-RfI23hs_1605925454', 'nguyenducmanh@gmail.com', NULL, 'k62a3', NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, 'quynh99', 'WkheneiqibxZPcVtoS0iVEnuxcbcfcXi', '$2y$13$y.Dg1uxDL6Qdp4gp6//Ueu44IFIIZW6x15LYq0BW3BUST.kPDEX3O', 'WV3ElG2pHg95iEuExJMU2GsV-jguV3o3_1605925455', 'quynh99@gmail.com', NULL, 'k62a3', NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `student` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `date_of_birth`, `class_name`, `imageFile`, `status`, `created_at`, `updated_at`, `address`, `phone`, `college_id`, `target_id`, `hobby_id`, `operation_id`, `experience_id`, `information_id`, `name`) VALUES
+(14, 'PhamThanhTung', 'MasWXaGWWc4F_7icDjfgslpkQTbnv4d1', '$2y$13$XzHkt0yiH3h8obj7sBDfyukQ58G2TcegQbOjgrLQgGLCRX72YH8Yu', '-sbtp1o3x-IGXOXov07Yx_s3fWUFlTon_1605925452', 'phamthanhtung@gmail.com', '1999-12-16', 'k62a3', 'user.png', 10, NULL, NULL, '334 Nguyễn Trãi , Thanh Xuân , Hà Nội', 585640443, NULL, NULL, NULL, NULL, NULL, NULL, 'Phạm Thanh Tùng'),
+(15, 'taminhthao', 'hxZUPvDQcNAxsZscunZ-ErI73HpvzP2y', '$2y$13$9u.dMToq4NGkETJckTSQSuJXnoozKB.zvme6KSi4WDa14aCkDVvry', 'w1SwNFguI2sWkmrm2bbkivwIcjZda87m_1605925453', 'taminthao@gmail.com', NULL, 'k62a3', 'fpt.png', 10, NULL, NULL, '54 hus', 585640443, NULL, NULL, NULL, NULL, NULL, NULL, 'Ta Minh Thao'),
+(16, 'nguyenducmanh', 'CcXxikDTBaHKlwI1EmCgHjShn6RwylSP', '$2y$13$3IqPmgdiEtI3A2TS4s7qQOGxfBhF.5zBl4tHnYzSGz4taLbtcvVmW', '27wsroSV-ffkBkdo-JEhN-Aw-RfI23hs_1605925454', 'nguyenducmanh@gmail.com', NULL, 'k62a3', NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Nguyễn Đức Mạnh'),
+(17, 'quynh99', 'WkheneiqibxZPcVtoS0iVEnuxcbcfcXi', '$2y$13$y.Dg1uxDL6Qdp4gp6//Ueu44IFIIZW6x15LYq0BW3BUST.kPDEX3O', 'WV3ElG2pHg95iEuExJMU2GsV-jguV3o3_1605925455', 'quynh99@gmail.com', NULL, 'k62a3', NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Nguyễn Như Quynh');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `student_registration`
+-- Table structure for table `student_registration`
 --
 
 CREATE TABLE `student_registration` (
   `student_id` int(11) NOT NULL,
   `request_id` int(11) NOT NULL,
-  `submit_date` date DEFAULT NULL
+  `enterprise_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_registration`
+--
+
+INSERT INTO `student_registration` (`student_id`, `request_id`, `enterprise_id`) VALUES
+(14, 229, 28);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `student_skill_profile`
+-- Table structure for table `student_skill_profile`
 --
 
 CREATE TABLE `student_skill_profile` (
@@ -382,7 +412,7 @@ CREATE TABLE `student_skill_profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `student_skill_profile`
+-- Dumping data for table `student_skill_profile`
 --
 
 INSERT INTO `student_skill_profile` (`id`, `student_id`, `ability_id`, `ability_rate`) VALUES
@@ -392,7 +422,7 @@ INSERT INTO `student_skill_profile` (`id`, `student_id`, `ability_id`, `ability_
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `target`
+-- Table structure for table `target`
 --
 
 CREATE TABLE `target` (
@@ -405,7 +435,7 @@ CREATE TABLE `target` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `target`
+-- Dumping data for table `target`
 --
 
 INSERT INTO `target` (`id`, `short_time`, `long_time`, `created_at`, `end_at`, `user_id`) VALUES
@@ -414,7 +444,7 @@ INSERT INTO `target` (`id`, `short_time`, `long_time`, `created_at`, `end_at`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `teachers`
+-- Table structure for table `teachers`
 --
 
 CREATE TABLE `teachers` (
@@ -428,20 +458,21 @@ CREATE TABLE `teachers` (
   `sex` int(11) DEFAULT NULL,
   `status` smallint(6) NOT NULL DEFAULT 10,
   `created_at` date DEFAULT NULL,
-  `updated_at` date DEFAULT NULL
+  `updated_at` date DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `teachers`
+-- Dumping data for table `teachers`
 --
 
-INSERT INTO `teachers` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `img`, `sex`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'giaovien2', 'rqlrC6_Ov9nMgRVpZnKkV0KyRLKU6w35', '$2y$13$YMbmgdCSbrMCgliIiqXtWeZ9vI1okeEsTU/Gj2M7.DcfzQlETxnIC', '48cQScQr18vLwsPOayxMPAr8nqjb4F3s_1602216668', 'taminhthao99@gmail.com', NULL, 42, 10, '2020-10-09', NULL);
+INSERT INTO `teachers` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `img`, `sex`, `status`, `created_at`, `updated_at`, `name`) VALUES
+(2, 'giaovien2', 'rqlrC6_Ov9nMgRVpZnKkV0KyRLKU6w35', '$2y$13$YMbmgdCSbrMCgliIiqXtWeZ9vI1okeEsTU/Gj2M7.DcfzQlETxnIC', '48cQScQr18vLwsPOayxMPAr8nqjb4F3s_1602216668', 'taminhthao99@gmail.com', NULL, 42, 10, '2020-10-09', NULL, 'Admin');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -464,11 +495,11 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `assigned_table`
+-- Indexes for table `assigned_table`
 --
 ALTER TABLE `assigned_table`
   ADD PRIMARY KEY (`organization_request_id`,`student_id`) USING BTREE,
@@ -476,14 +507,14 @@ ALTER TABLE `assigned_table`
   ADD KEY `FK_assigned_enterprise_request` (`organization_request_id`);
 
 --
--- Chỉ mục cho bảng `capacity_dictionary`
+-- Indexes for table `capacity_dictionary`
 --
 ALTER TABLE `capacity_dictionary`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id` (`id`);
 
 --
--- Chỉ mục cho bảng `colleges`
+-- Indexes for table `colleges`
 --
 ALTER TABLE `colleges`
   ADD PRIMARY KEY (`id`),
@@ -491,7 +522,7 @@ ALTER TABLE `colleges`
   ADD KEY `fk-student` (`user_id`);
 
 --
--- Chỉ mục cho bảng `comment`
+-- Indexes for table `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`,`student_id`,`request_id`) USING BTREE,
@@ -499,7 +530,7 @@ ALTER TABLE `comment`
   ADD KEY `request_id` (`request_id`);
 
 --
--- Chỉ mục cho bảng `enterprise`
+-- Indexes for table `enterprise`
 --
 ALTER TABLE `enterprise`
   ADD PRIMARY KEY (`id`),
@@ -508,7 +539,7 @@ ALTER TABLE `enterprise`
   ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
 
 --
--- Chỉ mục cho bảng `experience`
+-- Indexes for table `experience`
 --
 ALTER TABLE `experience`
   ADD PRIMARY KEY (`id`),
@@ -516,27 +547,27 @@ ALTER TABLE `experience`
   ADD KEY `fk-experience-user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `hobby`
+-- Indexes for table `hobby`
 --
 ALTER TABLE `hobby`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk-hobby-user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `information`
+-- Indexes for table `information`
 --
 ALTER TABLE `information`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk-information-user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `migration`
+-- Indexes for table `migration`
 --
 ALTER TABLE `migration`
   ADD PRIMARY KEY (`version`);
 
 --
--- Chỉ mục cho bảng `operation`
+-- Indexes for table `operation`
 --
 ALTER TABLE `operation`
   ADD PRIMARY KEY (`id`),
@@ -544,13 +575,13 @@ ALTER TABLE `operation`
   ADD KEY `fk-operation-user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `organization_requests`
+-- Indexes for table `organization_requests`
 --
 ALTER TABLE `organization_requests`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `organization_request_abilities`
+-- Indexes for table `organization_request_abilities`
 --
 ALTER TABLE `organization_request_abilities`
   ADD PRIMARY KEY (`id`,`organization_request_id`,`ability_id`),
@@ -558,7 +589,7 @@ ALTER TABLE `organization_request_abilities`
   ADD KEY `ability_id` (`ability_id`);
 
 --
--- Chỉ mục cho bảng `student`
+-- Indexes for table `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`id`),
@@ -573,14 +604,14 @@ ALTER TABLE `student`
   ADD KEY `fk-experience` (`experience_id`);
 
 --
--- Chỉ mục cho bảng `student_registration`
+-- Indexes for table `student_registration`
 --
 ALTER TABLE `student_registration`
   ADD PRIMARY KEY (`student_id`,`request_id`) USING BTREE,
   ADD KEY `FK_student_registration_skill` (`request_id`);
 
 --
--- Chỉ mục cho bảng `student_skill_profile`
+-- Indexes for table `student_skill_profile`
 --
 ALTER TABLE `student_skill_profile`
   ADD PRIMARY KEY (`id`),
@@ -588,14 +619,14 @@ ALTER TABLE `student_skill_profile`
   ADD KEY `student_skill_profile_ibfk_1` (`student_id`);
 
 --
--- Chỉ mục cho bảng `target`
+-- Indexes for table `target`
 --
 ALTER TABLE `target`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk-target-user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `teachers`
+-- Indexes for table `teachers`
 --
 ALTER TABLE `teachers`
   ADD PRIMARY KEY (`id`),
@@ -604,7 +635,7 @@ ALTER TABLE `teachers`
   ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
@@ -613,156 +644,156 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `capacity_dictionary`
+-- AUTO_INCREMENT for table `capacity_dictionary`
 --
 ALTER TABLE `capacity_dictionary`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT cho bảng `colleges`
+-- AUTO_INCREMENT for table `colleges`
 --
 ALTER TABLE `colleges`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `comment`
+-- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT cho bảng `enterprise`
+-- AUTO_INCREMENT for table `enterprise`
 --
 ALTER TABLE `enterprise`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT cho bảng `experience`
+-- AUTO_INCREMENT for table `experience`
 --
 ALTER TABLE `experience`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `hobby`
+-- AUTO_INCREMENT for table `hobby`
 --
 ALTER TABLE `hobby`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT cho bảng `information`
+-- AUTO_INCREMENT for table `information`
 --
 ALTER TABLE `information`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `operation`
+-- AUTO_INCREMENT for table `operation`
 --
 ALTER TABLE `operation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `organization_requests`
+-- AUTO_INCREMENT for table `organization_requests`
 --
 ALTER TABLE `organization_requests`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=232;
 
 --
--- AUTO_INCREMENT cho bảng `organization_request_abilities`
+-- AUTO_INCREMENT for table `organization_request_abilities`
 --
 ALTER TABLE `organization_request_abilities`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
--- AUTO_INCREMENT cho bảng `student`
+-- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT cho bảng `student_skill_profile`
+-- AUTO_INCREMENT for table `student_skill_profile`
 --
 ALTER TABLE `student_skill_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT cho bảng `target`
+-- AUTO_INCREMENT for table `target`
 --
 ALTER TABLE `target`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `teachers`
+-- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `assigned_table`
+-- Constraints for table `assigned_table`
 --
 ALTER TABLE `assigned_table`
   ADD CONSTRAINT `FK_assigned_student` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`),
   ADD CONSTRAINT `assigned_table_ibfk_1` FOREIGN KEY (`organization_request_id`) REFERENCES `organization_requests` (`id`);
 
 --
--- Các ràng buộc cho bảng `colleges`
+-- Constraints for table `colleges`
 --
 ALTER TABLE `colleges`
   ADD CONSTRAINT `fk-student` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `comment`
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`),
   ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`request_id`) REFERENCES `organization_requests` (`id`);
 
 --
--- Các ràng buộc cho bảng `experience`
+-- Constraints for table `experience`
 --
 ALTER TABLE `experience`
   ADD CONSTRAINT `fk-experience-user_id` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `hobby`
+-- Constraints for table `hobby`
 --
 ALTER TABLE `hobby`
   ADD CONSTRAINT `fk-hobby-user_id` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `information`
+-- Constraints for table `information`
 --
 ALTER TABLE `information`
   ADD CONSTRAINT `fk-information-user_id` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `operation`
+-- Constraints for table `operation`
 --
 ALTER TABLE `operation`
   ADD CONSTRAINT `fk-operation-user_id` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `organization_request_abilities`
+-- Constraints for table `organization_request_abilities`
 --
 ALTER TABLE `organization_request_abilities`
   ADD CONSTRAINT `FK_assigned_list` FOREIGN KEY (`organization_request_id`) REFERENCES `organization_requests` (`id`),
   ADD CONSTRAINT `organization_request_abilities_ibfk_1` FOREIGN KEY (`ability_id`) REFERENCES `capacity_dictionary` (`id`);
 
 --
--- Các ràng buộc cho bảng `student`
+-- Constraints for table `student`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `fk-colleges` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`id`) ON DELETE CASCADE,
@@ -773,21 +804,21 @@ ALTER TABLE `student`
   ADD CONSTRAINT `fk-target` FOREIGN KEY (`target_id`) REFERENCES `target` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `student_registration`
+-- Constraints for table `student_registration`
 --
 ALTER TABLE `student_registration`
   ADD CONSTRAINT `student_registration_ibfk_1` FOREIGN KEY (`request_id`) REFERENCES `organization_requests` (`id`),
   ADD CONSTRAINT `student_registration_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`);
 
 --
--- Các ràng buộc cho bảng `student_skill_profile`
+-- Constraints for table `student_skill_profile`
 --
 ALTER TABLE `student_skill_profile`
   ADD CONSTRAINT `FK_student_skill_capacity` FOREIGN KEY (`ability_id`) REFERENCES `capacity_dictionary` (`id`),
   ADD CONSTRAINT `student_skill_profile_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`);
 
 --
--- Các ràng buộc cho bảng `target`
+-- Constraints for table `target`
 --
 ALTER TABLE `target`
   ADD CONSTRAINT `fk-target-user_id` FOREIGN KEY (`user_id`) REFERENCES `student` (`id`) ON DELETE CASCADE;

@@ -3,8 +3,8 @@ namespace backend\controllers;
 
 use backend\models\AssignedTable;
 use backend\models\Student;
+use backend\models\StudentRegistration;
 use yii\data\ActiveDataProvider;
-use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 
@@ -19,28 +19,15 @@ class AdditionalStudentController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    //'logout' => ['post'],
+                    'delete' => ['POST'],
                 ],
             ],
         ];
     }
+
     /**
      * Lists all AssignedTable models.
      * @return mixed
@@ -48,13 +35,15 @@ class AdditionalStudentController extends Controller
     public function actionIndex($request_id)
     {
         $students = [];
-        //$assignStudents = AssignedTable::find()->where(['status' => 10])->all();
+        // lấy danh sách sinh viên có trang thái 1 từ bảng phân công
         $assignStudents = AssignedTable::find()
             ->where(['status' => 1])
             ->all();
+        // danh sách id
         foreach ($assignStudents as $assignStudent) {
             $students[] = $assignStudent->student_id;
         }
+        // lay ra danh sách sinh viên chưa được phân công
         $dataProvider = new ActiveDataProvider([
             'query' => Student::find()->where(['not in', 'id', $students]),
         ]);
@@ -64,11 +53,9 @@ class AdditionalStudentController extends Controller
             'request_id' => $request_id,
         ]);
     }
-// chua lam
-    public function actionUpdate($student_id, $request_id)
+    public function actionUpdate($request_id, $student_id)
     {
-        echo "thoa";
-        die();
+
         $model = new AssignedTable();
         $model->student_id = $student_id;
         $model->organization_request_id = $request_id;
@@ -76,6 +63,7 @@ class AdditionalStudentController extends Controller
         $student = $this->findStudent($student_id);
 
         $model->save();
+        // xoá những phiếu mà sinh viên đã đăng kí
         return $this->actionDeleteStudentFromRegister($student_id, $request_id);
 
         return $this->render('update', [
@@ -84,24 +72,15 @@ class AdditionalStudentController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing StudentRegistration model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $student_id
-     * @param integer $request_id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-
     public function actionDeleteStudentFromRegister($student_id, $request_id)
     {
         foreach ($this->findStudent($student_id, $request_id) as $value) {
-            # code...
+            // xoá phiếu
             $value->delete();
         }
         return $this->actionIndex($request_id);
     }
-
+// tìm những phiếu mà sinh viên đó đăng kí
     protected function findStudent($student_id)
     {
         if (($listStudent = StudentRegistration::find()->where(['student_id' => $student_id])->all()) !== null) {

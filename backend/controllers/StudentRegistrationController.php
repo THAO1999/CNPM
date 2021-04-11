@@ -49,6 +49,7 @@ class StudentRegistrationController extends Controller
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'request_id' => $id,
         ]);
     }
 
@@ -104,8 +105,6 @@ class StudentRegistrationController extends Controller
 
     public function actionUpdate($student_id, $request_id)
     {
-        echo "thao";
-        die();
         $model = new AssignedTable();
         $model->student_id = $student_id;
         $model->organization_request_id = $request_id;

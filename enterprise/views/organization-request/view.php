@@ -30,7 +30,7 @@ use yii\helpers\Url;
                 <div class="has-overtime logo">
                     <img alt="Home Credit Vietnam  Vietnam Big Logo" class=" ls-is-cached lazyloaded"
                         data-src="https://cdn.itviec.com/employers/home-credit-vietnam/logo/w170/dFAsZ8oiQpLPyUr8Yi5jUWdj/home-credit-vietnam-ppf-logo.png"
-                        src="<?=Enterprises::getImageEnterpriseView($enterprise->id)?>">
+                        src="<?=Enterprises::getImageEnterpriseViewEnterprise($enterprise->id)?>">
                 </div>
             </div>
             <div class="name-and-info">

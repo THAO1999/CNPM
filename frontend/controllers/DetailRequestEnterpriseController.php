@@ -77,7 +77,7 @@ class DetailRequestEnterpriseController extends Controller
         ]);
 
     }
-
+    // đăng kí phiếu tuyển dụng
     public function actionStudentRegister()
     {
         $studentID = Yii::$app->request->post('studentID');

@@ -14,8 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php $gridColumns = [
     'student.username',
-    'start_date',
-    'end_date',
+    'student.email',
 ];
 ?>
 
@@ -29,12 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
         ['class' => 'yii\grid\SerialColumn'],
 
         'student.name',
+        'student.email',
         'start_date',
         'end_date',
-        //'status',
-        //'create_date',
-
-        //['class' => 'yii\grid\ActionColumn'],
     ],
 ]);?>
 

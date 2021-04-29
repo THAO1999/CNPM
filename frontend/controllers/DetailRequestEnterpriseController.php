@@ -55,7 +55,7 @@ class DetailRequestEnterpriseController extends Controller
 
     public function actionIndex($id)
     {
-        //$id = 183; //pheu
+        //$id = 183; //phieu
 
         $organization_requests = OrganizationRequests::findOne($id); // lay thong tin phieu theo id
 
@@ -64,7 +64,7 @@ class DetailRequestEnterpriseController extends Controller
         $listOrganization_requests = OrganizationRequests::find()->where(['status' => OrganizationRequest::confirm])->limit(5)->all();
 
         $count = StudentRegistration::getCount($id);
-
+        $slot = $organization_requests->amount - $count;
         $lisSkill = OrganizationRequestAbilities::getSkill($organization_requests); // lay list skill student
         // phpinfo();
         return $this->render('index', [
@@ -74,6 +74,7 @@ class DetailRequestEnterpriseController extends Controller
             'lisSkill' => $lisSkill,
             'listOrganization_requests' => $listOrganization_requests,
             'count' => $count,
+            'slot' => $slot,
         ]);
 
     }

@@ -1,4 +1,5 @@
 <?php
+use backend\models\OrganizationRequest;
 use common\models\CapacityDictionary;
 use common\models\OrganizationRequestAbilities;
 use frontend\models\Enterprises;
@@ -46,7 +47,7 @@ use yii\helpers\Url;
 
                 <div class="working-date">
                     <i class="fas fa-user-friends"></i>
-                    <span>Cần Tuyển: <?=$organization_requests->amount?> Sinh Viên
+                    <span>Cần Tuyển: <?=$slot?> Sinh Viên
                     </span>
                 </div>
                 <div class="overtime">
@@ -60,7 +61,7 @@ use yii\helpers\Url;
 
             <div class="headers__actions text-right">
 
-                <?php if (!Students::checkStatus(Yii::$app->user->identity->id)): ?>
+                <?php if (!Students::checkStatus(Yii::$app->user->identity->id) && !OrganizationRequest::checkSlot($slot)): ?>
                 <button class="btn btn-success"
                     onclick="studentRegister(<?=$organization_requests->id?>,<?=Yii::$app->user->identity->id?>,'<?=$enterprise->id?>')">
                     Đăng ki</button>

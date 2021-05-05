@@ -15,21 +15,22 @@ AppAsset::register($this);
 <html lang="<?=Yii::$app->language?>">
 
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
 4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3
 +Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
-<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/base/reset.css?v=2.0">
-<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/base/style.css?v=2.5">
+    <link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/base/reset.css?v=2.0">
+    <link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/base/style.css?v=2.5">
 
-<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/cropper/style.css?v=2.1">
-<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/cvoPrompt/cvoPrompt.css?v=2.0">
+    <link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/cropper/style.css?v=2.1">
+    <link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/cvoPrompt/cvoPrompt.css?v=2.0">
 
-<link rel="stylesheet" type="text/css" href="https://www.topcv.vn/packages/cvo/templates//onepage_impressive_2/cv.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.topcv.vn/packages/cvo/templates//onepage_impressive_2/cv.css">
 
 
-<link rel="stylesheet" type="text/css" href="Test.css">
+    <link rel="stylesheet" type="text/css" href="Test.css">
 
 
     <meta charset="<?=Yii::$app->charset?>">
@@ -42,6 +43,115 @@ AppAsset::register($this);
 ?>
     <title><?=Html::encode($this->title)?></title>
     <?php $this->head()?>
+    <style>
+    .container {
+        border: 2px solid #dedede;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        margin: 10px 0;
+        width: 350px !important;
+        height: 60px !important;
+    }
+
+    .darker {
+        border-color: #ccc;
+        background-color: #ddd;
+    }
+
+    .container::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .container img {
+        float: left;
+        max-width: 45px;
+        width: 100%;
+        margin-right: 10px;
+        border-radius: 50%;
+    }
+
+    .container img.right {
+        float: right;
+        margin-left: 20px;
+        margin-right: 0px;
+        border-radius: 50% !important;
+    }
+
+    .time-right {
+        margin-top: -20px;
+        float: right;
+        color: #aaa;
+    }
+
+    .time-left {
+        margin-top: -20px;
+        float: left;
+        color: #999;
+    }
+
+    .chatbot {
+        top: 750px;
+        left: 1820px;
+        position: fixed;
+        width: 70px;
+        height: 70px;
+        border-radius: 50% !important;
+    }
+
+    .content-body {
+        background-color: #f4f1fa;
+        top: 350px;
+        left: 200px;
+        position: fixed;
+        height: 450px;
+        width: 400px;
+        margin-top: 100px;
+        border: solid 3px #dedede;
+        padding: 0px 3px;
+        margin-left: 1300px;
+    }
+
+    .inMessage {
+        width: 280px !important;
+        padding: 0px 0px;
+        margin: 1px 10px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+
+        box-sizing: border-box;
+    }
+
+    .btnMessage {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        text-align: center;
+        text-decoration: none;
+        flex: left;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .content-message {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    div.scroll {
+
+        height: 300px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: center;
+        padding: 10px;
+    }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 </head>
 
 <body id="page-top">
@@ -75,7 +185,8 @@ AppAsset::register($this);
             </li>
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo Yii::$app->homeUrl . "capacity-dictionary" ?>"> Năng lực</a>
+                <a class="nav-link collapsed" href="<?php echo Yii::$app->homeUrl . "capacity-dictionary" ?>"> Năng
+                    lực</a>
             </li>
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -89,9 +200,12 @@ AppAsset::register($this);
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Danh Sách Phiếu</h6>
-                        <a class="collapse-item" href="<?php echo Yii::$app->homeUrl . "organization-request?status=10" ?>">Đã xác nhận</a>
-                        <a class="collapse-item" href="<?php echo Yii::$app->homeUrl . "organization-request?status=9" ?>">Chưa xác nhận</a>
-                        <a class="collapse-item" href="<?php echo Yii::$app->homeUrl . "organization-request?status=0" ?>">Bi hủy</a>
+                        <a class="collapse-item"
+                            href="<?php echo Yii::$app->homeUrl . "organization-request?status=10" ?>">Đã xác nhận</a>
+                        <a class="collapse-item"
+                            href="<?php echo Yii::$app->homeUrl . "organization-request?status=9" ?>">Chưa xác nhận</a>
+                        <a class="collapse-item"
+                            href="<?php echo Yii::$app->homeUrl . "organization-request?status=0" ?>">Bi hủy</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
@@ -302,9 +416,10 @@ AppAsset::register($this);
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown"style="background: white;"role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo Yii::$app->user->identity->name ?></span>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" style="background: white;"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    <?php echo Yii::$app->user->identity->name ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                             </a>
@@ -326,7 +441,7 @@ AppAsset::register($this);
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="<?=Url::toRoute('site/logout')?>">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                   logout
+                                    logout
                                 </a>
                             </div>
                         </li>
@@ -343,14 +458,66 @@ AppAsset::register($this);
 ])?>
                     <?=Alert::widget()?>
                     <?=$content?>
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2020</span>
+                    <div class="content-body">
+
+                        <h2 style="text-align: center;">Admin</h2>
+
+                        <hr style="border: 1px solid #ccc;">
+
+                        <div class="content-chat scroll ">
+                            <div class="container">
+                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
+                                    style="width:100%;">
+                                <p>Hello. How are you today?</p>
+                                <span class="time-right">11:00</span>
+                            </div>
+
+                            <div class="container darker">
+                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
+                                    class="right" style="width:100%;">
+                                <p>Hey! I'm fine. Thanks for asking!</p>
+                                <span class="time-left">11:01</span>
+                            </div>
+
+                            <div class="container">
+                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
+                                    style="width:100%;">
+                                <p> what do you wanna do today?</p>
+                                <span class="time-right">11:02</span>
+                            </div>
+
+                            <div class="container darker">
+                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
+                                    class="right" style="width:100%;">
+                                <p>Nah, I dunno. Play soccer.. </p>
+                                <span class="time-left">11:05</span>
+                            </div>
+                            <div class="container">
+                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
+                                    style="width:100%;">
+                                <p> what do you wanna do today?</p>
+                                <span class="time-right">11:02</span>
+                            </div>
+
+                            <div class="container darker">
+                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
+                                    class="right" style="width:100%;">
+                                <p>Nah, I dunno. Play soccer.. </p>
+                                <span class="time-left">11:05</span>
                             </div>
                         </div>
-                    </footer>
+                        <div class="content-message">
+                            <input class="inMessage" id="txtMessage" type="text" />
+                            <button class="btnMessage" id="btnMessage" onclick="send()">send</button>
+
+                        </div>
+                    </div>
+                    <div>
+                        <img src="<?=yii\helpers\Url::base(true) . '/../uploads/chatbot.jpg'?>" alt="Avatar"
+                            class="chatbot" onclick="show()" style="">
+                    </div>
+                    <!-- Footer -->
+
                     <!-- End of Footer -->
 
                 </div>
@@ -365,8 +532,7 @@ AppAsset::register($this);
             </a>
 
             <!-- Logout Modal-->
-            <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -379,7 +545,7 @@ AppAsset::register($this);
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" >Logout</a>
+                            <a class="btn btn-primary">Logout</a>
                         </div>
                     </div>
                 </div>

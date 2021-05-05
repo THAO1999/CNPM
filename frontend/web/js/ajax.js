@@ -1,3 +1,12 @@
+function send() {
+  alert(2344);
+}
+function show() {
+  $(".chatbot").hide();
+  $(".content-body").show();
+
+}
+
 // hien thi thong tin khach hang theo id_kh
 function studentRegister(request_id, student_id, enterprise_id) {
   // goi ajax
@@ -26,3 +35,9 @@ function studentRegister(request_id, student_id, enterprise_id) {
 
   //  sleep(2000).then(() => {  });
 }
+
+$(document).ready(function () {
+
+  $(".content-body").hide();
+
+});

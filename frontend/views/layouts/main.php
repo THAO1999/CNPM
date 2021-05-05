@@ -33,10 +33,115 @@ AppAsset::register($this);
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <style>
+    .container {
+        border: 2px solid #dedede;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        margin: 10px 0;
+        width: 350px !important;
+    }
+
+    .darker {
+        border-color: #ccc;
+        background-color: #ddd;
+    }
+
+    .container::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .container img {
+        float: left;
+        max-width: 45px;
+        width: 100%;
+        margin-right: 20px;
+        border-radius: 50%;
+    }
+
+    .container img.right {
+        float: right;
+        margin-left: 20px;
+        margin-right: 0px;
+        border-radius: 50% !important;
+    }
+
+    .time-right {
+        float: right;
+        color: #aaa;
+    }
+
+    .time-left {
+        float: left;
+        color: #999;
+    }
+
+    .chatbot {
+        top: 750px;
+        left: 1820px;
+        position: fixed;
+        width: 70px;
+        height: 70px;
+        border-radius: 50% !important;
+    }
+
+    .content-body {
+        background-color: #f4f1fa;
+        top: 300px;
+        left: 200px;
+        position: fixed;
+        height: 410px;
+        width: 400px;
+        margin-top: 100px;
+        border: solid 3px #dedede;
+        padding: 0px 3px;
+        margin-left: 1300px;
+    }
+
+    .inMessage {
+        width: 280px !important;
+        padding: 0px 0px;
+        margin: 1px 10px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+
+        box-sizing: border-box;
+    }
+
+    .btnMessage {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        text-align: center;
+        text-decoration: none;
+        flex: left;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .content-message {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    div.scroll {
+
+        height: 300px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: center;
+        padding: 10px;
+    }
+
     .preload_image {
         display: none;
     }
     </style>
+
     <?php $this->registerCsrfMetaTags()?>
     <?=Html::csrfMetaTags();
 $this->registerCssFile('css/custom.css');
@@ -145,24 +250,33 @@ $this->registerCssFile('css/custom.css');
                         </div>
                     </nav>
                 </div>
+
                 <?=Breadcrumbs::widget([
     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 ])?>
                 <?=Alert::widget()?>
+
                 <?=$content?>
+
+
                 <div id="footer">
+
                     <div class="content thembackground">
+
                         <div class="bottom" style="margin-top:20px">
                             <div class="footer-contact hidden-xs">
+
                                 <div class="footer-link">
-                                    <h4>Want to post a job? Contact us at Ha Noi: (+84) 977 460 519 - Ha Noi: (+84) 981
+                                    <h4>Want to post a job? Contact us at Ha Noi: (+84) 977 460 519 - Ha Noi: (+84)
+                                        981
                                         448 474 - Email: love@hus.com<h4>
                                 </div>
                             </div>
                             <div class="footer-links hidden-xs">
                                 <div class="col-md-3 footer-links__col">
                                     <a class="footer-link" data-controller="utm-tracking" href="/">Home</a>
-                                    <a class="footer-link" data-controller="utm-tracking" href="/it-jobs">All Jobs</a>
+                                    <a class="footer-link" data-controller="utm-tracking" href="/it-jobs">All
+                                        Jobs</a>
                                     <a target="_blank" class="footer-link" rel="canonical"
                                         data-controller="utm-tracking" href="/about-us">About Us</a>
                                     <a target="_blank" class="footer-link" rel="canonical"
@@ -174,7 +288,8 @@ $this->registerCssFile('css/custom.css');
                                     <a target="_blank" class="footer-link"
                                         href="https://itviec.com/blog/chinh-sach-bao-mat/">Privacy Policy</a>
                                     <a target="_blank" class="footer-link"
-                                        href="https://itviec.com/blog/terms-and-conditions/">Term &amp; Conditions</a>
+                                        href="https://itviec.com/blog/terms-and-conditions/">Term &amp;
+                                        Conditions</a>
                                     <a target="_blank" class="footer-link"
                                         href="https://itviec.com/blog/chinh-sach-giai-quyet-khieu-nai/">Complaint
                                         Handling Policy</a>
@@ -208,7 +323,8 @@ $this->registerCssFile('css/custom.css');
                                     href="https://itviec.com/blog/quy-che-hoat-dong-cua-itviec/">Operating
                                     Regulation</a>
                                 <a target="_blank" class="footer-link"
-                                    href="https://itviec.com/blog/chinh-sach-giai-quyet-khieu-nai/">Complaint Handling
+                                    href="https://itviec.com/blog/chinh-sach-giai-quyet-khieu-nai/">Complaint
+                                    Handling
                                     Policy</a>
                                 <span class="footer-link">Founded by Team K62 MT&KHTT HUS</span>
                                 <span class="footer-link">Tax code: 0312192258</span>
@@ -218,6 +334,64 @@ $this->registerCssFile('css/custom.css');
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="content-body">
+
+                    <h2 style="text-align: center;">Admin</h2>
+
+                    <hr style="border: 1px solid #ccc;">
+
+                    <div class="content-chat scroll ">
+                        <div class="container">
+                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
+                                style="width:100%;">
+                            <p>Hello. How are you today?</p>
+                            <span class="time-right">11:00</span>
+                        </div>
+
+                        <div class="container darker">
+                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
+                                class="right" style="width:100%;">
+                            <p>Hey! I'm fine. Thanks for asking!</p>
+                            <span class="time-left">11:01</span>
+                        </div>
+
+                        <div class="container">
+                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
+                                style="width:100%;">
+                            <p> what do you wanna do today?</p>
+                            <span class="time-right">11:02</span>
+                        </div>
+
+                        <div class="container darker">
+                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
+                                class="right" style="width:100%;">
+                            <p>Nah, I dunno. Play soccer.. </p>
+                            <span class="time-left">11:05</span>
+                        </div>
+                        <div class="container">
+                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
+                                style="width:100%;">
+                            <p> what do you wanna do today?</p>
+                            <span class="time-right">11:02</span>
+                        </div>
+
+                        <div class="container darker">
+                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
+                                class="right" style="width:100%;">
+                            <p>Nah, I dunno. Play soccer.. </p>
+                            <span class="time-left">11:05</span>
+                        </div>
+                    </div>
+                    <div class="content-message">
+                        <input class="inMessage" type="text" />
+                        <button class="btnMessage" id="btnMessage" onclick="send()">send</button>
+
+                    </div>
+                </div>
+                <div>
+                    <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/chatbot.jpg'?>" alt="Avatar"
+                        class="chatbot" onclick="show()" style="">
                 </div>
                 <?php $this->endBody()?>
     </body>

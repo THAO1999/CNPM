@@ -58,6 +58,7 @@ class RegisteredJobsController extends Controller
      */
     public function actionDelete($request_id, $student_id)
     {
+        
         $this->findModel($request_id, $student_id)->delete();
 
         return $this->redirect(['index', 'student_id' => $student_id]);

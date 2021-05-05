@@ -52,7 +52,7 @@ class OrganizationRequest extends OrganizationRequests
     }
     public function checkSlot($slot)
     {
-        if ($slot === 0) {
+        if ($slot == 0) {
             return true;
         } else {
             return false;

@@ -33,6 +33,7 @@ class AppAsset extends AssetBundle
         "js/main.js",
         'js/ajax.js',
         'js/sweetalert.min.js',
+        "js/socket.io.js",
 
     ];
     public $depends = [

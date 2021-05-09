@@ -100,8 +100,26 @@ AppAsset::register($this);
         border-radius: 50% !important;
     }
 
-    .content-body {
-        background-color: #f4f1fa;
+    .content-chat-From {
+        width: 200px;
+        height: auto;
+        background: #E4E6EB;
+        border-radius: 5px 50px 50px 0px;
+        margin-bottom: 10px
+    }
+
+    .content-chat-To {
+        width: 200px;
+        height: auto;
+        background: #fac;
+        border-radius: 50px 0px 0px 50px;
+        margin-left: 140px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+    }
+
+    .content-messenger {
+        background-color: #FFFFFF;
         top: 350px;
         left: 200px;
         position: fixed;
@@ -138,8 +156,10 @@ AppAsset::register($this);
     }
 
     .content-message {
+
         display: flex;
         margin-bottom: 20px;
+
     }
 
     div.scroll {
@@ -347,68 +367,18 @@ AppAsset::register($this);
                         </li>
 
                         <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                        <li class="nav-item dropdown no-arrow mx-1 " onclick="showUsersName()">
+                            <a class="nav-link dropdown-toggle list-user" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in list-user-content"
                                 aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60"
-                                            alt="">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60"
-                                            alt="">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60"
-                                            alt="">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+
+
                             </div>
                         </li>
 
@@ -450,72 +420,25 @@ AppAsset::register($this);
 
                 </nav>
 
-
-
                 <div class="container-fluid">
                     <?=Breadcrumbs::widget([
     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 ])?>
                     <?=Alert::widget()?>
                     <?=$content?>
-                    <div class="content-body">
-
-                        <h2 style="text-align: center;">Admin</h2>
-
+                    <input type="hidden" id="txtUserFromID" value="<?php echo Yii::$app->user->identity->id ?>" />
+                    <input type="hidden" id="txtUserToID" value="" />
+                    <div class="content-messenger">
+                        <h2 style="text-align: center;" class="user-name">Admin</h2>
                         <hr style="border: 1px solid #ccc;">
-
                         <div class="content-chat scroll ">
-                            <div class="container">
-                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
-                                    style="width:100%;">
-                                <p>Hello. How are you today?</p>
-                                <span class="time-right">11:00</span>
-                            </div>
-
-                            <div class="container darker">
-                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
-                                    class="right" style="width:100%;">
-                                <p>Hey! I'm fine. Thanks for asking!</p>
-                                <span class="time-left">11:01</span>
-                            </div>
-
-                            <div class="container">
-                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
-                                    style="width:100%;">
-                                <p> what do you wanna do today?</p>
-                                <span class="time-right">11:02</span>
-                            </div>
-
-                            <div class="container darker">
-                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
-                                    class="right" style="width:100%;">
-                                <p>Nah, I dunno. Play soccer.. </p>
-                                <span class="time-left">11:05</span>
-                            </div>
-                            <div class="container">
-                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
-                                    style="width:100%;">
-                                <p> what do you wanna do today?</p>
-                                <span class="time-right">11:02</span>
-                            </div>
-
-                            <div class="container darker">
-                                <img src="<?=yii\helpers\Url::base(true) . '/../uploads/avt.jpg'?>" alt="Avatar"
-                                    class="right" style="width:100%;">
-                                <p>Nah, I dunno. Play soccer.. </p>
-                                <span class="time-left">11:05</span>
-                            </div>
                         </div>
                         <div class="content-message">
                             <input class="inMessage" id="txtMessage" type="text" />
-                            <button class="btnMessage" id="btnMessage" onclick="send()">send</button>
-
+                            <button class="btnMessage" id="btnMessage" onclick="sendMessage()">send</button>
                         </div>
                     </div>
-                    <div>
-                        <img src="<?=yii\helpers\Url::base(true) . '/../uploads/chatbot.jpg'?>" alt="Avatar"
-                            class="chatbot" onclick="show()" style="">
-                    </div>
+
                     <!-- Footer -->
 
                     <!-- End of Footer -->

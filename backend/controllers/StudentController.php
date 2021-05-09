@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\Student;
 use backend\models\StudentSearch;
+use common\models\Messages;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -162,4 +163,32 @@ class StudentController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionShowUser()
+    {
+
+        return \yii\helpers\Json::encode(Student::find()->all());
+
+    }
+    public function actionSaveMassage()
+    {
+
+        $roomID = Yii::$app->request->post('roomID');
+        $UserToID = Yii::$app->request->post('userToID');
+        $UserFromID = Yii::$app->request->post('userFromID');
+        $msg = Yii::$app->request->post('msg');
+
+        $model = new Messages();
+        $model->room_id = $roomID;
+        $model->user_id_to = $UserToID;
+        $model->user_id_from = $UserFromID;
+        $model->content = $msg;
+        // return \yii\helpers\Json::encode($roomID);
+        if ($model->save()) {
+            return 1;
+        } else {
+            return \yii\helpers\Json::encode($model->getAttributes());
+        }
+    }
+
 }

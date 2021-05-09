@@ -60,6 +60,25 @@ AppAsset::register($this);
         border-radius: 50%;
     }
 
+    .content-chat-From {
+        padding-right: 25px;
+        width: 200px;
+        height: auto;
+        background: #E4E6EB;
+        border-radius: 5px 50px 50px 0px;
+        margin-bottom: 10px
+    }
+
+    .content-chat-To {
+        padding-left: 20px;
+        width: 200px;
+        height: auto;
+        background: #fac;
+        border-radius: 50px 0px 0px 50px;
+        margin-left: 55px;
+        margin-bottom: 10px
+    }
+
     .container img.right {
         float: right;
         margin-left: 20px;
@@ -77,9 +96,9 @@ AppAsset::register($this);
         color: #999;
     }
 
-    .chatbot {
-        top: 750px;
-        left: 1820px;
+    .icon-chatBot {
+        top: 840px;
+        left: 1950px;
         position: fixed;
         width: 70px;
         height: 70px;
@@ -87,12 +106,12 @@ AppAsset::register($this);
     }
 
     .content-body {
-        background-color: #f4f1fa;
-        top: 300px;
-        left: 200px;
+        background-color: #FFFFFF;
+        top: 330px;
+        left: 280px;
         position: fixed;
-        height: 410px;
-        width: 400px;
+        height: 425px;
+        width: 300px;
         margin-top: 100px;
         border: solid 3px #dedede;
         padding: 0px 3px;
@@ -121,6 +140,7 @@ AppAsset::register($this);
         flex: left;
         border-radius: 4px;
         font-size: 16px;
+        height: 35px;
     }
 
     .content-message {
@@ -139,6 +159,29 @@ AppAsset::register($this);
 
     .preload_image {
         display: none;
+    }
+
+    /* list user */
+    .list-user {
+        background: #ffffff;
+        width: 300px;
+        height: auto;
+        top: 40px;
+        left: 1570px;
+        position: fixed;
+    }
+
+    .content-messenger {
+        width: 100%;
+        height: 50px;
+    }
+
+    .content-messenger:hover {
+        background: #f0f2f5
+    }
+
+    .name-user {
+        margin-top: 10px
     }
     </style>
 
@@ -175,7 +218,10 @@ $this->registerCssFile('css/custom.css');
 
 
                                     <li class="pageMenu__item">
-                                        <a href="<?php echo Url::home() . "home/" ?>">Home</a>
+                                        <a href="<?php echo Url::home() . "home/" ?>">Trang chủ</a>
+                                    </li>
+                                    <li class="pageMenu__item">
+                                        <a href="#" onclick="showUsersName()">Tin nhắn</a>
                                     </li>
                                     <li class="dropdown hidden-xs" id="user-dropdown">
                                         <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href=""
@@ -335,64 +381,35 @@ $this->registerCssFile('css/custom.css');
                         </div>
                     </div>
                 </div>
-                <div class="content-body">
-
-                    <h2 style="text-align: center;">Admin</h2>
-
+                <input type="hidden" id="txtUserFromID" value="<?php echo Yii::$app->user->identity->id ?>" />
+                <input type="hidden" id="txtUserToID" value="" />
+                <input type="hidden" id="txtUserToAdminID" value="2" />
+                <div class="list-user" style="border: 2px solid #ccc;">
+                    <h2 style="text-align: center;margin-top:15px">Messenger</h2>
                     <hr style="border: 1px solid #ccc;">
+                    <div class="content-chat scroll list-user-content">
 
+                    </div>
+                </div>
+
+
+                <div class="content-body">
+                    <h2 style="text-align: center; margin-top:15px" id="user-name">Admin</h2>
+                    <hr style="border: 1px solid #ccc;">
                     <div class="content-chat scroll ">
-                        <div class="container">
-                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
-                                style="width:100%;">
-                            <p>Hello. How are you today?</p>
-                            <span class="time-right">11:00</span>
-                        </div>
 
-                        <div class="container darker">
-                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
-                                class="right" style="width:100%;">
-                            <p>Hey! I'm fine. Thanks for asking!</p>
-                            <span class="time-left">11:01</span>
-                        </div>
-
-                        <div class="container">
-                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
-                                style="width:100%;">
-                            <p> what do you wanna do today?</p>
-                            <span class="time-right">11:02</span>
-                        </div>
-
-                        <div class="container darker">
-                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
-                                class="right" style="width:100%;">
-                            <p>Nah, I dunno. Play soccer.. </p>
-                            <span class="time-left">11:05</span>
-                        </div>
-                        <div class="container">
-                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
-                                style="width:100%;">
-                            <p> what do you wanna do today?</p>
-                            <span class="time-right">11:02</span>
-                        </div>
-
-                        <div class="container darker">
-                            <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/avt.jpg'?>" alt="Avatar"
-                                class="right" style="width:100%;">
-                            <p>Nah, I dunno. Play soccer.. </p>
-                            <span class="time-left">11:05</span>
-                        </div>
                     </div>
                     <div class="content-message">
-                        <input class="inMessage" type="text" />
-                        <button class="btnMessage" id="btnMessage" onclick="send()">send</button>
-
+                        <input class="inMessage" id="txtMessage" type="text" />
+                        <button class="btnMessage" id="btnMessage">send</button>
                     </div>
                 </div>
                 <div>
                     <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/chatbot.jpg'?>" alt="Avatar"
-                        class="chatbot" onclick="show()" style="">
+                        class="icon-chatBot" onclick="showChatBot('2')"
+                        style="width:50px; height:50px;border-radius:50%;margin-left:-120px">
                 </div>
+
                 <?php $this->endBody()?>
     </body>
 

@@ -26,7 +26,7 @@ socket.on('server-notification-client', function (data) {
     userFromID = data.userFromID;
 });
 function setCount() {
-
+    alert(33)
     var value_fact = (parseInt(userFromID) - 14) * 60 + 80;
 
     $('#notification-user' + userFromID).text(count);

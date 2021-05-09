@@ -404,7 +404,7 @@ $this->registerCssFile('css/custom.css');
                 </div>
                 <div>
                     <img src="<?=yii\helpers\Url::base(true) . '/../../uploads/chatbot.jpg'?>" alt="Avatar"
-                        class="icon-chatBot" onclick="showChatBot('2')"
+                        class="icon-chatBot" onclick="showChatBot('2','Admin')"
                         style="width:50px; height:50px;border-radius:50%;margin-left:-120px">
                 </div>
 

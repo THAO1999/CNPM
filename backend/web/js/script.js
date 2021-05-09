@@ -63,21 +63,25 @@ function sendMessage() {
     socket.emit('client-send-message', data);
     $("#txtMessage").val('');
     $.ajax({
-        url: "student/save-massage",
+        url: "student/save-message",
         type: "post",
         data: {
             roomID: data.roomID,
             userToID: data.userToID,
             userFromID: data.userFromID,
             msg: data.msg,
+            _csrf: yii.getCsrfToken(),
         },
         success: function (result) {
             console.log(result);
-        },
+        }, error: function (errormessage) {
+            console.log(2222)
+        }
     });
 }
 
 function showChatBot(userToId) {
+
     $(".content-messenger").show()
 
     var userName = $('.small' + userToId).text();
@@ -91,5 +95,30 @@ function showChatBot(userToId) {
     // create roomID
     var roomID = parseInt(userFromId) + parseInt(userToId);
     // request create room
+    $.ajax({
+        url: "student/get-data-message",
+        type: "post",
+        data: {
+            roomID: roomID,
+            _csrf: yii.getCsrfToken(),
+        },
+        success: function (result) {
+            $(".scroll").empty();
+            var messages = JSON.parse(result);
+            var userFromID = parseInt($("#txtUserFromID").val());
+            messages.forEach((message) => {
+                if (message.user_id_to == userFromID) {
+                    $(".scroll").append("<div class='content-chat'> <p class='content-chat-From' >" + message.content + "</p> </div>")
+                }
+                else {
+                    $(".scroll").append("<div class='content-chat'> <p class='content-chat-To'>" + message.content + "</p> </div>")
+                }
+            });
+        }, error: function (errormessage) {
+            console.log(2222)
+        }
+    });
+
+
     socket.emit('client-request-create-room', roomID);
 }

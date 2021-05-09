@@ -391,8 +391,6 @@ $this->registerCssFile('css/custom.css');
 
                     </div>
                 </div>
-
-
                 <div class="content-body">
                     <h2 style="text-align: center; margin-top:15px" id="user-name">Admin</h2>
                     <hr style="border: 1px solid #ccc;">

@@ -170,9 +170,8 @@ class StudentController extends Controller
         return \yii\helpers\Json::encode(Student::find()->all());
 
     }
-    public function actionSaveMassage()
+    public function actionSaveMessage()
     {
-
         $roomID = Yii::$app->request->post('roomID');
         $UserToID = Yii::$app->request->post('userToID');
         $UserFromID = Yii::$app->request->post('userFromID');
@@ -189,6 +188,12 @@ class StudentController extends Controller
         } else {
             return \yii\helpers\Json::encode($model->getAttributes());
         }
+    }
+    public function actionGetDataMessage()
+    {
+        $roomID = Yii::$app->request->post('roomID');
+        $messages = Messages::find()->where(['room_id' => $roomID])->all();
+        return \yii\helpers\Json::encode($messages);
     }
 
 }

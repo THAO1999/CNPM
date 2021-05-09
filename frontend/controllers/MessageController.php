@@ -80,24 +80,23 @@ class MessageController extends Controller
         return \yii\helpers\Json::encode(Student::find()->all());
 
     }
-    public function actionSaveMessage()
+    public function actionSaveMessage($roomID, $userToID, $userFromID, $msg)
     {
-        return \yii\helpers\Json::encode(111111111);
-        $roomID = Yii::$app->request->post('roomID');
-        $UserToID = Yii::$app->request->post('userToID');
-        $UserFromID = Yii::$app->request->post('userFromID');
-        $msg = Yii::$app->request->post('msg');
-        return \yii\helpers\Json::encode($roomID);
         $model = new Messages();
         $model->room_id = $roomID;
-        $model->user_id_to = $UserToID;
-        $model->user_id_from = $UserFromID;
+        $model->user_id_to = $userToID;
+        $model->user_id_from = $userFromID;
         $model->content = $msg;
         if ($model->save()) {
             return 1;
         } else {
             return \yii\helpers\Json::encode($model->getAttributes());
         }
+    }
+    public function actionGetDataMessage($roomID)
+    {
+        $messages = Messages::find()->where(['room_id' => $roomID])->all();
+        return \yii\helpers\Json::encode($messages);
     }
 
 }

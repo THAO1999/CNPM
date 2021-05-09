@@ -74,7 +74,8 @@ $(document).ready(function () {
     socket.emit('client-send-message', data);
     $.ajax({
       url: "../message/save-message",
-      type: "post",
+      type: "GET",
+      contentType: "application/json; charset=utf-8",
       data: {
         roomID: data.roomID,
         userToID: data.userToID,
@@ -82,9 +83,11 @@ $(document).ready(function () {
         msg: data.msg,
         _csrf: yii.getCsrfToken(),
       },
-      success: function (result) {
-        console.log(result);
-      },
+      success: function (messages) {
+
+      }, error: function (errormessage) {
+        console.log(2222)
+      }
     });
     $("#txtMessage").val('');
   });
@@ -99,9 +102,7 @@ $(document).ready(function () {
         $(".scroll").append("<div class='content-chat'> <p class='content-chat-To'>" + data.msg + "</p> </div>")
       }
     }
-
   });
-
 });
 
 function showChatBot(userToId) {
@@ -116,6 +117,7 @@ function showChatBot(userToId) {
   else {
     userName = "Admin"
   }
+
   // set name of user for default name admin
   $("#user-name").text(userName);
   // set name of user get data
@@ -125,6 +127,31 @@ function showChatBot(userToId) {
   // create roomID
   var roomID = parseInt(userFromId) + parseInt(userToId);
   // request create room
+
+  $.ajax({
+    url: "../message/get-data-message",
+    type: "post",
+    data: {
+      roomID: roomID,
+      _csrf: yii.getCsrfToken(),
+    },
+    success: function (result) {
+      $(".scroll").empty();
+      var messages = JSON.parse(result);
+      var userFromID = parseInt($("#txtUserFromID").val());
+      messages.forEach((message) => {
+        if (message.user_id_to == userFromID) {
+          $(".scroll").append("<div class='content-chat'> <p class='content-chat-From' >" + message.content + "</p> </div>")
+        }
+        else {
+          $(".scroll").append("<div class='content-chat'> <p class='content-chat-To'>" + message.content + "</p> </div>")
+        }
+      });
+    }, error: function (errormessage) {
+      console.log(2222)
+    }
+  });
+
+
   socket.emit('client-request-create-room', roomID);
 }
-

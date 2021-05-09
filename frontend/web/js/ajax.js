@@ -72,6 +72,8 @@ $(document).ready(function () {
       userFromID: UserFromID
     };
     socket.emit('client-send-message', data);
+    //client thông báo tin nhắn mới
+    socket.emit('client-notification-new-message', data);
     $.ajax({
       url: "../message/save-message",
       type: "GET",
@@ -109,6 +111,7 @@ function showChatBot(userToId) {
   const socket = io("http://localhost:4000")
   $(".list-user").hide();
   $(".content-body").show();
+  $(".scroll").empty();
   // get name of user selected
   var userName;
   if ($('.name-user' + userToId).text()) {
@@ -117,7 +120,6 @@ function showChatBot(userToId) {
   else {
     userName = "Admin"
   }
-
   // set name of user for default name admin
   $("#user-name").text(userName);
   // set name of user get data
@@ -136,7 +138,7 @@ function showChatBot(userToId) {
       _csrf: yii.getCsrfToken(),
     },
     success: function (result) {
-      $(".scroll").empty();
+
       var messages = JSON.parse(result);
       var userFromID = parseInt($("#txtUserFromID").val());
       messages.forEach((message) => {

@@ -1,6 +1,9 @@
 
 $(document).ready(function () {
     $(".content-messenger").hide();
+    // $("txtMessage").focusOut(function () {
+    //     alert(444)
+    // })
 });
 
 const socket = io("http://localhost:4000")
@@ -15,10 +18,21 @@ socket.on('server-send-clients', function (data) {
             $(".scroll").append("<div class='content-chat'> <p class='content-chat-From'>" + data.msg + "</p> </div>")
         }
     }
-
 });
+var count = 0;
+var userFromID;
+socket.on('server-notification-client', function (data) {
+    count = 1;
+    userFromID = data.userFromID;
+});
+function setCount() {
 
+    var value_fact = (parseInt(userFromID) - 14) * 60 + 80;
 
+    $('#notification-user' + userFromID).text(count);
+
+    $('#notification-user' + userFromID).css({ top: value_fact + 'px' });
+}
 function showUsersName() {
     //  $(".content-messenger").hide();
     $(".list-user").show();
@@ -38,10 +52,13 @@ function showUsersName() {
                 '</div> <div>' +
                 '<div class="small' + student.id + '">' + student.name +
                 '</div>' +
+                '<b><span class="badge badge-danger badge-counter notification" id="notification-user' + student.id + '">'
+                + '</span></b>' +
                 '</div>' +
                 '</a>'
             )
         });
+        setCount();
     }).fail(function (xhr, textStatus, errorThrown) {
         console.log(000);
     });

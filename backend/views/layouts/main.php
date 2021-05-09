@@ -64,6 +64,16 @@ AppAsset::register($this);
         display: table;
     }
 
+    .dropdown-list-image {
+        position: relative;
+    }
+
+    .notification {
+        left: 1505px;
+        top: 80px;
+        position: fixed;
+    }
+
     .container img {
         float: left;
         max-width: 45px;
